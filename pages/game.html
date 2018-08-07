@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, height=device-height"/>
+  <title>Hivery Game</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/game_style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body id="background_game"  background="../img/game_background.jpg" style="background-size: 100%;">
+ <div class="row">
+     <!-- Money Counter at the Top Left Corner -->
+     <div class="col s3 moneyCounter">
+
+     </div>
+
+     <!-- Advice banner -->
+     <div class="col s6 offset-s3 advice_banner">
+         <div class="advice">
+             <img src="../img/guide_box.jpg" class="img-responsive">
+         </div>
+
+     </div>
+
+     <!-- Time Counter at the Top Right Corner -->
+     <div class="col s3 offset-s9 timeCounter">
+
+     </div>
+ </div>
+
+ <div class="row">
+     <!-- Drinks Selected -->
+     <div class="col s4 selected_drinks commonHeightDrinks">
+        <div class="drinks_machine">
+        </div>
+     </div>
+     <!-- Information of the selected drink -->
+     <div class="col s3 offset-s4 actual_drink commonHeightDrinks">
+         <div class="actual_drink_inside">
+             <img src="../img/vertical.jpg">
+             <!-- Arrows for selecting the drinks -->
+             <a class="left-arrow waves-effect waves-light red "><i class="material-icons icon">arrow_back</i></a>
+             <a class="right-arrow waves-effect waves-light red "><i class="material-icons icon">arrow_forward</i></a>
+         </div>
+     </div>
+     <!-- Drinks Stats -->
+     <div class="col s5 offset-s7 drinks_stats commonHeightDrinks">
+        <div class="drinks_stats_inside">
+
+        </div>
+     </div>
+ </div>
+
+
+    <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../js/materialize.js"></script>
+  <script src="../js/init.js"></script>
+  </body>
+</html>

@@ -1,0 +1,254 @@
+/* Custom style for Hivery Game */
+
+/**
+Div of the Text box of the introduction
+ */
+.initial_text_box {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 50%;
+      height: 50%;
+}
+
+/**
+The image that it is the text of of the introduction
+ */
+.initial_text_box img {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+}
+
+/**
+Button PLAY of the introduction Text Box
+ */
+.initial_text_box button {
+    font-size:200%;
+    position: relative;
+    height: 8%;
+    width: 17%;
+    left: 73%;
+    border-radius: 12px;
+    transform: translateY(-150%)
+}
+
+/**
+Div of the Guide box
+ */
+.guide_box {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 63%;
+      height: 63%;
+}
+
+/**
+The image that it is the text of of the Guide
+ */
+.guide_box img {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+}
+
+/**
+Button READY of the Guide Box
+ */
+.guide_box button {
+    font-size:200%;
+    position: relative;
+    height: 8%;
+    width: 17%;
+    left: 73%;
+    border-radius: 12px;
+    transform: translateY(25%)
+}
+
+/**
+The Counter of the Money at the Game Window
+ */
+.moneyCounter {
+    height: 10%;
+    position: absolute;
+    background-color: #0D47A1;
+}
+
+/**
+Banner with an advice
+ */
+.advice_banner{
+    position: absolute;
+    height: 10%;
+    /** background-color: #A5D6A7; */
+}
+
+/**
+The advice inside the banner
+ */
+.advice {
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+    position: relative;
+    background-color: #343434;
+}
+
+/**
+The image of the banner
+ */
+.advice img{
+    display: inline-block;
+    position: relative;
+    height: 80%;
+    top: 10%;
+    left: 2%;
+    width: 15%;
+    border-radius: 6px;
+}
+
+/**
+The Time Counter of the Game Window
+ */
+.timeCounter {
+    height: 10%;
+    position: absolute;
+    background-color: #292929;
+}
+
+/**
+The common Top and Height variables to the elements in the middle (Drinks)
+ */
+.commonHeightDrinks {
+    top: 10%;
+    height: 80%;
+    position: absolute;
+}
+
+.selected_drinks {
+   /**  background-color: #b71c1c; */
+}
+
+.drinks_machine {
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 85%;
+    position: relative;
+    background-color: #999999;
+}
+
+.actual_drink{
+    /** background-color:#3949ab; */
+}
+
+.actual_drink_inside {
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+    position: relative;
+    background-color: #999999;
+}
+
+/**
+The image of the selected drink
+ */
+.actual_drink img {
+    display: inline-block;
+    position: relative;
+    height: 50%;
+    top: 15%;
+    left: 35%;
+    width: 30%;
+    border-radius: 6px;
+}
+
+.drinks_stats{
+    /** background-color:#00796b; */
+}
+
+/**
+ The place where the stats of the drinks is going to be placed
+  */
+.drinks_stats_inside{
+    top: 10%;
+    left: 4%;
+    height: 80%;
+    width: 87%;
+    position: relative;
+    background-color: #999999;
+}
+
+/**
+ Arrow to the left
+ */
+.left-arrow {
+  display: inline-block;
+  color: #fff;
+  overflow: hidden;
+  z-index: 1;
+  line-height: 40px;
+  padding: 0;
+  background-color: #26a69a;
+  border-radius: 50%;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  cursor: pointer;
+  text-align: center;
+
+  position: absolute;
+  top:94%;
+  left: 17%;
+  height: 90px;
+  width: 90px;
+}
+
+/**
+Arrow to the right
+ */
+.right-arrow {
+  display: inline-block;
+  color: #fff;
+  overflow: hidden;
+  z-index: 1;
+  line-height: 40px;
+  padding: 0;
+  background-color: #26a69a;
+  border-radius: 50%;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  cursor: pointer;
+  text-align: center;
+
+  position: absolute;
+  top:94%;
+  left: 60%;
+  height: 90px;
+  width: 90px;
+}
+
+/**
+Icon of the arrows
+ */
+.icon {
+    font-size: 60px;
+    position: absolute;
+    top: 17%;
+    left: 17%;
+    height: 100%;
+    width: 10px;
+    display: block;
+}
