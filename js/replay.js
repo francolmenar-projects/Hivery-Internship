@@ -7,5 +7,5 @@ function goToGameWindow(){
 
 (function() {
     // Setting the listeners
-    document.getElementById("guide_ready_button").addEventListener("click", goToGameWindow);
+    document.getElementById("replay_button").addEventListener("click", goToGameWindow);
     }())

@@ -12,15 +12,20 @@
   <link href="../css/game_style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 
-<body id="background_init" background="../img/generic_background.png" style="background-size: 100%; width: 100%;height: 100%; background-repeat: no-repeat">
+<body id="background_init" background="../img/introduction_background.jpg" style="background-size: 100%; width:100%; height: 100%">
 <!-- Introduction Image with the text -->
-  <div class="initial_text_box">
-    <img src="../img/welcomeBoard.png" >
-    <p class="common_font welcome">Welcome!</p>
-    <p class="common_font describe_text">I run the most successful soda machine in town. Don’t think there will be someone do it better than me, but you can give it a try!</p>
-    <button id="introduction_play_button" class="button_intro waves-effect waves-light" type="submit" name="action"><p>PLAY</p></button>s
+<div class="row">
+  <div class="col s6 offset-s3 replay_text_box">
+    <img src="../img/replay_text.jpg" >
+    <p class="common_font not_bad">Not Bad</p>
+    <p class="common_font">You cannot be sure how HTML will be displayed.
+                Large or small screens, and resized windows will
+            create different results</p><div class="picture_of_guy_intro"></div>
+    <button id="replay_button" class="btn waves-effect waves-light" type="submit" name="action">REPLAY
+    </button>
   </div>
+</div>
     <!--  Scripts-->
-   <script src="../js/introduction_page.js"></script>
+   <script src="../js/replay.js"></script>
   </body>
 </html>
