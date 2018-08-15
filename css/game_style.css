@@ -40,6 +40,21 @@ Generic Background
 }
 
 /**
+Common header showed in the panel image
+ */
+.panel_header{
+    position: relative;
+    height: 22%;
+    width: 42%;
+    left:50%;
+    top: -105%;
+    font-size: 900%;
+    font-family: ConcertOne;
+    text-align: left;
+    color: #3d1f0e;
+}
+
+/**
 Buttons of the game
  */
 .button_game {
@@ -143,22 +158,6 @@ Play text inside the play button
     position: relative;
     left: 24%;
     margin-top: 2%;
-}
-
-/**
-Welcome banner from the intro
- */
-.initial_text_box .welcome {
-    position: relative;
-    height: 22%;
-    width: 42%;
-    left:50%;
-    top: -105%;
-    font-size: 900%;
-    font-family: ConcertOne;
-    text-align: left;
-    color: #3d1f0e;
-
 }
 
 /**
@@ -281,8 +280,8 @@ Guide Label
 The Counter of the Money and Time at the Game Window
  */
 .counter {
-    height: 10%;
     position: absolute;
+    height: 10%;
 }
 
 /**
@@ -389,12 +388,15 @@ Each row of the drink machine
 
 /********** ACTUAL DRINK **********/
 
+/**
+Div containing the selected drink
+ */
 .actual_drink_inside {
+    position: absolute;
     top: 15%;
     left: 5%;
     height: 70%;
     width: 85%;
-    position: relative;
 }
 
 /**
@@ -411,100 +413,48 @@ The actual selected drink
 /**
 The button of the actual drink
  */
-.actual_drink_inside .drink_button {
-    position: relative;
-    left: 28%;
+.drink_button {
+    position: inherit;
+    left: 30%;
     width: 45%;
-    top: -96%;
+    top: 65%;
     height: 14%;
     text-align: left;
 }
 
-/**
-Button with the info of the selected drink
- */
-.actual_drink_inside .drink_button button{
-    width: 100%;
-    height: 100%;
-    top: 20%;
-    border-radius: 26%;
-    border: none;
-    text-align: left;
-    background-color: transparent;
-}
-
-.actual_drink_inside .drink_button img{
+.drink_button p{
     position: relative;
-    top: -80%;
-}
-
-.actual_drink_inside .drink_button p{
-    position: absolute;
-    left: 30%;
-    float: left;
-    margin-top: -20%;
-    margin-left: 1%;
-    width: 20%;
-    height: 60%;
-    font-family: ConcertOne;
-    font-size: 500%;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #fcfcfc;
-}
-
-/**
-Store label Div
- */
-.STORE {
-    position: relative;
-    width: 45%;
-    height: 10%;
-    top: -108%;
     left: 28%;
-    text-align: left;
+    margin-top: 10%;
+    font-size: 500%;
 }
 
 /**
 Store label
  */
-.STORE p{
-  height: 90%;
-  width: 90%;
-  font-family: ConcertOne;
-  font-size: 650%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #3d1f0e;
+.actual_drink_inside .STORE {
+    position: relative;
+    width: 45%;
+    height: 10%;
+    top: -104%;
+    left: 28%;
+    font-family: ConcertOne;
+    font-size: 650%;
+    text-align: left;
+    color: #3d1f0e;
 }
 
-.drinks_stats{
-    /** background-color:#00796b; */
-}
+/********** STATS **********/
 
 /**
  The place where the stats of the drinks is going to be placed
   */
 .drinks_stats_inside{
+    position: relative;
     top: 15%;
-    left: 0%;
     height: 65%;
     width: 95%;
-    position: relative;
-}
-
-.drinks_stats_inside img{
-    position: relative;
-    height: 100%;
-    width: 100%;
+    font-family: ConcertOne;
 }
 
 /**
@@ -512,34 +462,20 @@ Table with no bore
  */
 .drinks_stats_inside table, tr, td{
     font-size: 30px;
-    border: 0px;
+    text-align: left;
+    color: #000000;
+    border: none;
 }
 
 /**
 Table with no bore
  */
 .drinks_stats_inside .category{
-  font-family: ConcertOne;
   font-size: 105%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
 }
 
 .drinks_stats_inside td{
-  font-family: ConcertOne;
   font-size: 150%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
 }
 
 /**
@@ -558,197 +494,98 @@ Row with the names of the drinks
 .drinks_name th{
   position: relative;
   transform: rotate(-16deg);
-  font-family: ConcertOne;
   font-size: 105%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
 }
 
 /**
 STATS label Div
  */
-.STATS {
+.drinks_stats_inside .STATS {
     position: relative;
     width: 45%;
     height: 10%;
-    top: -108%;
+    top: -104%;
     left: 41%;
+    font-size: 650%;
     text-align: left;
-}
-
-/**
-STATS label
- */
-.STATS p{
-  height: 90%;
-  width: 90%;
-  font-family: ConcertOne;
-  font-size: 650%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #3d1f0e;
+    color: #3d1f0e;
 }
 
 /**
 Panel with the total calculations of the current choice
  */
 .total_panel_stats{
+    text-align: left;
     top: -47%;
     left: 5%;
     height: 15%;
     width: 90%;
     position: relative;
-      font-size: 30px;
+    font-size: 30px;
+}
+
+/**
+Font size of the header of the total values
+ */
+.total_header {
+    font-size: 105%;
+}
+
+/**
+Font size of the total values
+ */
+.total_values {
+  font-size: 225%;
 }
 
 /**
 Left panel with the calculations of the actual choice
  */
 .left_total_panel {
+    position: relative;
     height: 100%;
     width: 50%;
-    position: relative;
-    text-align: left;
 }
 
 .totalLeft_down_header {
-     position: relative;
-     left: 25%;
-     top: -35%;
-  font-family: ConcertOne;
-  font-size: 105%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
+   position: relative;
+   left: 25%;
+   top: -35%;
 }
 
 .revenue_per_year{
-     position: relative;
-     top: -80%;
-     left: 25%;
-  font-family: ConcertOne;
-  font-size: 225%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
+  position: relative;
+  top: -60%;
+  left: 25%;
  }
 
 /**
 Right panel with the calculations of the actual choice
  */
 .right_total_panel {
+    position: relative;
     height: 100%;
     width: 50%;
     left: 50%;
-    position: relative;
-    text-align: left;
 }
 
 .right_total_panel{
-    position: relative;
-     left: 65%;
-     top: -156%;
-  font-family: ConcertOne;
-  font-size: 105%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
+  position: relative;
+  left: 65%;
+  top: -156%;
 }
 
 .cost_per_year{
-    position: relative;
-     top: -50%;
-     left: 0%;
-  font-family: ConcertOne;
-  font-size: 225%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
+  position: relative;
+  top: -30%;
 }
 
-/**
- Arrow to the left
- */
-.left-arrow {
-  display: inline-block;
-  color: #fff;
-  overflow: hidden;
-  z-index: 1;
-  line-height: 40px;
-  padding: 0;
-  background-color: #26a69a;
-  border-radius: 50%;
-  -webkit-transition: background-color .3s;
-  transition: background-color .3s;
-  cursor: pointer;
-  text-align: center;
-
-  position: absolute;
-  top:94%;
-  left: 22%;
-  height: 140px;
-  width: 140px;
-}
-
-/**
-Arrow to the right
- */
-.right-arrow {
-  display: inline-block;
-  color: #fff;
-  overflow: hidden;
-  z-index: 1;
-  line-height: 40px;
-  padding: 0;
-  background-color: #26a69a;
-  border-radius: 50%;
-  -webkit-transition: background-color .3s;
-  transition: background-color .3s;
-  cursor: pointer;
-  text-align: center;
-
-  position: absolute;
-  top:94%;
-  left: 65%;
-  height: 140px;
-  width: 140px;
-}
+/****************************** GAME OVER ******************************/
 
 /**
 DIV containing the GAME OVER text
  */
 .game_over_div {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     width: 75%;
     height: 25%;
     font-size: 30px;
@@ -758,74 +595,44 @@ DIV containing the GAME OVER text
 GAME OVER text
  */
 .game_over_div .game_over_text{
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
   font-family: Krungthep;
   font-size: 1100%;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
   line-height: normal;
-  letter-spacing: normal;
   text-align: center;
   color: #ffffff;
 }
 
-/**
-Icon of the arrows
- */
-.icon {
-    font-size: 90px;
-    position: absolute;
-    top: 17%;
-    left: 17%;
-    height: 100%;
-    width: 10px;
-    display: block;
-}
+/****************************** REPLAY ******************************/
 
 /**
 Div of the Text box of the Replay page
  */
 .replay_text_box {
-      position: absolute;
-      margin: auto;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
       width: 50%;
       height: 50%;
 }
 
 /**
-The image that it is the text of of the Replay page
+Common font for the replay text
  */
-.replay_text_box img {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    border-radius: 6px;
+.replay_p{
+      font-family: AndaleMono;
+      font-size: 225%;
+      text-align: left;
+      color: #000000;
 }
 
 /**
 Button REPLAY of the Replay Text Box
  */
-.button_replay  {
-    background: url("../img/gameButton.png") no-repeat;
-    background-size: inherit;
+.button_replay {
     position: inherit;
     width: 18%;
     top: 60%;
     height: 12%;
     left: 59%;
-    border: none;
     transform: scale(1.5);
     text-align: left;
 }
@@ -835,80 +642,28 @@ REPLAY text inside the replay button
 */
 .button_replay p{
     position: relative;
-    left: 10%;
-    margin-top: 2%;
-    font-size:425%;
-    font-family: ConcertOne;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #ffffff;
-}
-
-/**
-NOT BAD text
- */
-.replay_text_box .not_bad{
-    position: relative;
-    height: 22%;
-    width: 42%;
-    left:50%;
-    top: -105%;
-    resize: both;
-    /* overflow-y: auto; */
-    font-size: 140px;
-    font-family: ConcertOne;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #3d1f0e;
+    left: 15%;
+    margin-top: 4%;
+    font-size:500%;
 }
 
 /**
 Text inside the replay box
  */
-.replay_text_box .replay_text{
-    top: -116%;
+.replay_text_box  .replay_text{
+    position: relative;
+    top: -120%;
     width: 42%;
     left:50%;
-    position: relative;
-    font-size: 33px;
-    overflow-y: auto;
-    font-family: AndaleMono;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000000;
 }
 
 /**
 Link to the best machine inside the replay box
  */
 .replay_text_box .best_machine_text{
+    position: relative;
     top: -93%;
     width: 42%;
     left:50%;
-    position: relative;
-    font-size: 33px;
-    overflow-y: auto;
-    font-family: AndaleMono;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
     text-decoration: underline;
-    color: #000000;
 }
-
-
-/**************** Materialize CSS ****************/
