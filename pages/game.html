@@ -12,38 +12,77 @@
   <link href="../css/game_style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 
-<body id="background_game"  background="../img/generic_background.png" style="background-size: 100%;">
- <div class="row">
+<body class="background_default ">
+ <div class="row generic_text">
      <!-- Money Counter at the Top Left Corner -->
-     <div class="col s3 moneyCounter">
+     <div class="col s3 counter" id="moneyCounterDiv">
          <img src="../img/barRevenue.png">
          <p id="actual_profit"></p>
      </div>
-
      <!-- Advice banner -->
      <div class="col s6 offset-s3 advice_banner">
-         <div class="advice">
-             <img src="../img/popoverBoy.png" class="img-responsive">
+         <div class="advice img_divSize">
+             <img src="../img/popoverBoy.png">
              <p class="common_font">Watch out! Your machine would need restocking in 6 days. That costs $400 per time</p>
          </div>
      </div>
-
      <!-- Time Counter at the Top Right Corner -->
-     <div class="col s3 offset-s9 timeCounter">
+     <div class="col s3 offset-s9 counter">
          <img src="../img/barTime.png">
         <p id="timer"></p>
      </div>
  </div>
-
  <div class="row">
      <!-- Drinks Selected -->
-     <div class="col s4 selected_drinks commonHeightDrinks">
+     <div class="col s4 commonHeightDrinks">
         <div class="drinks_machine">
+            <div class="drink_row column_machine_drinks">
+                <div class="col s3 ">
+                    <img src="../img/coke-bottle.png">
+                </div>
+                <div class="col s3 offset-c3 ">
+                    <img src="../img/coke-bottle.png">
+                </div>
+                <div class="col s3 offset-c6 ">
+                    <img src="../img/coke-bottle.png">
+                </div>
+                <div class="col s3 offset-c9">
+                    <img src="../img/coke-bottle.png">
+                </div>
+            </div>
+            <div class="drink_row column_machine_drinks">
+                <div class="col s3 ">
+                    <img src="../img/coke-bottle.png">
+                </div>
+                <div class="col s3 offset-c3">
+                    <img src="../img/coke-bottle.png">
+                </div>
+                <div class="col s3 offset-c6">
+                    <img src="../img/coke-bottle.png">
+                </div>
+                <div class="col s3 offset-c9">
+                    <img src="../img/coke-bottle.png">
+                </div>
+            </div>
+            <div class="drink_row column_machine_drinks">
+                <div class="col s3">
+                    <img src="../img/coke-bottle.png">
+                </div>
+                <div class="col s3 offset-c3">
+                    <img src="../img/coke-bottle.png">
+                </div>
+                <div class="col s3 offset-c6">
+                    <img src="../img/coke-bottle.png">
+                </div>
+                <div class="col s3 offset-c9">
+                    <img src="../img/coke-bottle.png">
+                </div>
+            </div>
         </div>
      </div>
      <!-- Information of the selected drink -->
-     <div class="col s3 offset-s4 actual_drink commonHeightDrinks">
-         <div class="actual_drink_inside">
+     <div class="col s3 offset-s4 commonHeightDrinks">
+         <div class="actual_drink_inside img_divSize">
              <img src="../img/storeBoard.png">
              <div class="STORE">
                  <p>STORE</p>
@@ -74,54 +113,54 @@
                 <th>TROPICS</th>
                 <th>DRINKS</th>
                 <th>JUICE</th>
-
               </tr>
               <tr>
-                <th>UNITS PER DAY</th>
-                <td>1</td>
-                <td>3</td>
-                <td>2</td>
-                <td>5</td>
-                <td>6</td>
-
+                <th class="category">PRICE</th>
+                <td>$1.20</td>
+                <td>$1.30</td>
+                <td>$1.40</td>
+                <td>$1.50</td>
+                <td>$1.60</td>
               </tr>
               <tr>
-                <th>PRICE PER UNIT</th>
-                <td>3$</td>
-                <td>2$</td>
-                <td>5$</td>
-                <td>1$</td>
-                <td>4$</td>
-
+                <th class="category">UNITS PER DAY</th>
+                <td>4.1</td>
+                <td>3.1</td>
+                <td>2.3</td>
+                <td>1.9</td>
+                <td>1.1</td>
               </tr>
               <tr>
-                <th>UNITS STOCKED</th>
-                <td>10</td>
-                <td>13</td>
-                <td>12</td>
-                <td>4</td>
-                <td>9</td>
+                <th class="category">UNITS STOCKED</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
               </tr>
               <tr>
-                <th>DAYS TILL SOLDOUT</th>
-                <td>3</td>
-                <td>42</td>
-                <td>31</td>
-                <td>9</td>
-                <td>8</td>
+                <th class="category">DAYS TILL SOLDOUT</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
               </tr>
             </table>
             <div class="total_panel_stats">
-                <div class="left_total_panel"></div>
-                <div class="right_total_panel"></div>
+                <div class="left_total_panel">
+                    <p class="totalLeft_down_header">REVENUE / YEAR</p>
+                    <p class="revenue_per_year">$0,000</p>
+                </div>
+                <div class="right_total_panel">
+                    <p class="totalRight_down_header">COST / YEAR</p>
+                    <p class="cost_per_year">$0,000</p>
+                </div>
             </div>
         </div>
      </div>
  </div>
-
-
     <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
   <script src="../js/game.js"></script>
