@@ -10,7 +10,6 @@
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="../css/game_style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-
 <body class="background_default ">
  <div class="row generic_text img_divSize">
      <!-- Money Counter at the Top Left Corner -->
@@ -20,13 +19,13 @@
      </div>
      <!-- Advice banner -->
      <div class="col s6 offset-s3 advice_banner">
-         <div class="advice img_divSize">
+         <div id="adviceDiv" class="advice img_divSize">
              <img src="../img/popoverBoy.png">
-             <p>Watch out! Your machine would need restocking in 6 days. That costs $400 per time</p>
+             <p id="adviceText">Watch out! Your machine would need restocking in 6 days. That costs $400 per time</p>
          </div>
      </div>
      <!-- Time Counter at the Top Right Corner -->
-     <div class="col s3 offset-s9 counter">
+     <div id="timer_counter" class="col s3 offset-s9 counter">
          <img src="../img/barTime.png">
          <p id="timer"></p>
      </div>
@@ -34,62 +33,66 @@
  <div class="row">
      <!-- Drinks Selected -->
      <div class="col s4 commonHeightDrinks">
-        <div class="drinks_machine">
+        <div id="drinks_machine" class="drinks_machine">
             <div class="drink_row column_machine_drinks">
-                <div class="col s3 ">
-                    <img src="../img/coke-bottle.png">
+                <div class="col s3">
+                    <img id="drink_0_2" src="../img/coke-bottle.png">
                 </div>
                 <div class="col s3 offset-c3 ">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_1_2" src="../img/coke-bottle.png">
                 </div>
                 <div class="col s3 offset-c6 ">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_2_2" src="../img/coke-bottle.png">
                 </div>
                 <div class="col s3 offset-c9">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_3_2" src="../img/coke-bottle.png">
                 </div>
             </div>
             <div class="drink_row column_machine_drinks">
                 <div class="col s3 ">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_0_1" src="../img/coke-bottle.png">
                 </div>
                 <div class="col s3 offset-c3">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_1_1" src="../img/coke-bottle.png">
                 </div>
                 <div class="col s3 offset-c6">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_2_1" src="../img/coke-bottle.png">
                 </div>
                 <div class="col s3 offset-c9">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_3_1" src="../img/coke-bottle.png">
                 </div>
             </div>
             <div class="drink_row column_machine_drinks">
                 <div class="col s3">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_0_0" src="../img/coke-bottle.png">
                 </div>
                 <div class="col s3 offset-c3">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_1_0" src="../img/coke-bottle.png">
                 </div>
                 <div class="col s3 offset-c6">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_2_0" src="../img/coke-bottle.png">
                 </div>
                 <div class="col s3 offset-c9">
-                    <img src="../img/coke-bottle.png">
+                    <img id="drink_3_0" src="../img/coke-bottle.png">
                 </div>
             </div>
         </div>
      </div>
      <!-- Information of the selected drink -->
      <div class="col s3 offset-s4 commonHeightDrinks">
-         <div class="actual_drink_inside img_divSize">
+         <div class="actual_drink_inside generic_text img_divSize">
              <img src="../img/storeBoard.png">
              <div class="STORE"><p>STORE</p></div>
              <div class="drink_selected">
-                <img src="../img/markSoda.png">
+                <img id="selected_drink" src="../img/markSoda.png">
              </div>
-             <div id="drink_button" class="button_game button_text drink_button">
+             <p id="price_selected" class="drink_select_stat price_selected"></p>
+             <p id="units_selected" class="drink_select_stat units_selected"></p>
+             <div id="arrow_left" class="arrow_left"></div>
+             <div id="arrow_right" class="arrow_right"></div>
+             <div id="down_button" class="button_game button_text down_button">
                  <img src="../img/gameButton.png">
-                 <p>2.8</p>
+                 <p>SUBMIT</p>
              </div>
          </div>
      </div>
@@ -103,43 +106,51 @@
             <table>
               <tr class="drinks_name">
                 <th></th>
-                <th>SODA</th>
-                <th>COLA</th>
-                <th>TROPICS</th>
-                <th>DRINKS</th>
-                <th>JUICE</th>
+                <th id="name0"></th>
+                <th id="name1"></th>
+                <th id="name2"></th>
+                <th id="name3"></th>
+                <th id="name4"></th>
               </tr>
               <tr>
-                <th class="category">PRICE</th>
-                <td>$1.20</td>
-                <td>$1.30</td>
-                <td>$1.40</td>
-                <td>$1.50</td>
-                <td>$1.60</td>
+                <th id="category0" class="category"></th>
+                <td id="price0"></td>
+                <td id="price1"></td>
+                <td id="price2"></td>
+                <td id="price3"></td>
+                <td id="price4"></td>
               </tr>
               <tr>
-                <th class="category">UNITS PER DAY</th>
-                <td>4.1</td>
-                <td>3.1</td>
-                <td>2.3</td>
-                <td>1.9</td>
-                <td>1.1</td>
+                <th id="category1" class="category"></th>
+                <td id="capacity0"></td>
+                <td id="capacity1"></td>
+                <td id="capacity2"></td>
+                <td id="capacity3"></td>
+                <td id="capacity4"></td>
               </tr>
               <tr>
-                <th class="category">UNITS STOCKED</th>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
+                <th id="category2" class="category"></th>
+                <td id="upd0">-</td>
+                <td id="upd1">-</td>
+                <td id="upd2">-</td>
+                <td id="upd3">-</td>
+                <td id="upd4">-</td>
               </tr>
               <tr>
-                <th class="category">DAYS TILL SOLDOUT</th>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
+                <th id="category3" class="category"></th>
+                <td id="unit_stocked0">-</td>
+                <td id="unit_stocked1">-</td>
+                <td id="unit_stocked2">-</td>
+                <td id="unit_stocked3">-</td>
+                <td id="unit_stocked4">-</td>
+              </tr>
+              <tr>
+                <th id="category4" class="category"></th>
+                <td id="days_souldout0">-</td>
+                <td id="days_souldout1">-</td>
+                <td id="days_souldout2">-</td>
+                <td id="days_souldout3">-</td>
+                <td id="days_souldout4">-</td>
               </tr>
             </table>
             <div class="total_panel_stats">
@@ -156,6 +167,7 @@
      </div>
  </div>
     <!--  Scripts-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="../js/game.js"></script>
   </body>
 </html>

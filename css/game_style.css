@@ -148,6 +148,8 @@ Button PLAY of the introduction Text Box
     left: 69%;
     transform: scale(1.5);
     text-align: left;
+
+
 }
 
 /**
@@ -328,6 +330,7 @@ The advice inside the banner
     height: 110%;
     width: 80%;
     position: relative;
+    display: none;
 }
 
 /**
@@ -368,6 +371,13 @@ The image of each drink
     left: 37.5%;
     height: 65%;
     width: 35%;
+    cursor: pointer;
+    transition: transform .2s; /* Animation */
+}
+
+.drinks_machine img:hover{
+    transition: transform .2s; /* Animation */
+    transform: scale(1.05);
 }
 
 /**
@@ -411,22 +421,56 @@ The actual selected drink
 }
 
 /**
-The button of the actual drink
+Data of the selected drink
  */
-.drink_button {
+.drink_select_stat{
     position: inherit;
-    left: 30%;
     width: 40%;
-    top: 65%;
-    height: 12%;
-    text-align: left;
+    top: 75%;
+    margin-top: -5vh;
+    font-family: ConcertOne;
+    font-size: 4vw;
 }
 
-.drink_button p{
+/**
+Price of the selected drink
+ */
+.price_selected {
+    left: 20%;
+
+}
+
+/**
+unites per day of the selected drink
+ */
+.units_selected{
+    left: 55%;
+}
+
+/**
+Left arrow in the drink selector
+ */
+.arrow_left {
     position: relative;
-    left: 30%;
-    margin-top: -5vh;
-    font-size: 5vw;
+    top: -42vh;
+    left: 3.8vw;
+    width: 4.8vw;
+    height: 11vh;
+    border-radius: 40%;
+    cursor: pointer;
+}
+
+/**
+Right arrow in the drink selector
+ */
+.arrow_right {
+    position: relative;
+    top: -53.5vh;
+    left: 12.7vw;
+    width: 4.8vw;
+    height: 11vh;
+    border-radius: 40%;
+    cursor: pointer;
 }
 
 /**
@@ -442,6 +486,23 @@ Store label
     font-size: 6.5vw;
     text-align: left;
     color: #3d1f0e;
+}
+
+/********** DOWN BUTTON **********/
+.down_button{
+    position: relative;
+    top: -48.5vh;
+    left: 2.7vw;
+    height: 12vh;
+    width: 16vw;
+    display: none;
+}
+
+.down_button p{
+    position: relative;
+    left: 10%;
+    margin-top: -8vh;
+    font-size: 8vw;
 }
 
 /********** STATS **********/
@@ -484,7 +545,7 @@ Stats of the drinks
 .drinks_stats_inside table {
     position: absolute;
     margin-left: 5%;
-    top: 23%;
+    top: 20%;
     width: 90%;
 }
 
@@ -516,7 +577,7 @@ Panel with the total calculations of the current choice
  */
 .total_panel_stats{
     text-align: left;
-    top: -47%;
+    top: -44%;
     left: 5%;
     height: 15%;
     width: 90%;
