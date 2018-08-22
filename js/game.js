@@ -339,59 +339,17 @@ function updateData(clicked_img, actual_img, replacement_case) {
 function updateRevenue(clicked_img, actual_img, replacement_case){
     let money_to_sum = 0;
     let newDrink = drink_data[actual_drink];
-    let newPrice = newDrink[0], newCapacity = newDrink[1], newUPD = newDrink[2], newStock = newDrink[3], newSold = newDrink[4];
     switch (replacement_case) {
         case 0: // Replaced by other drink
             let old_value = -1;
-            // In the case that NewDrink & OldDrink does not change from or to 0, their value is not used
-            // Revenue += NewDrink(Price * UPD * 365) - OldDrink(Price * UPD * 365)
-            // Check if there was no drink before
-            if(newStock - newCapacity=== 0){
-                // There are more drinks than the UPD
-                if(newStock >= newUPD){
-                    money_to_sum = newPrice * newUPD * period_of_time;
-                }
-                // There are less drinks than UPD
-                else{
-                    // Multiply to the unit stoked instead to the UPD
-                    money_to_sum = newPrice * newStock * period_of_time;
-                }
-            }
-            // The actual drink goes from somewhere between 0-1
-            else if( (newCapacity< newUPD) && (newStock - newCapacity !== 0)){
-                // To less than 1
-                if(newStock < newUPD){
-                    // Multiply to the unit stoked instead to the UPD
-                    money_to_sum = newPrice * newStock * period_of_time;
-                }
-                // To 1 or more than one
-                else if( (newStock > newUPD) && ( (newStock - newCapacity) < newUPD) ){
-                    let normal_amount = newPrice * newUPD * period_of_time;
-                    let money_to_discount = newPrice* (newStock - newCapacity)  * period_of_time;
-                    money_to_sum = normal_amount - money_to_discount;
-                }
-            }
+            // Money that we get placing the new drink
+            money_to_sum = calculateMoneyToSum(newDrink);
+            // Find the clicked drink
             for(let i = 0; i < drinks_name.length; i++){
-                // I search for the data of the replaced drink
                 if(clicked_img === drinks_name[i]){
-                    old_value = 0;
                     let oldDrink = drink_data[i];
-                    let oldPrice = oldDrink[0], oldCapacity = oldDrink[1], oldUPD = oldDrink[2], oldStock = oldDrink[3], oldSold = oldDrink[4];
-                    // Check if there is no drink now AND its capacity its larger than the UPD
-                    if( (oldStock === 0) && (oldCapacity > oldUPD)){
-                        old_value = oldPrice * oldUPD * period_of_time;
-                    }
-                    // There is still drinks with capacity less than UDP but the stock is lower than UDP and larger than 0
-                    else if( (oldStock > 0) && (oldCapacity < oldUPD)  && (oldStock < oldUPD)){
-                        // Multiply to the unit stoked instead to the UPD
-                        let normal_amount = oldPrice * oldUPD * period_of_time;
-                        let money_to_discount = oldPrice * oldStock * period_of_time;
-                        old_value = normal_amount - money_to_discount;
-                    }
-                    // There is NO more drinks of a drink with the Capacity lower than UDP
-                    else if( (oldStock === 0) && (oldCapacity < oldUPD) ){
-                        old_value = oldPrice * (oldStock + oldCapacity) * period_of_time;
-                    }
+                    // Money that we get loose removing the new drink
+                    old_value = calculateMoneyToSubtract(oldDrink);
                 }
             }
             // Check that we found a value for the clicked image
@@ -399,56 +357,77 @@ function updateRevenue(clicked_img, actual_img, replacement_case){
                 console.log("ERROR: No data found for the clicked image (updateMoney)");
                 return;
             }
+            // Calculate the global revenue
             money_to_sum -= old_value;
             break;
         case 1: // Empty Position
-            // Revenue += Price * UPD * 365
-            // The drink amount change from 0 to UPD
-            if(( (newStock - newCapacity === 0) && (newCapacity) > newUPD)){
-                money_to_sum = newPrice * newUPD * period_of_time;
-            }
-            // The drink amount changes from somewhere less than 0 to somewhere larger than 1
-            else if( (newStock >= newUPD) && ((newStock - newCapacity) < newUPD) ){
-                let normal_amount = newPrice* newUPD * period_of_time;
-                let money_to_discount = newPrice * (newStock - newCapacity)  * period_of_time;
-                money_to_sum = normal_amount - money_to_discount;
-            }
-            // The drink amount change from somewhere less than 0 to somewhere lower than 0
-            else if(newStock < newUPD){
-                // Multiply to the unit stoked instead to the UPD
-                money_to_sum = newPrice * newStock * period_of_time;
-            }
-            break;
+             // Money that we get placing the new drink
+             money_to_sum = calculateMoneyToSum(newDrink);
+             break;
         case 2: // Remove the actual drink
-            // Revenue -= Price * UPD * 365
-            // Run out of drinks
-            if( (newStock === 0) && (newCapacity > newUPD) ){
-                money_to_sum = newPrice * newUPD * period_of_time;
-                money_to_sum = -Math.abs(money_to_sum);
-            }
-            // We have less than the UPD but we have drinks
-            else if(newStock <  newUPD){
-                // Run out of drinks
-                if(newStock === 0){
-                    money_to_sum = newPrice* newCapacity * period_of_time;
-                    money_to_sum = -Math.abs(money_to_sum);
-                }
-                // We still have drinks
-                else{
-                    // Multiply to the unit stoked instead to the UPD
-                    let money_to_subtract = newPrice * newCapacity * period_of_time;
-                    let money_upd = newPrice* newUPD * period_of_time;
-                    money_to_sum = -Math.abs(money_upd - money_to_subtract);
-                }
-            }
+            // Money that we get loose removing the new drink
+            money_to_sum = -Math.abs(calculateMoneyToSubtract(newDrink));
             break;
-        default:
+        default: // Error case
             console.log("ERROR: Wrong replacement_case (updateRevenue)");
             return;
     }
     actual_profit_user = Number(money_to_sum) + Number(actual_profit_user);
     setActualProfit();
 }
+
+/**
+ * Calculates the money to sum to the revenue when a drink is place in the machine
+ *
+ * @param newDrink: drink to be placed in the machine
+ * @return {number} money_to_sum: the money to sum
+ */
+function calculateMoneyToSum(newDrink) {
+        let money_to_sum = 0;
+        let newPrice = newDrink[0], newCapacity = newDrink[1], newUPD = newDrink[2], newStock = newDrink[3];
+        // Capacity > UDP
+        if( (newStock - newCapacity === 0) && (newStock >= newUPD) ) {
+                money_to_sum = newPrice * newUPD * period_of_time;
+        }
+        // Capacity > UDP && Going from {0,1} to {x > 1}
+        else if( (newStock >= newUPD) && ((newStock - newCapacity) < newUPD) ){
+           let normal_amount = newPrice* newUPD * period_of_time;
+           let money_to_discount = newPrice * (newStock - newCapacity)  * period_of_time;
+           money_to_sum = normal_amount - money_to_discount;
+        }
+        // Capacity > UDP && Going from {0,1} to {0,1}
+        else if(newStock < newUPD){
+            money_to_sum = newPrice * (newUPD / newCapacity) * period_of_time;
+        }
+        return money_to_sum;
+}
+
+/**
+ * Calculates the money to subtract to the revenue when a drink is deleted in the machine
+ *
+ * @param oldDrink: drink to be removed in the machine
+ * @return {number} old_value: the money to subtract
+ */
+function calculateMoneyToSubtract(oldDrink) {
+    let old_value = 0;
+    let oldPrice = oldDrink[0], oldCapacity = oldDrink[1], oldUPD = oldDrink[2], oldStock = oldDrink[3];
+    // Capacity > UDP
+    if( (oldStock === 0) && (oldCapacity > oldUPD)){
+        old_value = oldPrice * oldUPD * period_of_time;
+    }
+    // There is still drinks with capacity less than UDP but the stock is lower than UDP
+    else if( (oldStock < oldUPD) && (oldCapacity < oldUPD) ){
+        // It is the first time that we are down the UDP
+        if( (Number(oldStock) + Number(oldCapacity)) >= Number(oldUPD)){
+            old_value = oldPrice * (oldUPD % oldCapacity) * period_of_time;
+        }
+        else{
+            old_value = oldPrice * (oldUPD / oldCapacity) * period_of_time;
+        }
+    }
+    return old_value;
+}
+
 
 /**
  * Updates the Units Stocked value
