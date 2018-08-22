@@ -301,13 +301,13 @@ Counter amount
  */
 .counter p{
     position: relative;
-    left: 70%;
+    left: 36%;
     margin-top: -5.7vh;
-    width: 20%;
+    width: 55%;
     height: 60%;
     font-family: ConcertOne;
     font-size: 3.5vw;
-    text-align: left;
+    text-align: right;
     color: #fcfcfc;
 }
 
