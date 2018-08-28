@@ -7,11 +7,11 @@
   <!-- CSS  -->
   <link href="../css/game_style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body class="background_default">
+<body class="background_default noSelect">
   <div class="center_div generic_text img_divSize replay_text_box">
     <img src="../img/welcomeBoard.png" >
     <p class="panel_header">NOT BAD</p>
-    <p class="replay_p replay_text">You made $183,000 which is just $12,000 less than me. But I’m still the best!!! </p>
+    <p id="replay_text" class="replay_p replay_text"></p>
     <div id="replay_button" class="button_game button_text button_replay">
           <img src="../img/gameButton.png">
           <p>REPLAY</p>
@@ -19,6 +19,7 @@
     <p class="replay_p best_machine_text">OR VIEW HAOUI’S MACHINE</p>
   </div>
     <!--  Scripts-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="../js/replay.js"></script>
   </body>
 </html>

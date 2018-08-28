@@ -113,6 +113,18 @@ The common Top and Height variables to the elements in the middle (Drinks)
     position: absolute;
 }
 
+/**
+Making a div not able of selecting the text or elements
+ */
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 /****************************** INDEX ******************************/
 
 /**

@@ -2,10 +2,22 @@
  * Go to the Game page when the button play is clicked
  */
 function goToGameWindow(){
-    window.open("../pages/game.html", "_self");
+    let err = window.open("../pages/game.html", "_self");
+    if(err === null){
+        console.log("[Error]: window.open() in goToGameWindow()")
+    }
+    return err;
 }
+
+module.exports.goToGameWindow = goToGameWindow;
 
 (function() {
     // Setting the listeners
-    document.getElementById("guide_ready_button").addEventListener("click", goToGameWindow);
-    }())
+    let ready = document.getElementById("guide_ready_button");
+    if(ready){
+        ready.addEventListener("click", goToGameWindow);
+    }
+    else{
+        console.log("[Error]: 'guide_ready_button' does not exist");
+    }
+    }());

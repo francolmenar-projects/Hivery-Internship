@@ -7,12 +7,12 @@ const hurryUp ="Hurry up!! You only have 30 seconds left.";
 const oneMin ="One minute left. Do you really think that you can bet me?.";
 const initialMsg = "I'm Haoui. Are you trying to bet me? Good luck!!";
 /**************************** IMAGES ****************************/
-const img_prefix = "../img/"; // Offset to the image folder
-const empty_path ="../img/coke-bottle.png"; // Global path to the empty drink
+const img_prefix = "../img/products/"; // Offset to the image folder
+const empty_path ="../img/products/coke-bottle.png"; // Global path to the empty drink
 const empty_drink = "coke-bottle.png"; // Name of the empty drink
-const drinks_name = ["markSoda.png", "markCola.png", "markTropics.png"]; // Name of the images of the drinks
+const drinks_name = ["markSoda.png", "markCola.png", "markTropics.png", "cherry_can.png", "cola_can.png"]; // Name of the images of the drinks
 /**************************** VENDING MACHINE ****************************/
-const max_drinks = 2; // We start to count from 0
+const max_drinks = 4; // We start to count from 0
 var actual_drink = 0; // Drink id of the selected one
 const max_machine = 12; // Maximum capacity of the vending machine
 var selected_drinks = 0; // Actual amount of drinks in the vending machine
@@ -21,24 +21,43 @@ const period_of_time = 365; // Time frame that we consider
 const cost_per_refill = 35; // The cost for refilling the machine
 const penalty_for_day_refill = 2; // Penalty apply when the vending machine has to be refilled every day
 const json_path = "../json/data.json"; // Path to the JSON file
-const drink_order = ["SODA", "COLA", "TROPICS", "ENERGETIC", "JUICE"]; // Order of the drinks inside the data array
+const drink_order = ["SODA", "COLA", "TROPICS", "CHERRY", "COLA CAN"]; // Order of the drinks inside the data array
 const drink_attr = ["PRICE","CAPACITY",  "UNITS PER DAY", "UNITS STOCKED", "DAYS TILL SOLDOUT"]; // Order of the attributes inside the data array
 var drink_data = [[],[],[],[],[]]; // Data stored in a JSON
 
 /************************************** USER INTERFACE  **************************************/
 
 /**
+ * Opens a new window and checks for errors
+ *
+ * @param target: HTML page to opem
+ * @param origin: caller function
+ * @return {Window}: null if there is an error.
+ */
+function open_window(target, origin) {
+    let err = window.open(target, "_self");
+    if(err === null){
+        console.log("[Error]: window.open() in " + origin);
+    }
+    return err;
+}
+
+/**
  * Go to the Guide page when the button play is clicked
  */
 function goToGameOver(){
-    window.open("gameOver.html", "_self");
+    window.localStorage.setItem("revenue",actual_profit_user);
+    return open_window("gameOver.html", "goToGameOver()");
 }
+
+// module.exports.goToGameOver = goToGameOver;
 
 /**
  * Go to the Replay page when the button SUBMIT is clicked
  */
 function goToReplay(){
-    window.open("replay.html", "_self");
+    window.localStorage.setItem("revenue",actual_profit_user);
+    return open_window("replay.html", "goToReplay()");
 }
 
 /**
@@ -118,8 +137,20 @@ function createTimer(){
  * It sets the actual value of the actual profit to the screen
  */
 function setActualProfit() {
-    document.getElementById("actual_profit").innerHTML = actual_profit_user.toFixed(3).toString();
-    document.getElementById("revenue_stats").innerHTML = "$" + actual_profit_user.toFixed(3).toString();
+    let profit = document.getElementById("actual_profit");
+    let revenue = document.getElementById("revenue_stats");
+    if(profit){
+        profit.innerHTML = actual_profit_user.toFixed(3).toString();
+    }
+    else{
+        console.log("[Error]: element 'actual_profit' does not exist in setActualProfit()");
+    }
+    if(revenue){
+        revenue.innerHTML = "$" + actual_profit_user.toFixed(3).toString();
+    }
+    else{
+        console.log("[Error]: element 'revenue_stats' does not exist in setActualProfit()");
+    }
 }
 
 /**
@@ -127,15 +158,41 @@ function setActualProfit() {
  */
 function setActualCapacity() {
     for(let i = 0; i < drink_order.length; i++){
-        document.getElementById("unit_stocked" + i).innerHTML = drink_data[i][3];
+        let capacity = document.getElementById("unit_stocked" + i);
+        if(capacity){
+            capacity.innerHTML = drink_data[i][3];
+        }
+        else{
+            console.log("[Error]: element 'unit_stocked" + i + "' does not exist in setActualCapacity()");
+        }
     }
 }
+
 /**
  * It sets the actual value of the Days Till SoldOut on the screen
  */
 function setActualSold() {
     for(let i = 0; i < drink_order.length; i++){
-        document.getElementById("days_souldout" + i).innerHTML = drink_data[i][4];
+        let soldout = document.getElementById("days_souldout" + i);
+        if(soldout){
+            soldout.innerHTML = drink_data[i][4];
+        }
+        else{
+            console.log("[Error]: element 'days_souldout" + i + "' does not exist in setActualSold()");
+        }
+    }
+}
+
+/**
+ * It sets the actual value of the Cost per Year
+ */
+function setActualCost() {
+    let actual_cost = document.getElementById("cost_stats");
+    if(actual_cost){
+        actual_cost.innerHTML = actual_cost_user.toFixed(3).toString();
+    }
+    else{
+        console.log("[Error]: element 'cost_stats' does not exist in setActualCost()");
     }
 }
 
@@ -143,7 +200,13 @@ function setActualSold() {
  * Change the drink displayed in the selector
  */
 function changeDrink() {
-    document.getElementById("selected_drink").src = img_prefix + drinks_name[actual_drink];
+    let selected_drink = document.getElementById("selected_drink");
+    if(selected_drink){
+        selected_drink.src = img_prefix + drinks_name[actual_drink];
+    }
+    else {
+        console.log("[Error]: element 'selected_drink' does not exist in changeDrink()");
+    }
 }
 
 /**
@@ -220,11 +283,22 @@ function nextDrink() {
  */
 function showAdvice(str) {
     let advice = document.getElementById("adviceDiv");
-    // Check if we have a text as an input
-    if(str !== ""){
-        document.getElementById("adviceText").innerText = str;
+    if(advice){
+        // Check if we have a text as an input
+        if(str !== ""){
+            let adviceText = document.getElementById("adviceText");
+            if(adviceText){
+                adviceText.innerText = str;
+            }
+            else {
+                console.log("[Error]: element 'adviceText' does not exist in showAdvice()");
+            }
+        }
+        $(advice).fadeIn("slow");
     }
-    $(advice).fadeIn("slow");
+    else {
+        console.log("[Error]: element 'adviceDiv' does not exist in showAdvice()");
+    }
 }
 
 /**
@@ -232,7 +306,34 @@ function showAdvice(str) {
  */
 function hideAdvice() {
     let advice = document.getElementById("adviceDiv");
-    $(advice).fadeOut("slow");
+    if(advice){
+        $(advice).fadeOut("slow");
+    }
+    else {
+        console.log("[Error]: element 'adviceDiv' does not exist in hideAdvice()");
+    }
+}
+
+/**
+ * Add an event listener to the given button
+ *
+ * @param id: id of the button we want to add the listener
+ * @param action: the action to be performed over the button
+ * @param f_name: name of the function to be executed
+ * @return {number}: return -1 if there is any error and 0 otherwise
+ */
+function addListener(id, action, f_name, origin) {
+    let moneyCounterDiv = document.getElementById(id);
+    if(moneyCounterDiv){
+        moneyCounterDiv.addEventListener(action, f_name);
+        return 0;
+    }
+    else {
+        if(id && origin){
+            console.log("[Error]: element '"+ id + "' does not exist in " + origin + "()");
+            return -1;
+        }
+    }
 }
 
 (function() {
@@ -241,17 +342,25 @@ function hideAdvice() {
     // Set the profit
     setActualProfit();
     // Setting the listeners
-    document.getElementById("moneyCounterDiv").addEventListener("click", goToGameOver); // ONLY FOR TESTING
-    document.getElementById("timer_counter").addEventListener("click", showAdvice); // ONLY FOR TESTING
-
-    document.getElementById("down_button").addEventListener("click", goToReplay);
-    document.getElementById("arrow_left").addEventListener("click", previousDrink);
-    document.getElementById("arrow_right").addEventListener("click", nextDrink);
+    addListener("moneyCounterDiv", "click", goToGameOver, "function"); // ONLY FOR TESTING
+    addListener("down_button", "click", goToReplay, "function");
+    addListener("arrow_left", "click", previousDrink, "function");
+    addListener("arrow_right", "click", nextDrink, "function");
 
     // Get all the images of the vending machine
     let allImages = document.getElementById("drinks_machine").getElementsByTagName('img');
-    for(let i = 0; i < allImages.length ; i++) {
-        allImages[i].addEventListener("click", selectDrink);
+    if(allImages){
+        for(let i = 0; i < allImages.length ; i++) {
+            if(allImages[i]){
+                allImages[i].addEventListener("click", selectDrink);
+            }
+            else{
+                console.log("[Error]: element 'drinks_machine[" + i + " ' does not exist in function()");
+            }
+        }
+    }
+    else {
+        console.log("[Error]: element 'drinks_machine' does not exist in function()");
     }
 }());
 
@@ -276,26 +385,46 @@ $(document).ready(function() {
 });
 
 /**
+ * Changes the inner text of an element checking for errors
+ *
+ * @param name: name of the element to be changed
+ * @param data: data to be set to the element
+ * @param f_name: name of the caller function
+ * @return {number}: -1 in case of an error and 0 otherwise
+ */
+function change_text_of_elem(name, data, f_name) {
+    let elem = document.getElementById(name);
+    if(elem){
+        elem.innerText = data;
+        return 0;
+    }
+    else{
+        console.log("[Error]: element '"+ name + "' does not exist in "+ f_name + "() ");
+        return -1;
+    }
+}
+
+/**
  * Load the stats to the HTML
  */
 function loadStats() {
     // Load the drinks' name
     for(let i = 0; i < drink_order.length; i++){
-        document.getElementById("name" + i).innerText = drink_order[i];
+        change_text_of_elem("name" + i, drink_order[i], "loadStats");
     }
     // Load the categories' name
     for(let i = 0; i < drink_attr.length; i++){
-        document.getElementById("category" + i).innerText = drink_attr[i];
+        change_text_of_elem("category" + i, drink_attr[i], "loadStats");
     }
     // Load the stats of each drink
     for(let i = 0; i < drink_data.length; i++){
-        document.getElementById("price" + i).innerText = "$" + drink_data[i][0];
-        document.getElementById("capacity" + i).innerText = drink_data[i][1];
-        document.getElementById("upd" + i).innerText = drink_data[i][2];
+        change_text_of_elem("price" + i, drink_data[i][0], "loadStats");
+        change_text_of_elem("capacity" + i, drink_data[i][1], "loadStats");
+        change_text_of_elem("upd" + i, drink_data[i][2], "loadStats");
         drink_data[i][3] = 0;
-        document.getElementById("unit_stocked" + i).innerText = drink_data[i][3];
+        change_text_of_elem("unit_stocked" + i, drink_data[i][3], "loadStats");
         drink_data[i][4] = "-";
-        document.getElementById("days_souldout" + i).innerText = drink_data[i][4];
+        change_text_of_elem("days_souldout" + i, drink_data[i][4], "loadStats");
     }
     // Load the default selected drink data
     loadSelected();
@@ -305,8 +434,8 @@ function loadStats() {
  * It loads the data of the selected drink
  */
 function loadSelected() {
-    document.getElementById("price_selected").innerText = "$" + drink_data[actual_drink][0];
-    document.getElementById("units_selected").innerText = drink_data[actual_drink][2] + "u/d";
+    change_text_of_elem("price_selected", "$" + drink_data[actual_drink][0], "loadSelected");
+    change_text_of_elem("units_selected", drink_data[actual_drink][2] + "u/d", "loadSelected");
 }
 
 /************************************** DATA CALCULATIONS  **************************************/
@@ -326,7 +455,6 @@ function updateData(clicked_img, actual_img, replacement_case) {
     updateStock(clicked_img, actual_img, replacement_case);
     updateSoldout(clicked_img, actual_img, replacement_case);
     updateRevenue(clicked_img, actual_img, replacement_case);
-    updateCost(clicked_img, actual_img, replacement_case);
     updateCost();
 }
 
@@ -428,7 +556,6 @@ function calculateMoneyToSubtract(oldDrink) {
     return old_value;
 }
 
-
 /**
  * Updates the Units Stocked value
  * @param clicked_img: drink to be replaced
@@ -514,7 +641,7 @@ function updateSoldout(clicked_img, actual_img, replacement_case){
 function soldOutOp(drinkId) {
     let days_till_sold = -1;
     if(drink_data[drinkId][3] > drink_data[drinkId][2]){
-        days_till_sold = Math.floor(Number(drink_data[drinkId][3]) / Number(drink_data[drinkId][2]));
+        days_till_sold = Math.ceil(Number(drink_data[drinkId][3]) / Number(drink_data[drinkId][2]));
     }
     // Not enough drinks to be one day without refilling
     else if(drink_data[drinkId][3] > 0){
@@ -529,13 +656,43 @@ function soldOutOp(drinkId) {
 
 /**
  * Updates the cost value
- * @param clicked_img: drink to be replaced
- * @param actual_img: drink to be stored in the machine
- * @param replacement_case: which is the situation of the replacement
  */
-function updateCost(clicked_img, actual_img, replacement_case) {
-    let min_day = 0;
+function updateCost() {
+    let min_day = 999;
+    // Get the minimum soldout value
     for(let i = 0; i < drink_order.length; i++){
-        min_day = Math.min(min_day)
+        let drink = drink_data[i];
+        let soldOut = drink[4];
+        // Avoid "-" values
+        if(Number(soldOut) === 0) {
+            // Check the worst case which is 0 days with stock
+            if(Number(drink[3]) !== 0){
+                min_day = -1;
+                break;
+            }
+        }
+        // The soldout is larger than 0
+        else{
+          // Searching for the next minimum value
+          if(Number(soldOut) < min_day){
+              min_day = Number(soldOut);
+          }
+        }
     }
+    // Calculate the new cost value
+    // There are no drinks
+    if(min_day === 999){
+        actual_cost_user = 0.000;
+    }
+    // Have to refill every day
+    else if(min_day === -1){
+        actual_cost_user = penalty_for_day_refill
+            * cost_per_refill * Number(period_of_time);
+    }
+    // Normal Case
+    else{
+        // Cost = (365 / min(Soldout)) * Cost_Refill
+        actual_cost_user = cost_per_refill * Math.ceil(period_of_time /  min_day);
+    }
+    setActualCost();
 }

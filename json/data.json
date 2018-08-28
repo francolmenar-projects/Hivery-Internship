@@ -1,7 +1,7 @@
 {
 	"soda": {
         "price": "3.5",
-		"capacity": "9",
+		"capacity": "5",
 		"upd": "4.3"
 	},
 	"cola": {
@@ -14,12 +14,12 @@
         "capacity": "9",
 		"upd": "2.3"
   },
-  "energetic":{
+  "cherry":{
         "price": "4.0",
         "capacity": "10",
 		"upd": "1.9"
   },
-  "juice":{
+  "cola can":{
         "price": "3.0",
         "capacity": "10",
 		"upd": "1.1"

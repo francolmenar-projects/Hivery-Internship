@@ -8,4 +8,6 @@ function goToReplay(){
 (function() {
     // Setting the listeners
     document.addEventListener("click", goToReplay);
+    var name = window.localStorage.getItem("revenue");
+    console.log(name)
     }());
