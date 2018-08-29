@@ -24,7 +24,11 @@ function goToGameWindow(){
  */
 function setActualProfit() {
     let revenue = window.localStorage.getItem("revenue");
-    let difference = "13.000";
+    let opt_revenue = window.localStorage.getItem("opt_revenue");
+    let opt_cost = window.localStorage.getItem("opt_cost");
+
+    let difference = Number(opt_revenue) - Number(opt_cost);
+    difference = difference - revenue;
     document.getElementById("replay_text").innerHTML = msg0 + revenue + msg1 + difference + msg2;
 }
 
@@ -33,6 +37,10 @@ function setActualProfit() {
     document.getElementById("replay_button").addEventListener("click", goToGameWindow);
     // Set the profit
     setActualProfit();
+
+
+
+
 }());
 
 /**

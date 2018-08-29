@@ -49,7 +49,8 @@ function open_window(target, origin) {
  * Go to the Guide page when the button play is clicked
  */
 function goToGameOver(){
-    window.localStorage.setItem("revenue",actual_profit_user);
+    let revenue = Number(actual_profit_user) - Number(actual_cost_user);
+    window.localStorage.setItem("revenue",revenue);
     return open_window("gameOver.html", "goToGameOver()");
 }
 
@@ -59,7 +60,8 @@ function goToGameOver(){
  * Go to the Replay page when the button SUBMIT is clicked
  */
 function goToReplay(){
-    window.localStorage.setItem("revenue",actual_profit_user);
+    let revenue = Number(actual_profit_user) - Number(actual_cost_user);
+    window.localStorage.setItem("revenue",revenue);
     return open_window("replay.html", "goToReplay()");
 }
 
@@ -197,6 +199,62 @@ function setActualCost() {
     else{
         console.log("[Error]: element 'cost_stats' does not exist in setActualCost()");
     }
+}
+
+/**
+ * It calculates the optimum distribution of the machine
+ */
+function setOptimum(input) {
+    // Get the values of the optimal distribution
+    let arr = input.split(',').map(Number);
+    let opt_revenue = 0, opt_cost = 0, opt_soldout = 999;
+    // Check the correct number of values
+    if(arr.length !== drink_order.length){
+        console.log("[Error] Input of the optimum machine has incorrect format")
+        return;
+    }
+    // Calculate the revenue
+    for(let i = 0; i < arr.length; i++){
+        let opt_price = drink_data[i][0], opt_capacity = drink_data[i][1], opt_UPD = drink_data[i][2];
+        let opt_stock = arr[i] * drink_data[i][1];
+        // Capacity > UDP
+        if(opt_stock >= opt_UPD){
+                opt_revenue += opt_price * opt_UPD * period_of_time;
+        }
+        // Capacity > UDP && Going from {0,1} to {0,1}
+        else if(opt_stock < opt_UPD){
+            opt_revenue += opt_price * (opt_UPD / opt_capacity) * period_of_time;
+        }
+    }
+    // Calculate the soldout
+    for(let i = 0; i < arr.length; i++){
+        let opt_price = drink_data[i][0], opt_capacity = drink_data[i][1], opt_UPD = drink_data[i][2];
+        let opt_stock = arr[i] * drink_data[i][1];
+            if(arr[i] > 0){
+                if(opt_stock > opt_UPD){
+                    let aux = Math.ceil(Number(opt_stock) / Number(opt_UPD));
+                    if(aux < opt_soldout){ opt_soldout = aux}
+                }
+                else{
+                    opt_soldout = 0;
+                }
+            }
+    }
+    // Calculate the cost
+    if(opt_soldout > 0){
+        opt_cost = cost_per_refill * Math.ceil(period_of_time / opt_soldout);
+    }
+    else{
+        opt_cost = penalty_for_day_refill * cost_per_refill * Number(period_of_time);
+    }
+    // Save the values
+    window.localStorage.setItem("opt_revenue",opt_revenue);
+    window.localStorage.setItem("opt_cost",opt_cost);
+    window.localStorage.setItem("opt_dist",arr);
+
+    console.log(opt_revenue);
+    console.log(opt_soldout);
+    console.log(opt_cost);
 }
 
 /**
@@ -400,7 +458,6 @@ $(document).ready(function() {
         // Convert the JSON into an array
         element_arr = $.map(json, function(el) { return el });
 
-        console.log(element_arr);
         config_options = Number(element_arr[0]);
         max_drinks = element_arr[1];
         // Copy all the data from the JSON to the global variable
@@ -424,6 +481,7 @@ $(document).ready(function() {
         loadStats();
         actual_drink =- 1;
         nextDrink();
+        setOptimum(element_arr[2]);
     });
 });
 
