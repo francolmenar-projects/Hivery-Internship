@@ -54,8 +54,6 @@ function goToGameOver(){
     return open_window("gameOver.html", "goToGameOver()");
 }
 
-// module.exports.goToGameOver = goToGameOver;
-
 /**
  * Go to the Replay page when the button SUBMIT is clicked
  */

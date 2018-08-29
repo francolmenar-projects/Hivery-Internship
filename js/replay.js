@@ -32,9 +32,19 @@ function setActualProfit() {
     document.getElementById("replay_text").innerHTML = msg0 + revenue + msg1 + difference + msg2;
 }
 
+/**
+ * Go to the Optimal page
+ */
+function goToOptimal() {
+    window.open("../pages/optimal.html", "_self");
+}
+
 (function() {
     // Setting the listeners
     document.getElementById("replay_button").addEventListener("click", goToGameWindow);
+
+    document.getElementById("best_machine").addEventListener("click", goToOptimal);
+
     // Set the profit
     setActualProfit();
 
