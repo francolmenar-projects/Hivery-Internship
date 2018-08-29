@@ -48,7 +48,7 @@ Common header showed in the panel image
     width: 42%;
     left:50%;
     top: -105%;
-    font-size: 10vw;
+    font-size: 100%;
     font-family: ConcertOne;
     text-align: left;
     color: #3d1f0e;
@@ -66,7 +66,7 @@ Buttons of the game
 Text inside the button (PLAY, REPLAY,...)
  */
 .button_text p{
-    font-size:4vw;
+    font-size:50%;
     font-family: ConcertOne;
     color: #ffffff;
 }
@@ -147,6 +147,7 @@ Div of the Text box of the introduction
 .initial_text_box {
       width: 50%;
       height: 50%;
+      font-size: 4.5em;
 }
 
 /**
@@ -167,8 +168,8 @@ Play text inside the play button
 */
 .button_play_intro p{
     position: relative;
-    left: 26%;
-    margin-top: -35%;
+    left: 22%;
+    margin-top: -52%;
 }
 
 /**
@@ -179,7 +180,7 @@ The text of the lower part of the guide
     width: 42%;
     left:50%;
     position: relative;
-    font-size: 2.25vw;
+    font-size: 23%;
     font-family: AndaleMono;
     text-align: left;
     color: #000000;
@@ -193,6 +194,7 @@ Div of the Guide box
 .guide_box {
       width: 63%;
       height: 63%;
+      font-size: 4.5em;
 }
 
 /**
@@ -210,8 +212,8 @@ Button READY of the Guide Box
 
 .button_guide p{
     position: relative;
-    left: 21%;
-    margin-top: -35%;
+    left: 15%;
+    margin-top: -52%;
 }
 
 /**
@@ -233,7 +235,7 @@ Text of the skull and of the star
     left:25%;
     width: 60%;
     font-family: AndaleMono;
-    font-size: 3.3vw;
+    font-size: 34%;
     text-align: left;
     color: #000000;
 }
@@ -266,7 +268,7 @@ Guide label div
     position: relative;
     width: 19%;
     height: 14%;
-    top: -111%;
+    top: -114%;
     left: 40%;
     text-align: left;
 }
@@ -278,7 +280,7 @@ Guide Label
     height: 90%;
     width: 90%;
     font-family: ConcertOne;
-    font-size: 9.5vw;
+    font-size: 100%;
     text-align: left;
     color: #3d1f0e;
 }
@@ -293,6 +295,7 @@ The Counter of the Money and Time at the Game Window
 .counter {
     position: absolute;
     height: 10%;
+    font-size: 2em;
 }
 
 /**
@@ -312,11 +315,11 @@ Counter amount
 .counter p{
     position: relative;
     left: 36%;
-    margin-top: -5.7vh;
+    margin-top: -7vh;
     width: 55%;
     height: 60%;
     font-family: ConcertOne;
-    font-size: 3.5vw;
+    font-size: 100%;
     text-align: right;
     color: #fcfcfc;
 }
@@ -329,6 +332,7 @@ Banner with an advice
 .advice_banner{
     position: absolute;
     height: 12%;
+    font-size: 1.1em;
 }
 
 /**
@@ -353,7 +357,7 @@ The text of the advice
     width: 70%;
     height: 60%;
     font-family: AndaleMono;
-    font-size: 2.5vw;
+    font-size: 100%;
     line-height: 2.5vh;
     text-align: left;
     color: #333333;
@@ -417,6 +421,7 @@ Div containing the selected drink
     left: 5%;
     height: 70%;
     width: 85%;
+    font-size: 3.4em;
 }
 
 /**
@@ -439,7 +444,7 @@ Data of the selected drink
     top: 75%;
     margin-top: -5vh;
     font-family: ConcertOne;
-    font-size: 4vw;
+    font-size: 55%;
 }
 
 /**
@@ -447,7 +452,6 @@ Price of the selected drink
  */
 .price_selected {
     left: 20%;
-
 }
 
 /**
@@ -490,10 +494,10 @@ Store label
     position: relative;
     width: 45%;
     height: 10%;
-    top: -104%;
-    left: 30%;
+    top: -108%;
+    left: 28%;
     font-family: ConcertOne;
-    font-size: 6.5vw;
+    font-size: 100%;
     text-align: left;
     color: #3d1f0e;
 }
@@ -501,7 +505,7 @@ Store label
 /********** DOWN BUTTON **********/
 .down_button{
     position: relative;
-    top: -48.5vh;
+    top: -50vh;
     left: 2.7vw;
     height: 12vh;
     width: 16vw;
@@ -510,9 +514,9 @@ Store label
 
 .down_button p{
     position: relative;
-    left: 10%;
-    margin-top: -8vh;
-    font-size: 8vw;
+    left: 12%;
+    margin-top: -9.7vh;
+    font-size: 1.1em;
 }
 
 /********** STATS **********/
@@ -526,13 +530,15 @@ Store label
     height: 65%;
     width: 95%;
     font-family: ConcertOne;
+    font-size: 3.2em;
+    line-height: 20%;
 }
 
 /**
 Table with no bore
  */
 .drinks_stats_inside table, tr, td{
-    font-size: 2vw;
+    font-size: 50%;
     text-align: left;
     color: #000000;
     border: none;
@@ -542,7 +548,7 @@ Table with no bore
 Table with no bore
  */
 .drinks_stats_inside .category{
-  font-size: 105%;
+  font-size: 125%;
 }
 
 .drinks_stats_inside td{
@@ -565,7 +571,7 @@ Row with the names of the drinks
 .drinks_name th{
   position: relative;
   transform: rotate(-16deg);
-  font-size: 105%;
+  font-size: 125%;
 }
 
 /**
@@ -575,9 +581,9 @@ STATS label Div
     position: relative;
     width: 45%;
     height: 10%;
-    top: -104%;
-    left: 41%;
-    font-size: 6.5vw;
+    top: -105%;
+    left: 40%;
+    font-size: 100%;
     text-align: left;
     color: #3d1f0e;
 }
@@ -599,14 +605,14 @@ Panel with the total calculations of the current choice
 Font size of the header of the total values
  */
 .total_header {
-    font-size: 2.5vw;
+    font-size: 60%;
 }
 
 /**
 Font size of the total values
  */
 .total_values {
-  font-size: 4.5vw;
+    font-size: 3.2em;
 }
 
 /**
@@ -621,13 +627,15 @@ Left panel with the calculations of the actual choice
 .totalLeft_down_header {
    position: relative;
    left: 25%;
-   top: -35%;
+   top: -40%;
+      font-size: 60%;
 }
 
 .revenue_per_year{
   position: relative;
-  top: -60%;
+  top: -90%;
   left: 25%;
+  font-size: 110%;
  }
 
 /**
@@ -643,12 +651,13 @@ Right panel with the calculations of the actual choice
 .right_total_panel{
   position: relative;
   left: 65%;
-  top: -156%;
+  top: -167%;
 }
 
 .cost_per_year{
   position: relative;
-  top: -30%;
+  top: -50%;
+  font-size: 110%;
 }
 
 /****************************** GAME OVER ******************************/
@@ -659,7 +668,7 @@ DIV containing the GAME OVER text
 .game_over_div {
     width: 75%;
     height: 25%;
-    font-size: 30px;
+    font-size: 1em;
 }
 
 /**
@@ -683,6 +692,13 @@ Div of the Text box of the Replay page
 .replay_text_box {
       width: 50%;
       height: 50%;
+    font-size: 4.5em;
+}
+
+.not_bad{
+    position: relative;
+    width: 100%;
+    top: -109%;
 }
 
 /**
@@ -690,7 +706,6 @@ Common font for the replay text
  */
 .replay_p{
       font-family: AndaleMono;
-      font-size: 2.5vw;
       text-align: left;
       color: #000000;
 }
@@ -701,7 +716,7 @@ Button REPLAY of the Replay Text Box
 .button_replay {
     position: inherit;
     width: 18%;
-    top: 62%;
+    top: 55%;
     height: 12%;
     left: 59%;
     transform: scale(1.5);
@@ -713,9 +728,9 @@ REPLAY text inside the replay button
 */
 .button_replay p{
     position: relative;
-    left: 12%;
-    margin-top: -37%;
-    font-size:4.5vw;
+    left: 13%;
+    margin-top: -50%;
+    font-size: 43%;
 }
 
 /**
@@ -723,9 +738,10 @@ Text inside the replay box
  */
 .replay_text_box  .replay_text{
     position: relative;
-    top: -120%;
+    top: -123%;
     width: 42%;
     left:50%;
+    font-size: 25%;
 }
 
 /**
@@ -733,9 +749,10 @@ Link to the best machine inside the replay box
  */
 .best_machine_text{
     position: relative;
-    top: -47vh;
+    top: -50vh;
     width: 42%;
     left:50%;
     text-decoration: underline;
     cursor: pointer;
+    font-size: 25%;
 }

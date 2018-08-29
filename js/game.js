@@ -1,5 +1,5 @@
 /**************************** UPPER COUNTERS ****************************/
-const countdown = 1000; // Time countdown in seconds
+const countdown = 620; // Time countdown in seconds
 var actual_profit_user = 0.000; // Profit counter
 var actual_cost_user = 0.000; // Profit counter
 /**************************** MESSAGES ****************************/
