@@ -8,7 +8,6 @@ function goToGuide(){
     }
     return err;
 }
-module.exports.goToGuide = goToGuide;
 
 (function() {
     // Setting the listeners

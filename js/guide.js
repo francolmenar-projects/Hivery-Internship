@@ -9,8 +9,6 @@ function goToGameWindow(){
     return err;
 }
 
-module.exports.goToGameWindow = goToGameWindow;
-
 (function() {
     // Setting the listeners
     let ready = document.getElementById("guide_ready_button");

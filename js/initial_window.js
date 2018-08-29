@@ -8,7 +8,6 @@ function goToIntroduction(){
     }
     return err;
 }
-module.exports = goToIntroduction;
 
 (function() {
     // Setting the listeners

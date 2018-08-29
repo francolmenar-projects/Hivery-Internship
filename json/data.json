@@ -1,11 +1,13 @@
 {
+    "config_options": "2",
+    "drink_amount": "4",
 	"soda": {
         "price": "3.5",
 		"capacity": "5",
 		"upd": "4.3"
 	},
 	"cola": {
-        "price": "3.5",
+        "price": "3",
         "capacity": "9",
 		"upd": "3.1"
     },

@@ -1,5 +1,5 @@
 /**************************** UPPER COUNTERS ****************************/
-const countdown = 1140; // Time countdown in seconds
+const countdown = 1000; // Time countdown in seconds
 var actual_profit_user = 0.000; // Profit counter
 var actual_cost_user = 0.000; // Profit counter
 /**************************** MESSAGES ****************************/
@@ -7,12 +7,14 @@ const hurryUp ="Hurry up!! You only have 30 seconds left.";
 const oneMin ="One minute left. Do you really think that you can bet me?.";
 const initialMsg = "I'm Haoui. Are you trying to bet me? Good luck!!";
 /**************************** IMAGES ****************************/
+var config_options; // The number of configuration options in the JSON
 const img_prefix = "../img/products/"; // Offset to the image folder
 const empty_path ="../img/products/coke-bottle.png"; // Global path to the empty drink
 const empty_drink = "coke-bottle.png"; // Name of the empty drink
 const drinks_name = ["markSoda.png", "markCola.png", "markTropics.png", "cherry_can.png", "cola_can.png"]; // Name of the images of the drinks
 /**************************** VENDING MACHINE ****************************/
-const max_drinks = 4; // We start to count from 0
+// const max_drinks = 4; // We start to count from 0
+var max_drinks; // We start to count from 0
 var actual_drink = 0; // Drink id of the selected one
 const max_machine = 12; // Maximum capacity of the vending machine
 var selected_drinks = 0; // Actual amount of drinks in the vending machine
@@ -24,6 +26,7 @@ const json_path = "../json/data.json"; // Path to the JSON file
 const drink_order = ["SODA", "COLA", "TROPICS", "CHERRY", "COLA CAN"]; // Order of the drinks inside the data array
 const drink_attr = ["PRICE","CAPACITY",  "UNITS PER DAY", "UNITS STOCKED", "DAYS TILL SOLDOUT"]; // Order of the attributes inside the data array
 var drink_data = [[],[],[],[],[]]; // Data stored in a JSON
+var valid = [];
 
 /************************************** USER INTERFACE  **************************************/
 
@@ -249,13 +252,7 @@ function selectDrink() {
  */
 function previousDrink() {
     // Calculates the previous position
-    let prev = (actual_drink - 1);
-    // Check that it is not out of bounds
-    if(prev < 0){
-        prev = max_drinks;
-    }
-    // Assign the new value to the global variable
-    actual_drink = prev;
+    preValidDrink();
     changeDrink();
     // Load the data of the new drink
     loadSelected();
@@ -266,16 +263,44 @@ function previousDrink() {
  */
 function nextDrink() {
     // Calculates the next position
-    let next = (actual_drink + 1);
-    // Check that it is not out of bounds
-    if(next > max_drinks){
-        next = 0;
-    }
-    // Assign the new value to the global variable
-    actual_drink = next;
+    nextValidDrink();
     changeDrink();
     // Load the data of the new drink
     loadSelected();
+}
+
+/**
+ * Calculates the previous valid drink to display
+ */
+function preValidDrink() {
+    for(let i = 0; i <= max_drinks; i++){
+        let prev = actual_drink - i - 1;
+        if(prev < 0){
+            prev = max_drinks - Math.abs((prev) % max_drinks) + 1;
+        }
+        if(valid[prev] === 0){
+            actual_drink = prev;
+            return ;
+        }
+    }
+    console.log("[Error] There is no valid drink");
+}
+
+/**
+ * Calculates the next valid drink to display
+ */
+function nextValidDrink() {
+    for(let i = 0; i <= max_drinks; i++){
+        let next = actual_drink + i + 1;
+        if(next > max_drinks){
+            next = (next - 1) % max_drinks;
+        }
+        if(valid[next] === 0){
+            actual_drink = next;
+            return ;
+        }
+    }
+    console.log("[Error] There is no valid drink");
 }
 
 /**
@@ -374,15 +399,50 @@ $(document).ready(function() {
         let element_arr;
         // Convert the JSON into an array
         element_arr = $.map(json, function(el) { return el });
+
+        console.log(element_arr);
+        config_options = Number(element_arr[0]);
+        max_drinks = element_arr[1];
         // Copy all the data from the JSON to the global variable
-        for(let i = 0; i < element_arr.length; i++){
-            drink_data[i][0] = element_arr[i].price;
-            drink_data[i][1] = element_arr[i].capacity;
-            drink_data[i][2] = element_arr[i].upd;
+        for(let i = config_options; i < element_arr.length; i++){
+            if (areValid([element_arr[i].price, element_arr[i].capacity, element_arr[i].upd]) === -1){
+                console.log(("[Error] input data for " + drink_order[i] + " is invalid"));
+                let aux = i - config_options;
+                valid[aux] = -1;
+                drink_data[aux][0] = "-";
+                drink_data[aux][1] = "-";
+                drink_data[aux][2] = "-";
+            }
+            else{
+                let aux = i - config_options;
+                valid[aux] = 0;
+                drink_data[aux][0] = element_arr[i].price;
+                drink_data[aux][1] = element_arr[i].capacity;
+                drink_data[aux][2] = element_arr[i].upd;
+            }
         }
         loadStats();
+        actual_drink =- 1;
+        nextDrink();
     });
 });
+
+/**
+ * Check if the given array of drink data is valid
+ * @param arr: the data to be checked
+ * @return {number}: -1 if the data is not valid and 0 otherwise
+ */
+function areValid(arr) {
+    for(let i = 0; i < arr.length; i++){
+        if(isNaN(arr[i])){
+            return -1;
+        }
+        else if(Number(arr[i] <= 0)){
+            return -1;
+        }
+    }
+    return 0;
+}
 
 /**
  * Changes the inner text of an element checking for errors
@@ -410,7 +470,9 @@ function change_text_of_elem(name, data, f_name) {
 function loadStats() {
     // Load the drinks' name
     for(let i = 0; i < drink_order.length; i++){
-        change_text_of_elem("name" + i, drink_order[i], "loadStats");
+        if(valid[i] === 0){
+            change_text_of_elem("name" + i, drink_order[i], "loadStats");
+        }
     }
     // Load the categories' name
     for(let i = 0; i < drink_attr.length; i++){
@@ -418,14 +480,17 @@ function loadStats() {
     }
     // Load the stats of each drink
     for(let i = 0; i < drink_data.length; i++){
-        change_text_of_elem("price" + i, drink_data[i][0], "loadStats");
-        change_text_of_elem("capacity" + i, drink_data[i][1], "loadStats");
-        change_text_of_elem("upd" + i, drink_data[i][2], "loadStats");
-        drink_data[i][3] = 0;
-        change_text_of_elem("unit_stocked" + i, drink_data[i][3], "loadStats");
-        drink_data[i][4] = "-";
-        change_text_of_elem("days_souldout" + i, drink_data[i][4], "loadStats");
+        if(valid[i] === 0){
+            change_text_of_elem("price" + i, drink_data[i][0], "loadStats");
+            change_text_of_elem("capacity" + i, drink_data[i][1], "loadStats");
+            change_text_of_elem("upd" + i, drink_data[i][2], "loadStats");
+            drink_data[i][3] = 0;
+            change_text_of_elem("unit_stocked" + i, drink_data[i][3], "loadStats");
+            drink_data[i][4] = "-";
+            change_text_of_elem("days_souldout" + i, drink_data[i][4], "loadStats");
+        }
     }
+    nextValidDrink();
     // Load the default selected drink data
     loadSelected();
 }
