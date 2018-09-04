@@ -4,7 +4,7 @@
   "opt": "6,2,2,1,1",
   "countdown": "93",
   "period_of_time": "365",
-  "refill_cost": "100",
+  "refill_cost": "35",
   "penalty_day_refill": "2",
   "drink_name": {
     "drink0": "SODA",
