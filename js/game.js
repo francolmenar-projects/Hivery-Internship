@@ -427,7 +427,6 @@ function addListener(id, action, f_name, origin) {
     // Set the profit
     setActualProfit();
     // Setting the listeners
-    addListener("moneyCounterDiv", "click", goToGameOver, "function"); // ONLY FOR TESTING
     addListener("down_button", "click", goToReplay, "function");
     addListener("arrow_left", "click", previousDrink, "function");
     addListener("arrow_right", "click", nextDrink, "function");
