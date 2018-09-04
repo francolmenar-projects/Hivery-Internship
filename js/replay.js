@@ -1,4 +1,4 @@
-let lost = ["You made $", " which is just $", " which is just $", " less than me. But I’m still the best!!!"];
+let lost = ["You made $", " which is just $", " less than me. But I’m still the best!!!"];
 let win = "That's amazing!!! Yoy made the same money as me, you have been lucky.";
 
 /**
