@@ -2,16 +2,6 @@ var msg0 = "You made $";
 var msg1 = " which is just $";
 var msg2 = " less than me. But I’m still the best!!!";
 
-const max_machine = 12; // Maximum capacity of the vending machine
-const json_path = "../json/data.json"; // Path to the JSON file
-const empty_drink = "coke-bottle.png"; // Name of the empty drink
-const drinks_name = ["markSoda.png", "markCola.png", "markTropics.png", "cherry_can.png", "cola_can.png"]; // Name of the images of the drinks
-
-const drink_order = ["SODA", "COLA", "TROPICS", "CHERRY", "COLA CAN"]; // Order of the drinks inside the data array
-const drink_attr = ["PRICE","CAPACITY",  "UNITS PER DAY", "UNITS STOCKED", "DAYS TILL SOLDOUT"]; // Order of the attributes inside the data array
-
-var drink_data = [[],[],[],[],[]]; // Data stored in a JSON
-
 /**
  * Go to the Game page when the button play is clicked
  */
@@ -182,3 +172,18 @@ console.log(knapsack(items, capacity));
      { w: 118, v: 229 },
      { w: 120, v: 240 } ] }
 */
+
+$(document).ready(function() {
+    setFont();
+});
+
+// set the font size of the texts
+function setFont() {
+    let width = $(window).width();
+    // Size of the Replay text
+    let replay_font = width / 320;
+    if (width < 1500) {
+        replay_font = width / 320;
+    }
+    $(".replay_text_box").css("font-size", replay_font + "em");
+}

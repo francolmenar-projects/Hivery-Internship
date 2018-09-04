@@ -9,7 +9,7 @@
 </head>
 <body class="background_default noSelect">
 <!-- Guide Text -->
-  <div class="center_div generic_text img_divSize guide_box">
+  <div id="guide_box" class="center_div generic_text img_divSize guide_box">
     <img src="../img/guideBoard.png">
     <div class="GUIDE"><p>GUIDE</p></div>
     <div class="upper_part_guide">
@@ -26,11 +26,12 @@
     </div>
     <div id="guide_ready_button" class="button_game button_text button_guide">
         <img src="../img/gameButton.png">
-        <p>READY</p>
+        <p id="ready_button">READY</p>
     </div>
 
   </div>
     <!--  Scripts-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="../js/guide.js"></script>
   </body>
 </html>

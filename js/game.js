@@ -1,5 +1,5 @@
 /**************************** UPPER COUNTERS ****************************/
-const countdown = 620; // Time countdown in seconds
+const countdown = 90; // Time countdown in seconds
 var actual_profit_user = 0.000; // Profit counter
 var actual_cost_user = 0.000; // Profit counter
 /**************************** MESSAGES ****************************/
@@ -249,10 +249,6 @@ function setOptimum(input) {
     window.localStorage.setItem("opt_revenue",opt_revenue);
     window.localStorage.setItem("opt_cost",opt_cost);
     window.localStorage.setItem("opt_dist",arr);
-
-    console.log(opt_revenue);
-    console.log(opt_soldout);
-    console.log(opt_cost);
 }
 
 /**
@@ -451,6 +447,8 @@ function addListener(id, action, f_name, origin) {
  * Read the data from the JSON file and store it
  */
 $(document).ready(function() {
+    // Set the font according to the screen
+    setFont();
     $.getJSON(json_path, function(json) {
         let element_arr;
         // Convert the JSON into an array
@@ -816,4 +814,41 @@ function updateCost() {
         actual_cost_user = cost_per_refill * Math.ceil(period_of_time /  min_day);
     }
     setActualCost();
+}
+
+function setFont() {
+    let width = $(window).width();
+    // Size of the counters
+    let counter_font = width / 800;
+    if(width < 1500){
+        counter_font = width / 720;
+    }
+    $("#moneyCounterDiv").css("font-size", counter_font + "em");
+    $("#timer_counter").css("font-size", counter_font + "em");
+    // Size of the advice
+    let font_size  = width / 87.27;
+    $("#advice_banner").css("font-size", font_size + "px");
+    // Size of selected drink
+    let drink_font = width / 423.529;
+    $("#actual_drink_inside").css("font-size", drink_font + "em");
+    // Size of submit button
+    let submit_font = width / 1800;
+    if(width < 1500){
+        submit_font = width / 1309;
+    }
+    $("#submit_but").css("font-size", submit_font + "em");
+    // Size of Stats div
+    let stats_font = width / 450;
+    $("#drinks_stats_inside").css("font-size", stats_font + "em");
+    let stats_lin = 28;
+    if(width < 1500){
+        stats_lin = 20;
+    }
+    $(".drinks_stats_inside").css("line-height", stats_lin + "%");
+    // Size of the values of Total div
+    let total_font = stats_font / 2.7;
+    $(".total_values").css("font-size", total_font + "em");
+    // Size of the headers of Total div
+    let totalH_font = stats_font/5;
+    $(".total_header").css("font-size", totalH_font + "em");
 }

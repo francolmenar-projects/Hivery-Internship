@@ -466,7 +466,7 @@ Left arrow in the drink selector
  */
 .arrow_left {
     position: relative;
-    top: -42vh;
+    top: -44.3vh;
     left: 3.8vw;
     width: 4.8vw;
     height: 11vh;
@@ -479,7 +479,7 @@ Right arrow in the drink selector
  */
 .arrow_right {
     position: relative;
-    top: -53.5vh;
+    top: -55.2vh;
     left: 12.7vw;
     width: 4.8vw;
     height: 11vh;
@@ -755,4 +755,17 @@ Link to the best machine inside the replay box
     text-decoration: underline;
     cursor: pointer;
     font-size: 25%;
+}
+
+/****************************** OPTIMAL ******************************/
+.disabled{
+    cursor: auto;
+}
+
+.replay{
+    display: block;
+}
+
+.no_zoom{
+    pointer-events: none;
 }
