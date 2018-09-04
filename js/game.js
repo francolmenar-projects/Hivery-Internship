@@ -1,45 +1,45 @@
 /**************************** UPPER COUNTERS ****************************/
 const countdown = 90; // Time countdown in seconds
-var actual_profit_user = 0.000; // Profit counter
-var actual_cost_user = 0.000; // Profit counter
+let actual_profit_user = 0.000; // Profit counter
+let actual_cost_user = 0.000; // Profit counter
 /**************************** MESSAGES ****************************/
-const hurryUp ="Hurry up!! You only have 30 seconds left.";
-const oneMin ="One minute left. Do you really think that you can bet me?.";
+const hurryUp = "Hurry up!! You only have 30 seconds left.";
+const oneMin = "One minute left. Do you really think that you can bet me?.";
 const initialMsg = "I'm Haoui. Are you trying to bet me? Good luck!!";
 /**************************** IMAGES ****************************/
-var config_options; // The number of configuration options in the JSON
+let config_options; // The number of configuration options in the JSON
 const img_prefix = "../img/products/"; // Offset to the image folder
-const empty_path ="../img/products/coke-bottle.png"; // Global path to the empty drink
+const empty_path = "../img/products/coke-bottle.png"; // Global path to the empty drink
 const empty_drink = "coke-bottle.png"; // Name of the empty drink
 const drinks_name = ["markSoda.png", "markCola.png", "markTropics.png", "cherry_can.png", "cola_can.png"]; // Name of the images of the drinks
 /**************************** VENDING MACHINE ****************************/
 // const max_drinks = 4; // We start to count from 0
-var max_drinks; // We start to count from 0
-var actual_drink = 0; // Drink id of the selected one
+let max_drinks; // We start to count from 0
+let actual_drink = 0; // Drink id of the selected one
 const max_machine = 12; // Maximum capacity of the vending machine
-var selected_drinks = 0; // Actual amount of drinks in the vending machine
+let selected_drinks = 0; // Actual amount of drinks in the vending machine
 /***+++++++++++++++++++++** STATS ***+++++++++++++++++++++**/
 const period_of_time = 365; // Time frame that we consider
 const cost_per_refill = 35; // The cost for refilling the machine
 const penalty_for_day_refill = 2; // Penalty apply when the vending machine has to be refilled every day
 const json_path = "../json/data.json"; // Path to the JSON file
 const drink_order = ["SODA", "COLA", "TROPICS", "CHERRY", "COLA CAN"]; // Order of the drinks inside the data array
-const drink_attr = ["PRICE","CAPACITY",  "UNITS PER DAY", "UNITS STOCKED", "DAYS TILL SOLDOUT"]; // Order of the attributes inside the data array
-var drink_data = [[],[],[],[],[]]; // Data stored in a JSON
-var valid = [];
+const drink_attr = ["PRICE", "CAPACITY", "UNITS PER DAY", "UNITS STOCKED", "DAYS TILL SOLDOUT"]; // Order of the attributes inside the data array
+let drink_data = [[], [], [], [], []]; // Data stored in a JSON
+let valid = [];
 
 /************************************** USER INTERFACE  **************************************/
 
 /**
  * Opens a new window and checks for errors
  *
- * @param target: HTML page to opem
+ * @param target: HTML page to open
  * @param origin: caller function
  * @return {Window}: null if there is an error.
  */
 function open_window(target, origin) {
     let err = window.open(target, "_self");
-    if(err === null){
+    if (err === null) {
         console.log("[Error]: window.open() in " + origin);
     }
     return err;
@@ -48,18 +48,18 @@ function open_window(target, origin) {
 /**
  * Go to the Guide page when the button play is clicked
  */
-function goToGameOver(){
+function goToGameOver() {
     let revenue = Number(actual_profit_user) - Number(actual_cost_user);
-    window.localStorage.setItem("revenue",revenue);
+    window.localStorage.setItem("revenue", revenue);
     return open_window("gameOver.html", "goToGameOver()");
 }
 
 /**
  * Go to the Replay page when the button SUBMIT is clicked
  */
-function goToReplay(){
+function goToReplay() {
     let revenue = Number(actual_profit_user) - Number(actual_cost_user);
-    window.localStorage.setItem("revenue",revenue);
+    window.localStorage.setItem("revenue", revenue);
     return open_window("replay.html", "goToReplay()");
 }
 
@@ -70,10 +70,10 @@ function goToReplay(){
  */
 function checkSubmit() {
     let down_button = document.getElementById("down_button");
-    if((selected_drinks === max_machine) && ($(down_button).css('display') === 'none')){
+    if ((selected_drinks === max_machine) && ($(down_button).css('display') === 'none')) {
         $(down_button).fadeIn("slow");
     }
-    else if((selected_drinks === (max_machine - 1)) && ($(down_button).css('display') !== 'none')){
+    else if ((selected_drinks === (max_machine - 1)) && ($(down_button).css('display') !== 'none')) {
         $(down_button).fadeOut("slow");
     }
 }
@@ -81,7 +81,7 @@ function checkSubmit() {
 /**
  * Creates the timer of the game
  */
-function createTimer(){
+function createTimer() {
     // Set the default countdown time
     let time_left = countdown;
     let min, second, new_time;
@@ -91,26 +91,26 @@ function createTimer(){
         second = time_left % 60;
         min = parseInt(time_left / 60);
         // Check if there is any digit in the minutes
-        if(min > 0){
+        if (min > 0) {
             // Check how many digits the minutes has
-            if(min >= 10){
+            if (min >= 10) {
                 new_time = min.toString() + ":";
             }
             // If the minutes has only one digit we add a "0" to the left side of it
-            else{
+            else {
                 new_time = "0" + min.toString() + ":";
             }
         }
         // There are no minutes left, so we add another "0" to the minutes
-        else{
+        else {
             new_time = min.toString() + "0:";
         }
         // Check if there are two digits in the seconds
-        if(second >= 10){
+        if (second >= 10) {
             new_time += second.toString();
         }
         // There is only one digit in the second side, so we add a "0" to the left side
-        else{
+        else {
             new_time += "0" + second.toString();
         }
         // Get the HTML of the time and assign to it the new value of the timer
@@ -118,19 +118,25 @@ function createTimer(){
         // Update the timer value for the next iteration
         time_left--;
         // If there is no time left the time is over
-        if(time_left < 0){
+        if (time_left < 0) {
             goToGameOver();
         }
-        else if(time_left === 60){
-            showAdvice(oneMin);
+        else if (time_left === 85) {
+            showAdvice(initialMsg);
         }
-        else if(time_left === 53){
+        else if (time_left === 78) {
             hideAdvice();
         }
-        else if(time_left === 30){
+        else if (time_left === 60) {
+            showAdvice(oneMin);
+        }
+        else if (time_left === 53) {
+            hideAdvice();
+        }
+        else if (time_left === 30) {
             showAdvice(hurryUp);
         }
-        else if(time_left === 23){
+        else if (time_left === 23) {
             hideAdvice();
         }
     }, 1000)
@@ -142,16 +148,16 @@ function createTimer(){
 function setActualProfit() {
     let profit = document.getElementById("actual_profit");
     let revenue = document.getElementById("revenue_stats");
-    if(profit){
+    if (profit) {
         profit.innerHTML = actual_profit_user.toFixed(3).toString();
     }
-    else{
+    else {
         console.log("[Error]: element 'actual_profit' does not exist in setActualProfit()");
     }
-    if(revenue){
+    if (revenue) {
         revenue.innerHTML = "$" + actual_profit_user.toFixed(3).toString();
     }
-    else{
+    else {
         console.log("[Error]: element 'revenue_stats' does not exist in setActualProfit()");
     }
 }
@@ -160,12 +166,12 @@ function setActualProfit() {
  * It sets the actual value of the Units Stocked on the screen
  */
 function setActualCapacity() {
-    for(let i = 0; i < drink_order.length; i++){
+    for (let i = 0; i < drink_order.length; i++) {
         let capacity = document.getElementById("unit_stocked" + i);
-        if(capacity){
+        if (capacity) {
             capacity.innerHTML = drink_data[i][3];
         }
-        else{
+        else {
             console.log("[Error]: element 'unit_stocked" + i + "' does not exist in setActualCapacity()");
         }
     }
@@ -175,12 +181,12 @@ function setActualCapacity() {
  * It sets the actual value of the Days Till SoldOut on the screen
  */
 function setActualSold() {
-    for(let i = 0; i < drink_order.length; i++){
+    for (let i = 0; i < drink_order.length; i++) {
         let soldout = document.getElementById("days_souldout" + i);
-        if(soldout){
+        if (soldout) {
             soldout.innerHTML = drink_data[i][4];
         }
-        else{
+        else {
             console.log("[Error]: element 'days_souldout" + i + "' does not exist in setActualSold()");
         }
     }
@@ -191,10 +197,10 @@ function setActualSold() {
  */
 function setActualCost() {
     let actual_cost = document.getElementById("cost_stats");
-    if(actual_cost){
+    if (actual_cost) {
         actual_cost.innerHTML = actual_cost_user.toFixed(3).toString();
     }
-    else{
+    else {
         console.log("[Error]: element 'cost_stats' does not exist in setActualCost()");
     }
 }
@@ -207,48 +213,50 @@ function setOptimum(input) {
     let arr = input.split(',').map(Number);
     let opt_revenue = 0, opt_cost = 0, opt_soldout = 999;
     // Check the correct number of values
-    if(arr.length !== drink_order.length){
-        console.log("[Error] Input of the optimum machine has incorrect format")
+    if (arr.length !== drink_order.length) {
+        console.log("[Error] Input of the optimum machine has incorrect format");
         return;
     }
     // Calculate the revenue
-    for(let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         let opt_price = drink_data[i][0], opt_capacity = drink_data[i][1], opt_UPD = drink_data[i][2];
         let opt_stock = arr[i] * drink_data[i][1];
         // Capacity > UDP
-        if(opt_stock >= opt_UPD){
-                opt_revenue += opt_price * opt_UPD * period_of_time;
+        if (opt_stock >= opt_UPD) {
+            opt_revenue += opt_price * opt_UPD * period_of_time;
         }
         // Capacity > UDP && Going from {0,1} to {0,1}
-        else if(opt_stock < opt_UPD){
+        else if (opt_stock < opt_UPD) {
             opt_revenue += opt_price * (opt_UPD / opt_capacity) * period_of_time;
         }
     }
     // Calculate the soldout
-    for(let i = 0; i < arr.length; i++){
-        let opt_price = drink_data[i][0], opt_capacity = drink_data[i][1], opt_UPD = drink_data[i][2];
+    for (let i = 0; i < arr.length; i++) {
+        let opt_UPD = drink_data[i][2];
         let opt_stock = arr[i] * drink_data[i][1];
-            if(arr[i] > 0){
-                if(opt_stock > opt_UPD){
-                    let aux = Math.ceil(Number(opt_stock) / Number(opt_UPD));
-                    if(aux < opt_soldout){ opt_soldout = aux}
-                }
-                else{
-                    opt_soldout = 0;
+        if (arr[i] > 0) {
+            if (opt_stock > opt_UPD) {
+                let aux = Math.ceil(Number(opt_stock) / Number(opt_UPD));
+                if (aux < opt_soldout) {
+                    opt_soldout = aux
                 }
             }
+            else {
+                opt_soldout = 0;
+            }
+        }
     }
     // Calculate the cost
-    if(opt_soldout > 0){
+    if (opt_soldout > 0) {
         opt_cost = cost_per_refill * Math.ceil(period_of_time / opt_soldout);
     }
-    else{
+    else {
         opt_cost = penalty_for_day_refill * cost_per_refill * Number(period_of_time);
     }
     // Save the values
-    window.localStorage.setItem("opt_revenue",opt_revenue);
-    window.localStorage.setItem("opt_cost",opt_cost);
-    window.localStorage.setItem("opt_dist",arr);
+    window.localStorage.setItem("opt_revenue", opt_revenue);
+    window.localStorage.setItem("opt_cost", opt_cost);
+    window.localStorage.setItem("opt_dist", arr);
 }
 
 /**
@@ -256,7 +264,7 @@ function setOptimum(input) {
  */
 function changeDrink() {
     let selected_drink = document.getElementById("selected_drink");
-    if(selected_drink){
+    if (selected_drink) {
         selected_drink.src = img_prefix + drinks_name[actual_drink];
     }
     else {
@@ -268,7 +276,7 @@ function changeDrink() {
  * Change the selected drink in the vending machine
  */
 function selectDrink() {
-    let img_path,img_selected,selected_img_arr,selected_img;
+    let img_path, img_selected, selected_img_arr, selected_img;
     let replacement_case = -1; // Used when we want to calculate the new data
     // New image to set
     img_path = drinks_name[actual_drink];
@@ -279,17 +287,17 @@ function selectDrink() {
     // The name of the drink selected
     selected_img = selected_img_arr[selected_img_arr.length - 1];
     // Check if we have to set to empty the clicked position
-    if(selected_img !== img_path){
+    if (selected_img !== img_path) {
         // Set the new drink
         replacement_case = 0;
         img_selected.src = img_prefix + img_path;
         // Replace an empty drink
-        if(selected_img === empty_drink){
+        if (selected_img === empty_drink) {
             replacement_case = 1;
             selected_drinks++;
         }
     }
-    else{
+    else {
         // Set the empty drink
         replacement_case = 2;
         img_selected.src = empty_path;
@@ -325,14 +333,14 @@ function nextDrink() {
  * Calculates the previous valid drink to display
  */
 function preValidDrink() {
-    for(let i = 0; i <= max_drinks; i++){
+    for (let i = 0; i <= max_drinks; i++) {
         let prev = actual_drink - i - 1;
-        if(prev < 0){
+        if (prev < 0) {
             prev = max_drinks - Math.abs((prev) % max_drinks) + 1;
         }
-        if(valid[prev] === 0){
+        if (valid[prev] === 0) {
             actual_drink = prev;
-            return ;
+            return;
         }
     }
     console.log("[Error] There is no valid drink");
@@ -342,14 +350,14 @@ function preValidDrink() {
  * Calculates the next valid drink to display
  */
 function nextValidDrink() {
-    for(let i = 0; i <= max_drinks; i++){
+    for (let i = 0; i <= max_drinks; i++) {
         let next = actual_drink + i + 1;
-        if(next > max_drinks){
+        if (next > max_drinks) {
             next = (next - 1) % max_drinks;
         }
-        if(valid[next] === 0){
+        if (valid[next] === 0) {
             actual_drink = next;
-            return ;
+            return;
         }
     }
     console.log("[Error] There is no valid drink");
@@ -360,11 +368,11 @@ function nextValidDrink() {
  */
 function showAdvice(str) {
     let advice = document.getElementById("adviceDiv");
-    if(advice){
+    if (advice) {
         // Check if we have a text as an input
-        if(str !== ""){
+        if (str !== "") {
             let adviceText = document.getElementById("adviceText");
-            if(adviceText){
+            if (adviceText) {
                 adviceText.innerText = str;
             }
             else {
@@ -383,7 +391,7 @@ function showAdvice(str) {
  */
 function hideAdvice() {
     let advice = document.getElementById("adviceDiv");
-    if(advice){
+    if (advice) {
         $(advice).fadeOut("slow");
     }
     else {
@@ -397,23 +405,24 @@ function hideAdvice() {
  * @param id: id of the button we want to add the listener
  * @param action: the action to be performed over the button
  * @param f_name: name of the function to be executed
+ * @param origin: The calling function
  * @return {number}: return -1 if there is any error and 0 otherwise
  */
 function addListener(id, action, f_name, origin) {
     let moneyCounterDiv = document.getElementById(id);
-    if(moneyCounterDiv){
+    if (moneyCounterDiv) {
         moneyCounterDiv.addEventListener(action, f_name);
         return 0;
     }
     else {
-        if(id && origin){
-            console.log("[Error]: element '"+ id + "' does not exist in " + origin + "()");
+        if (id && origin) {
+            console.log("[Error]: element '" + id + "' does not exist in " + origin + "()");
             return -1;
         }
     }
 }
 
-(function() {
+(function () {
     // Create the timer
     createTimer();
     // Set the profit
@@ -426,12 +435,12 @@ function addListener(id, action, f_name, origin) {
 
     // Get all the images of the vending machine
     let allImages = document.getElementById("drinks_machine").getElementsByTagName('img');
-    if(allImages){
-        for(let i = 0; i < allImages.length ; i++) {
-            if(allImages[i]){
+    if (allImages) {
+        for (let i = 0; i < allImages.length; i++) {
+            if (allImages[i]) {
                 allImages[i].addEventListener("click", selectDrink);
             }
-            else{
+            else {
                 console.log("[Error]: element 'drinks_machine[" + i + " ' does not exist in function()");
             }
         }
@@ -446,19 +455,21 @@ function addListener(id, action, f_name, origin) {
 /**
  * Read the data from the JSON file and store it
  */
-$(document).ready(function() {
+$(document).ready(function () {
     // Set the font according to the screen
     setFont();
-    $.getJSON(json_path, function(json) {
+    $.getJSON(json_path, function (json) {
         let element_arr;
         // Convert the JSON into an array
-        element_arr = $.map(json, function(el) { return el });
+        element_arr = $.map(json, function (el) {
+            return el
+        });
 
         config_options = Number(element_arr[0]);
         max_drinks = element_arr[1];
         // Copy all the data from the JSON to the global variable
-        for(let i = config_options; i < element_arr.length; i++){
-            if (areValid([element_arr[i].price, element_arr[i].capacity, element_arr[i].upd]) === -1){
+        for (let i = config_options; i < element_arr.length; i++) {
+            if (areValid([element_arr[i].price, element_arr[i].capacity, element_arr[i].upd]) === -1) {
                 console.log(("[Error] input data for " + drink_order[i] + " is invalid"));
                 let aux = i - config_options;
                 valid[aux] = -1;
@@ -466,7 +477,7 @@ $(document).ready(function() {
                 drink_data[aux][1] = "-";
                 drink_data[aux][2] = "-";
             }
-            else{
+            else {
                 let aux = i - config_options;
                 valid[aux] = 0;
                 drink_data[aux][0] = element_arr[i].price;
@@ -475,7 +486,7 @@ $(document).ready(function() {
             }
         }
         loadStats();
-        actual_drink =- 1;
+        actual_drink = -1;
         nextDrink();
         setOptimum(element_arr[2]);
     });
@@ -487,11 +498,11 @@ $(document).ready(function() {
  * @return {number}: -1 if the data is not valid and 0 otherwise
  */
 function areValid(arr) {
-    for(let i = 0; i < arr.length; i++){
-        if(isNaN(arr[i])){
+    for (let i = 0; i < arr.length; i++) {
+        if (isNaN(arr[i])) {
             return -1;
         }
-        else if(Number(arr[i] <= 0)){
+        else if (Number(arr[i] <= 0)) {
             return -1;
         }
     }
@@ -508,12 +519,12 @@ function areValid(arr) {
  */
 function change_text_of_elem(name, data, f_name) {
     let elem = document.getElementById(name);
-    if(elem){
+    if (elem) {
         elem.innerText = data;
         return 0;
     }
-    else{
-        console.log("[Error]: element '"+ name + "' does not exist in "+ f_name + "() ");
+    else {
+        console.log("[Error]: element '" + name + "' does not exist in " + f_name + "() ");
         return -1;
     }
 }
@@ -523,18 +534,18 @@ function change_text_of_elem(name, data, f_name) {
  */
 function loadStats() {
     // Load the drinks' name
-    for(let i = 0; i < drink_order.length; i++){
-        if(valid[i] === 0){
+    for (let i = 0; i < drink_order.length; i++) {
+        if (valid[i] === 0) {
             change_text_of_elem("name" + i, drink_order[i], "loadStats");
         }
     }
     // Load the categories' name
-    for(let i = 0; i < drink_attr.length; i++){
+    for (let i = 0; i < drink_attr.length; i++) {
         change_text_of_elem("category" + i, drink_attr[i], "loadStats");
     }
     // Load the stats of each drink
-    for(let i = 0; i < drink_data.length; i++){
-        if(valid[i] === 0){
+    for (let i = 0; i < drink_data.length; i++) {
+        if (valid[i] === 0) {
             change_text_of_elem("price" + i, drink_data[i][0], "loadStats");
             change_text_of_elem("capacity" + i, drink_data[i][1], "loadStats");
             change_text_of_elem("upd" + i, drink_data[i][2], "loadStats");
@@ -583,7 +594,7 @@ function updateData(clicked_img, actual_img, replacement_case) {
  * @param actual_img: drink to be stored in the machine
  * @param replacement_case: which is the situation of the replacement
  */
-function updateRevenue(clicked_img, actual_img, replacement_case){
+function updateRevenue(clicked_img, actual_img, replacement_case) {
     let money_to_sum = 0;
     let newDrink = drink_data[actual_drink];
     switch (replacement_case) {
@@ -592,15 +603,15 @@ function updateRevenue(clicked_img, actual_img, replacement_case){
             // Money that we get placing the new drink
             money_to_sum = calculateMoneyToSum(newDrink);
             // Find the clicked drink
-            for(let i = 0; i < drinks_name.length; i++){
-                if(clicked_img === drinks_name[i]){
+            for (let i = 0; i < drinks_name.length; i++) {
+                if (clicked_img === drinks_name[i]) {
                     let oldDrink = drink_data[i];
                     // Money that we get loose removing the new drink
                     old_value = calculateMoneyToSubtract(oldDrink);
                 }
             }
             // Check that we found a value for the clicked image
-            if(old_value === -1){
+            if (old_value === -1) {
                 console.log("ERROR: No data found for the clicked image (updateMoney)");
                 return;
             }
@@ -608,9 +619,9 @@ function updateRevenue(clicked_img, actual_img, replacement_case){
             money_to_sum -= old_value;
             break;
         case 1: // Empty Position
-             // Money that we get placing the new drink
-             money_to_sum = calculateMoneyToSum(newDrink);
-             break;
+            // Money that we get placing the new drink
+            money_to_sum = calculateMoneyToSum(newDrink);
+            break;
         case 2: // Remove the actual drink
             // Money that we get loose removing the new drink
             money_to_sum = -Math.abs(calculateMoneyToSubtract(newDrink));
@@ -630,23 +641,23 @@ function updateRevenue(clicked_img, actual_img, replacement_case){
  * @return {number} money_to_sum: the money to sum
  */
 function calculateMoneyToSum(newDrink) {
-        let money_to_sum = 0;
-        let newPrice = newDrink[0], newCapacity = newDrink[1], newUPD = newDrink[2], newStock = newDrink[3];
-        // Capacity > UDP
-        if( (newStock - newCapacity === 0) && (newStock >= newUPD) ) {
-                money_to_sum = newPrice * newUPD * period_of_time;
-        }
-        // Capacity > UDP && Going from {0,1} to {x > 1}
-        else if( (newStock >= newUPD) && ((newStock - newCapacity) < newUPD) ){
-           let normal_amount = newPrice* newUPD * period_of_time;
-           let money_to_discount = newPrice * (newStock - newCapacity)  * period_of_time;
-           money_to_sum = normal_amount - money_to_discount;
-        }
-        // Capacity > UDP && Going from {0,1} to {0,1}
-        else if(newStock < newUPD){
-            money_to_sum = newPrice * (newUPD / newCapacity) * period_of_time;
-        }
-        return money_to_sum;
+    let money_to_sum = 0;
+    let newPrice = newDrink[0], newCapacity = newDrink[1], newUPD = newDrink[2], newStock = newDrink[3];
+    // Capacity > UDP
+    if ((newStock - newCapacity === 0) && (newStock >= newUPD)) {
+        money_to_sum = newPrice * newUPD * period_of_time;
+    }
+    // Capacity > UDP && Going from {0,1} to {x > 1}
+    else if ((newStock >= newUPD) && ((newStock - newCapacity) < newUPD)) {
+        let normal_amount = newPrice * newUPD * period_of_time;
+        let money_to_discount = newPrice * (newStock - newCapacity) * period_of_time;
+        money_to_sum = normal_amount - money_to_discount;
+    }
+    // Capacity > UDP && Going from {0,1} to {0,1}
+    else if (newStock < newUPD) {
+        money_to_sum = newPrice * (newUPD / newCapacity) * period_of_time;
+    }
+    return money_to_sum;
 }
 
 /**
@@ -659,16 +670,16 @@ function calculateMoneyToSubtract(oldDrink) {
     let old_value = 0;
     let oldPrice = oldDrink[0], oldCapacity = oldDrink[1], oldUPD = oldDrink[2], oldStock = oldDrink[3];
     // Capacity > UDP
-    if( (oldStock === 0) && (oldCapacity > oldUPD)){
+    if ((oldStock === 0) && (oldCapacity > oldUPD)) {
         old_value = oldPrice * oldUPD * period_of_time;
     }
     // There is still drinks with capacity less than UDP but the stock is lower than UDP
-    else if( (oldStock < oldUPD) && (oldCapacity < oldUPD) ){
+    else if ((oldStock < oldUPD) && (oldCapacity < oldUPD)) {
         // It is the first time that we are down the UDP
-        if( (Number(oldStock) + Number(oldCapacity)) >= Number(oldUPD)){
+        if ((Number(oldStock) + Number(oldCapacity)) >= Number(oldUPD)) {
             old_value = oldPrice * (oldUPD % oldCapacity) * period_of_time;
         }
-        else{
+        else {
             old_value = oldPrice * (oldUPD / oldCapacity) * period_of_time;
         }
     }
@@ -689,15 +700,15 @@ function updateStock(clicked_img, actual_img, replacement_case) {
             // NewDrinkUnits += NewDrink(Capacity)
             // OldDrinkUnits -= OldDrink(Capacity
             units_to_sum = drink_data[actual_drink][1];
-            for(let i = 0; i < drinks_name.length; i++){
+            for (let i = 0; i < drinks_name.length; i++) {
                 // I search for the data of the replaced drink
-                if(clicked_img === drinks_name[i]){
+                if (clicked_img === drinks_name[i]) {
                     units_to_remove = drink_data[i][1];
                     remove_id = i;
                 }
             }
             // Check that we found a value for the clicked image
-            if(units_to_remove === 0){
+            if (units_to_remove === 0) {
                 console.log("ERROR: No data found for the clicked image (updateStock)");
                 return;
             }
@@ -715,10 +726,10 @@ function updateStock(clicked_img, actual_img, replacement_case) {
             console.log("ERROR: Wrong replacement_case (updateStock)");
             return;
     }
-    drink_data[actual_drink][3] =  (Number)(drink_data[actual_drink][3]) + (Number)(units_to_sum);
+    drink_data[actual_drink][3] = (Number)(drink_data[actual_drink][3]) + (Number)(units_to_sum);
     // There is a drink to be removed
-    if(remove_id !== -1){
-        drink_data[remove_id][3] = (Number)(drink_data[remove_id][3]) - (Number)(units_to_remove) ;
+    if (remove_id !== -1) {
+        drink_data[remove_id][3] = (Number)(drink_data[remove_id][3]) - (Number)(units_to_remove);
     }
     setActualCapacity();
 }
@@ -729,18 +740,18 @@ function updateStock(clicked_img, actual_img, replacement_case) {
  * @param actual_img: drink to be stored in the machine
  * @param replacement_case: which is the situation of the replacement
  */
-function updateSoldout(clicked_img, actual_img, replacement_case){
+function updateSoldout(clicked_img, actual_img, replacement_case) {
     // The same for NewDrink and OldDrink
     drink_data[actual_drink][4] = soldOutOp(actual_drink);
     if (replacement_case === 0) {// Replaced by other drink
-         drink_data[actual_drink][4] = soldOutOp(actual_drink);
-         for(let i = 0; i < drinks_name.length; i++){
-                // I search for the data of the replaced drink
-                if(clicked_img === drinks_name[i]){
-                    drink_data[i][4] = soldOutOp(i);
-                }
+        drink_data[actual_drink][4] = soldOutOp(actual_drink);
+        for (let i = 0; i < drinks_name.length; i++) {
+            // I search for the data of the replaced drink
+            if (clicked_img === drinks_name[i]) {
+                drink_data[i][4] = soldOutOp(i);
             }
-    } else if (replacement_case !== 1 && replacement_case !== 2){
+        }
+    } else if (replacement_case !== 1 && replacement_case !== 2) {
         console.log("ERROR: Wrong replacement_case (updateSoldout)");
         return;
     }
@@ -759,15 +770,15 @@ function updateSoldout(clicked_img, actual_img, replacement_case){
  */
 function soldOutOp(drinkId) {
     let days_till_sold = -1;
-    if(drink_data[drinkId][3] > drink_data[drinkId][2]){
+    if (drink_data[drinkId][3] > drink_data[drinkId][2]) {
         days_till_sold = Math.ceil(Number(drink_data[drinkId][3]) / Number(drink_data[drinkId][2]));
     }
     // Not enough drinks to be one day without refilling
-    else if(drink_data[drinkId][3] > 0){
+    else if (drink_data[drinkId][3] > 0) {
         days_till_sold = 0;
     }
     // There is no drink in the machine
-    else{
+    else {
         days_till_sold = "-";
     }
     return days_till_sold;
@@ -779,61 +790,64 @@ function soldOutOp(drinkId) {
 function updateCost() {
     let min_day = 999;
     // Get the minimum soldout value
-    for(let i = 0; i < drink_order.length; i++){
+    for (let i = 0; i < drink_order.length; i++) {
         let drink = drink_data[i];
         let soldOut = drink[4];
         // Avoid "-" values
-        if(Number(soldOut) === 0) {
+        if (Number(soldOut) === 0) {
             // Check the worst case which is 0 days with stock
-            if(Number(drink[3]) !== 0){
+            if (Number(drink[3]) !== 0) {
                 min_day = -1;
                 break;
             }
         }
         // The soldout is larger than 0
-        else{
-          // Searching for the next minimum value
-          if(Number(soldOut) < min_day){
-              min_day = Number(soldOut);
-          }
+        else {
+            // Searching for the next minimum value
+            if (Number(soldOut) < min_day) {
+                min_day = Number(soldOut);
+            }
         }
     }
     // Calculate the new cost value
     // There are no drinks
-    if(min_day === 999){
+    if (min_day === 999) {
         actual_cost_user = 0.000;
     }
     // Have to refill every day
-    else if(min_day === -1){
+    else if (min_day === -1) {
         actual_cost_user = penalty_for_day_refill
             * cost_per_refill * Number(period_of_time);
     }
     // Normal Case
-    else{
+    else {
         // Cost = (365 / min(Soldout)) * Cost_Refill
-        actual_cost_user = cost_per_refill * Math.ceil(period_of_time /  min_day);
+        actual_cost_user = cost_per_refill * Math.ceil(period_of_time / min_day);
     }
     setActualCost();
 }
 
+/**
+ * Set the font size of the text
+ */
 function setFont() {
     let width = $(window).width();
     // Size of the counters
     let counter_font = width / 800;
-    if(width < 1500){
+    if (width < 1500) {
         counter_font = width / 720;
     }
     $("#moneyCounterDiv").css("font-size", counter_font + "em");
     $("#timer_counter").css("font-size", counter_font + "em");
     // Size of the advice
-    let font_size  = width / 87.27;
+    let font_size = width / 87.27;
     $("#advice_banner").css("font-size", font_size + "px");
     // Size of selected drink
     let drink_font = width / 423.529;
     $("#actual_drink_inside").css("font-size", drink_font + "em");
     // Size of submit button
     let submit_font = width / 1800;
-    if(width < 1500){
+    if (width < 1500) {
         submit_font = width / 1309;
     }
     $("#submit_but").css("font-size", submit_font + "em");
@@ -841,7 +855,7 @@ function setFont() {
     let stats_font = width / 450;
     $("#drinks_stats_inside").css("font-size", stats_font + "em");
     let stats_lin = 28;
-    if(width < 1500){
+    if (width < 1500) {
         stats_lin = 20;
     }
     $(".drinks_stats_inside").css("line-height", stats_lin + "%");
@@ -849,6 +863,6 @@ function setFont() {
     let total_font = stats_font / 2.7;
     $(".total_values").css("font-size", total_font + "em");
     // Size of the headers of Total div
-    let totalH_font = stats_font/5;
+    let totalH_font = stats_font / 5;
     $(".total_header").css("font-size", totalH_font + "em");
 }

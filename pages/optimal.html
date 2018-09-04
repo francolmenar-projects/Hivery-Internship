@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, height=device-height"/>
-  <title>Hivery Game</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, height=device-height"/>
+    <title>Hivery Game</title>
 
-  <!-- CSS  -->
-  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../css/game_style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!-- CSS  -->
+    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../css/game_style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body class="background_default noSelect">
- <div class="row">
-     <!-- Advice banner -->
-     <div id="advice_banner" class="col s6 offset-s3 advice_banner">
-         <div id="adviceDiv" class="advice img_divSize">
-             <img src="../img/popoverBoy.png">
-             <p id="adviceText">Watch out! Your machine would need restocking in 6 days. That costs $400 per time</p>
-         </div>
-     </div>
-     <!-- Drinks Selected -->
-     <div class="col s4 commonHeightDrinks">
+<div class="row">
+    <!-- Advice banner -->
+    <div id="advice_banner" class="col s6 offset-s3 advice_banner">
+        <div id="adviceDiv" class="advice img_divSize">
+            <img src="../img/popoverBoy.png">
+            <p id="adviceText">Watch out! Your machine would need restocking in 6 days. That costs $400 per time</p>
+        </div>
+    </div>
+    <!-- Drinks Selected -->
+    <div class="col s4 commonHeightDrinks">
         <div id="drinks_machine" class="drinks_machine no_zoom">
             <div class="drink_row column_machine_drinks">
                 <div class="col s3">
@@ -65,81 +65,81 @@
                 </div>
             </div>
         </div>
-     </div>
-     <!-- Information of the selected drink -->
-     <div class="col s3 offset-s4 commonHeightDrinks">
-         <div class="actual_drink_inside generic_text img_divSize">
-             <img src="../img/storeBoard.png">
-             <div class="STORE"><p>STORE</p></div>
-             <div class="drink_selected">
+    </div>
+    <!-- Information of the selected drink -->
+    <div class="col s3 offset-s4 commonHeightDrinks">
+        <div class="actual_drink_inside generic_text img_divSize">
+            <img src="../img/storeBoard.png">
+            <div class="STORE"><p>STORE</p></div>
+            <div class="drink_selected">
                 <img id="selected_drink" src="">
-             </div>
-             <p id="price_selected" class="drink_select_stat price_selected"></p>
-             <p id="units_selected" class="drink_select_stat units_selected"></p>
-             <div id="arrow_left" class="arrow_left disabled"></div>
-             <div id="arrow_right" class="arrow_right disabled"></div>
-             <div id="replay_button" class="button_game button_text down_button replay">
-                 <img src="../img/gameButton.png">
-                 <p>REPLAY</p>
-             </div>
-         </div>
-     </div>
-     <!-- Drinks Stats -->
-     <div class="col s5 offset-s7 commonHeightDrinks generic_text">
+            </div>
+            <p id="price_selected" class="drink_select_stat price_selected"></p>
+            <p id="units_selected" class="drink_select_stat units_selected"></p>
+            <div id="arrow_left" class="arrow_left disabled"></div>
+            <div id="arrow_right" class="arrow_right disabled"></div>
+            <div id="replay_button" class="button_game button_text down_button replay">
+                <img src="../img/gameButton.png">
+                <p>REPLAY</p>
+            </div>
+        </div>
+    </div>
+    <!-- Drinks Stats -->
+    <div class="col s5 offset-s7 commonHeightDrinks generic_text">
         <div class="drinks_stats_inside img_divSize">
             <img src="../img/statsBoard.png">
             <div class="STATS">
-                 <p>STATS</p>
-             </div>
+                <p>STATS</p>
+            </div>
             <table>
-              <tr class="drinks_name">
-                <th></th>
-                <th id="name0"></th>
-                <th id="name1"></th>
-                <th id="name2"></th>
-                <th id="name3"></th>
-                <th id="name4"></th>
-              </tr>
-              <tr>
-                <th id="category0" class="category"></th>
-                <td id="price0"></td>
-                <td id="price1"></td>
-                <td id="price2"></td>
-                <td id="price3"></td>
-                <td id="price4"></td>
-              </tr>
-              <tr>
-                <th id="category1" class="category"></th>
-                <td id="capacity0"></td>
-                <td id="capacity1"></td>
-                <td id="capacity2"></td>
-                <td id="capacity3"></td>
-                <td id="capacity4"></td>
-              </tr>
-              <tr>
-                <th id="category2" class="category"></th>
-                <td id="upd0"></td>
-                <td id="upd1"></td>
-                <td id="upd2"></td>
-                <td id="upd3"></td>
-                <td id="upd4"></td>
-              </tr>
-              <tr>
-                <th id="category3" class="category"></th>
-                <td id="unit_stocked0"></td>
-                <td id="unit_stocked1"></td>
-                <td id="unit_stocked2"></td>
-                <td id="unit_stocked3"></td>
-                <td id="unit_stocked4"></td>
-              </tr>
-              <tr>
-                <th id="category4" class="category"></th>
-                <td id="days_souldout0"></td>
-                <td id="days_souldout1"></td>
-                <td id="days_souldout2"></td>
-                <td id="days_souldout3"></td>
-                <td id="days_souldout4"></td>
-              </tr>
+                <tr class="drinks_name">
+                    <th></th>
+                    <th id="name0"></th>
+                    <th id="name1"></th>
+                    <th id="name2"></th>
+                    <th id="name3"></th>
+                    <th id="name4"></th>
+                </tr>
+                <tr>
+                    <th id="category0" class="category"></th>
+                    <td id="price0"></td>
+                    <td id="price1"></td>
+                    <td id="price2"></td>
+                    <td id="price3"></td>
+                    <td id="price4"></td>
+                </tr>
+                <tr>
+                    <th id="category1" class="category"></th>
+                    <td id="capacity0"></td>
+                    <td id="capacity1"></td>
+                    <td id="capacity2"></td>
+                    <td id="capacity3"></td>
+                    <td id="capacity4"></td>
+                </tr>
+                <tr>
+                    <th id="category2" class="category"></th>
+                    <td id="upd0"></td>
+                    <td id="upd1"></td>
+                    <td id="upd2"></td>
+                    <td id="upd3"></td>
+                    <td id="upd4"></td>
+                </tr>
+                <tr>
+                    <th id="category3" class="category"></th>
+                    <td id="unit_stocked0"></td>
+                    <td id="unit_stocked1"></td>
+                    <td id="unit_stocked2"></td>
+                    <td id="unit_stocked3"></td>
+                    <td id="unit_stocked4"></td>
+                </tr>
+                <tr>
+                    <th id="category4" class="category"></th>
+                    <td id="days_souldout0"></td>
+                    <td id="days_souldout1"></td>
+                    <td id="days_souldout2"></td>
+                    <td id="days_souldout3"></td>
+                    <td id="days_souldout4"></td>
+                </tr>
             </table>
             <div class="total_panel_stats">
                 <div class="left_total_panel">
@@ -152,10 +152,10 @@
                 </div>
             </div>
         </div>
-     </div>
- </div>
-    <!--  Scripts-->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="../js/optimal.js"></script>
-  </body>
+    </div>
+</div>
+<!--  Scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../js/optimal.js"></script>
+</body>
 </html>

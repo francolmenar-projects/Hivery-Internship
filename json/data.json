@@ -1,30 +1,30 @@
 {
-    "config_options": "3",
-    "drink_amount": "4",
-    "opt": "6,2,2,1,1",
-	"soda": {
-        "price": "3.5",
-		"capacity": "5",
-		"upd": "4.3"
-	},
-	"cola": {
-        "price": "3.0",
-        "capacity": "9",
-		"upd": "3.1"
-    },
-  "tropics":{
-        "price": "3.5",
-        "capacity": "9",
-		"upd": "2.3"
+  "config_options": "3",
+  "drink_amount": "4",
+  "opt": "6,2,2,1,1",
+  "soda": {
+    "price": "3.5",
+    "capacity": "5",
+    "upd": "4.3"
   },
-  "cherry":{
-        "price": "4.0",
-        "capacity": "10",
-		"upd": "1.9"
+  "cola": {
+    "price": "3.0",
+    "capacity": "9",
+    "upd": "3.1"
   },
-  "cola can":{
-        "price": "3.0",
-        "capacity": "10",
-		"upd": "1.1"
+  "tropics": {
+    "price": "3.5",
+    "capacity": "9",
+    "upd": "2.3"
+  },
+  "cherry": {
+    "price": "4.0",
+    "capacity": "10",
+    "upd": "1.9"
+  },
+  "cola can": {
+    "price": "3.0",
+    "capacity": "10",
+    "upd": "1.1"
   }
 }

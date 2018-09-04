@@ -1,33 +1,33 @@
 /**
  * Go to the Game page when the button play is clicked
  */
-function goToGameWindow(){
+function goToGameWindow() {
     let err = window.open("../pages/game.html", "_self");
-    if(err === null){
+    if (err === null) {
         console.log("[Error]: window.open() in goToGameWindow()")
     }
     return err;
 }
 
-(function() {
+(function () {
     // Setting the listeners
     let ready = document.getElementById("guide_ready_button");
-    if(ready){
+    if (ready) {
         ready.addEventListener("click", goToGameWindow);
     }
-    else{
+    else {
         console.log("[Error]: 'guide_ready_button' does not exist");
     }
-    }());
+}());
 
 /**
  * Sets the font size relative to the width of the screen
  */
-$(document).ready(function() {
+$(document).ready(function () {
     let width = $(window).width();
     let aux_width = width / 480;
-    let font_size  = aux_width * 1.4;
-    if(width < 1500){
+    let font_size = aux_width * 1.4;
+    if (width < 1500) {
         font_size = aux_width * 1.5;
     }
     // Size od the text box
@@ -41,8 +41,8 @@ $(document).ready(function() {
     $(window).resize(function () {
         let width = $(window).width();
         let aux_width = width / 480;
-        let font_size  = aux_width * 1.4;
-        if(width < 1500){
+        let font_size = aux_width * 1.4;
+        if (width < 1500) {
             font_size = aux_width * 1.5;
         }
         // Size of the text box

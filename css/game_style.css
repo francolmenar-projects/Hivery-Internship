@@ -34,22 +34,22 @@ Generic Background
     height: 100%;
     background: url("../img/generic_background.png") no-repeat center center fixed;
     -webkit-background-size: cover; /* For WebKit*/
-    -moz-background-size: cover;    /* Mozilla*/
-    -o-background-size: cover;      /* Opera*/
-    background-size: cover;         /* Generic*/
+    -moz-background-size: cover; /* Mozilla*/
+    -o-background-size: cover; /* Opera*/
+    background-size: cover; /* Generic*/
 }
 
 /**
 Common header showed in the panel image
  */
-.panel_header{
+.panel_header {
     position: relative;
     height: 22%;
     width: 42%;
-    left:50%;
+    left: 50%;
     top: -105%;
     font-size: 100%;
-    font-family: ConcertOne;
+    font-family: ConcertOne, serif;
     text-align: left;
     color: #3d1f0e;
 }
@@ -65,9 +65,9 @@ Buttons of the game
 /**
 Text inside the button (PLAY, REPLAY,...)
  */
-.button_text p{
-    font-size:50%;
-    font-family: ConcertOne;
+.button_text p {
+    font-size: 50%;
+    font-family: ConcertOne, serif;
     color: #ffffff;
 }
 
@@ -85,7 +85,7 @@ Common attributes of the paragraphs
 /**
 Common values of an image with the size of the div contained in it
  */
-.img_divSize img{
+.img_divSize img {
     position: relative;
     height: 100%;
     width: 100%;
@@ -96,12 +96,12 @@ Common values of an image with the size of the div contained in it
 Sets a div to the center of the screen
  */
 .center_div {
-      position: absolute;
-      margin: auto;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 /**
@@ -135,9 +135,10 @@ Background INDEX
     height: 100%;
     background: url("../img/initial_background.png") no-repeat center center fixed;
     -webkit-background-size: cover; /* For WebKit*/
-    -moz-background-size: cover;    /* Mozilla*/
-    -o-background-size: cover;      /* Opera*/
-    background-size: cover;         /* Generic*/}
+    -moz-background-size: cover; /* Mozilla*/
+    -o-background-size: cover; /* Opera*/
+    background-size: cover; /* Generic*/
+}
 
 /****************************** INTRODUCTION ******************************/
 
@@ -145,15 +146,15 @@ Background INDEX
 Div of the Text box of the introduction
  */
 .initial_text_box {
-      width: 50%;
-      height: 50%;
-      font-size: 4.5em;
+    width: 50%;
+    height: 50%;
+    font-size: 4.5em;
 }
 
 /**
 Button PLAY of the introduction Text Box
  */
-.button_play_intro{
+.button_play_intro {
     position: inherit;
     width: 18%;
     top: 72%;
@@ -166,7 +167,7 @@ Button PLAY of the introduction Text Box
 /**
 Play text inside the play button
 */
-.button_play_intro p{
+.button_play_intro p {
     position: relative;
     left: 22%;
     margin-top: -52%;
@@ -175,13 +176,13 @@ Play text inside the play button
 /**
 The text of the lower part of the guide
  */
-.initial_text_box .describe_text{
+.initial_text_box .describe_text {
     top: -118%;
     width: 42%;
-    left:50%;
+    left: 50%;
     position: relative;
     font-size: 23%;
-    font-family: AndaleMono;
+    font-family: AndaleMono, serif;
     text-align: left;
     color: #000000;
 }
@@ -192,9 +193,9 @@ The text of the lower part of the guide
 Div of the Guide box
  */
 .guide_box {
-      width: 63%;
-      height: 63%;
-      font-size: 4.5em;
+    width: 63%;
+    height: 63%;
+    font-size: 4.5em;
 }
 
 /**
@@ -210,7 +211,7 @@ Button READY of the Guide Box
     text-align: left;
 }
 
-.button_guide p{
+.button_guide p {
     position: relative;
     left: 15%;
     margin-top: -52%;
@@ -232,9 +233,9 @@ Text of the skull and of the star
 .guide_p {
     position: relative;
     top: -20%;
-    left:25%;
+    left: 25%;
     width: 60%;
-    font-family: AndaleMono;
+    font-family: AndaleMono, serif;
     font-size: 34%;
     text-align: left;
     color: #000000;
@@ -276,10 +277,10 @@ Guide label div
 /**
 Guide Label
  */
-.GUIDE p{
+.GUIDE p {
     height: 90%;
     width: 90%;
-    font-family: ConcertOne;
+    font-family: ConcertOne, serif;
     font-size: 100%;
     text-align: left;
     color: #3d1f0e;
@@ -301,7 +302,7 @@ The Counter of the Money and Time at the Game Window
 /**
 Counter icon
  */
-.counter img{
+.counter img {
     position: relative;
     left: 5%;
     height: 90%;
@@ -312,13 +313,13 @@ Counter icon
 /**
 Counter amount
  */
-.counter p{
+.counter p {
     position: relative;
     left: 36%;
     margin-top: -7vh;
     width: 55%;
     height: 60%;
-    font-family: ConcertOne;
+    font-family: ConcertOne, serif;
     font-size: 100%;
     text-align: right;
     color: #fcfcfc;
@@ -329,7 +330,7 @@ Counter amount
 /**
 Banner with an advice
  */
-.advice_banner{
+.advice_banner {
     position: absolute;
     height: 12%;
     font-size: 1.1em;
@@ -350,13 +351,13 @@ The advice inside the banner
 /**
 The text of the advice
  */
-.advice p{
+.advice p {
     position: relative;
     left: 25%;
     margin-top: -15%;
     width: 70%;
     height: 60%;
-    font-family: AndaleMono;
+    font-family: AndaleMono, serif;
     font-size: 100%;
     line-height: 2.5vh;
     text-align: left;
@@ -379,7 +380,7 @@ Where the drinks are stored
 /**
 The image of each drink
  */
-.drinks_machine img{
+.drinks_machine img {
     position: relative;
     top: 5%;
     left: 37.5%;
@@ -389,7 +390,7 @@ The image of each drink
     transition: transform .2s; /* Animation */
 }
 
-.drinks_machine img:hover{
+.drinks_machine img:hover {
     transition: transform .2s; /* Animation */
     transform: scale(1.05);
 }
@@ -397,7 +398,7 @@ The image of each drink
 /**
 Each drink position (DIV)
  */
-.column_machine_drinks div{
+.column_machine_drinks div {
     position: relative;
     height: 100%
 }
@@ -405,7 +406,7 @@ Each drink position (DIV)
 /**
 Each row of the drink machine
  */
-.drinks_machine .drink_row{
+.drinks_machine .drink_row {
     position: relative;
     height: 33%;
 }
@@ -427,7 +428,7 @@ Div containing the selected drink
 /**
 The actual selected drink
  */
-.drink_selected{
+.drink_selected {
     position: relative;
     top: -98%;
     left: 42.5%;
@@ -438,12 +439,12 @@ The actual selected drink
 /**
 Data of the selected drink
  */
-.drink_select_stat{
+.drink_select_stat {
     position: inherit;
     width: 40%;
     top: 75%;
     margin-top: -5vh;
-    font-family: ConcertOne;
+    font-family: ConcertOne, serif;
     font-size: 55%;
 }
 
@@ -457,7 +458,7 @@ Price of the selected drink
 /**
 unites per day of the selected drink
  */
-.units_selected{
+.units_selected {
     left: 55%;
 }
 
@@ -496,14 +497,14 @@ Store label
     height: 10%;
     top: -108%;
     left: 28%;
-    font-family: ConcertOne;
+    font-family: ConcertOne, serif;
     font-size: 100%;
     text-align: left;
     color: #3d1f0e;
 }
 
 /********** DOWN BUTTON **********/
-.down_button{
+.down_button {
     position: relative;
     top: -50vh;
     left: 2.7vw;
@@ -512,7 +513,7 @@ Store label
     display: none;
 }
 
-.down_button p{
+.down_button p {
     position: relative;
     left: 12%;
     margin-top: -9.7vh;
@@ -524,12 +525,12 @@ Store label
 /**
  The place where the stats of the drinks is going to be placed
   */
-.drinks_stats_inside{
+.drinks_stats_inside {
     position: relative;
     top: 15%;
     height: 65%;
     width: 95%;
-    font-family: ConcertOne;
+    font-family: ConcertOne, serif;
     font-size: 3.2em;
     line-height: 20%;
 }
@@ -537,7 +538,7 @@ Store label
 /**
 Table with no bore
  */
-.drinks_stats_inside table, tr, td{
+.drinks_stats_inside table, tr, td {
     font-size: 50%;
     text-align: left;
     color: #000000;
@@ -547,12 +548,12 @@ Table with no bore
 /**
 Table with no bore
  */
-.drinks_stats_inside .category{
-  font-size: 125%;
+.drinks_stats_inside .category {
+    font-size: 125%;
 }
 
-.drinks_stats_inside td{
-  font-size: 150%;
+.drinks_stats_inside td {
+    font-size: 150%;
 }
 
 /**
@@ -568,10 +569,10 @@ Stats of the drinks
 /**
 Row with the names of the drinks
  */
-.drinks_name th{
-  position: relative;
-  transform: rotate(-16deg);
-  font-size: 125%;
+.drinks_name th {
+    position: relative;
+    transform: rotate(-16deg);
+    font-size: 125%;
 }
 
 /**
@@ -591,7 +592,7 @@ STATS label Div
 /**
 Panel with the total calculations of the current choice
  */
-.total_panel_stats{
+.total_panel_stats {
     text-align: left;
     top: -44%;
     left: 5%;
@@ -625,18 +626,18 @@ Left panel with the calculations of the actual choice
 }
 
 .totalLeft_down_header {
-   position: relative;
-   left: 25%;
-   top: -40%;
-      font-size: 60%;
+    position: relative;
+    left: 25%;
+    top: -40%;
+    font-size: 60%;
 }
 
-.revenue_per_year{
-  position: relative;
-  top: -90%;
-  left: 25%;
-  font-size: 110%;
- }
+.revenue_per_year {
+    position: relative;
+    top: -90%;
+    left: 25%;
+    font-size: 110%;
+}
 
 /**
 Right panel with the calculations of the actual choice
@@ -648,16 +649,16 @@ Right panel with the calculations of the actual choice
     left: 50%;
 }
 
-.right_total_panel{
-  position: relative;
-  left: 65%;
-  top: -167%;
+.right_total_panel {
+    position: relative;
+    left: 65%;
+    top: -167%;
 }
 
-.cost_per_year{
-  position: relative;
-  top: -50%;
-  font-size: 110%;
+.cost_per_year {
+    position: relative;
+    top: -50%;
+    font-size: 110%;
 }
 
 /****************************** GAME OVER ******************************/
@@ -674,14 +675,14 @@ DIV containing the GAME OVER text
 /**
 GAME OVER text
  */
-.game_over_div .game_over_text{
-  width: 100%;
-  height: 100%;
-  font-family: Krungthep;
-  font-size: 1100%;
-  line-height: normal;
-  text-align: center;
-  color: #ffffff;
+.game_over_div .game_over_text {
+    width: 100%;
+    height: 100%;
+    font-family: Krungthep, serif;
+    font-size: 1100%;
+    line-height: normal;
+    text-align: center;
+    color: #ffffff;
 }
 
 /****************************** REPLAY ******************************/
@@ -690,24 +691,24 @@ GAME OVER text
 Div of the Text box of the Replay page
  */
 .replay_text_box {
-      width: 50%;
-      height: 50%;
+    width: 50%;
+    height: 50%;
     font-size: 4.5em;
 }
 
-.not_bad{
+.not_bad {
     position: relative;
     width: 100%;
-    top: -109%;
+    top: -111%;
 }
 
 /**
 Common font for the replay text
  */
-.replay_p{
-      font-family: AndaleMono;
-      text-align: left;
-      color: #000000;
+.replay_p {
+    font-family: AndaleMono, serif;
+    text-align: left;
+    color: #000000;
 }
 
 /**
@@ -726,7 +727,7 @@ Button REPLAY of the Replay Text Box
 /**
 REPLAY text inside the replay button
 */
-.button_replay p{
+.button_replay p {
     position: relative;
     left: 13%;
     margin-top: -50%;
@@ -736,36 +737,36 @@ REPLAY text inside the replay button
 /**
 Text inside the replay box
  */
-.replay_text_box  .replay_text{
+.replay_text_box .replay_text {
     position: relative;
-    top: -123%;
+    top: -128%;
     width: 42%;
-    left:50%;
+    left: 50%;
     font-size: 25%;
 }
 
 /**
 Link to the best machine inside the replay box
  */
-.best_machine_text{
+.best_machine_text {
     position: relative;
     top: -50vh;
     width: 42%;
-    left:50%;
+    left: 50%;
     text-decoration: underline;
     cursor: pointer;
     font-size: 25%;
 }
 
 /****************************** OPTIMAL ******************************/
-.disabled{
+.disabled {
     cursor: auto;
 }
 
-.replay{
+.replay {
     display: block;
 }
 
-.no_zoom{
+.no_zoom {
     pointer-events: none;
 }
