@@ -1,4 +1,4 @@
-                                                   Information about JSON file:
+                                     Information about JSON file:
     config_options:
         It is the number of options, including config_options are before the data from the drinks. 
         If any option is added remind to update this value.
@@ -42,7 +42,7 @@
         upd: The Units Per Day consumed of this drink. It is recomendable to use only one decimal. 
              It has to be a positive value.       
                   
-                                                   Rules inside JSON files:
+                                     Rules inside JSON file:
      
     Do NOT change left side values:
         1. price
