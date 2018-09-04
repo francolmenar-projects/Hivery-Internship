@@ -1,5 +1,7 @@
+const json_path = "../json/data.json"; // Path to the JSON file
+
 /**************************** UPPER COUNTERS ****************************/
-const countdown = 90; // Time countdown in seconds
+let countdown; // Time countdown in seconds
 let actual_profit_user = 0.000; // Profit counter
 let actual_cost_user = 0.000; // Profit counter
 /**************************** MESSAGES ****************************/
@@ -11,7 +13,7 @@ let config_options; // The number of configuration options in the JSON
 const img_prefix = "../img/products/"; // Offset to the image folder
 const empty_path = "../img/products/coke-bottle.png"; // Global path to the empty drink
 const empty_drink = "coke-bottle.png"; // Name of the empty drink
-const drinks_name = ["markSoda.png", "markCola.png", "markTropics.png", "cherry_can.png", "cola_can.png"]; // Name of the images of the drinks
+let drinks_name; // Name of the images of the drinks
 /**************************** VENDING MACHINE ****************************/
 // const max_drinks = 4; // We start to count from 0
 let max_drinks; // We start to count from 0
@@ -19,11 +21,10 @@ let actual_drink = 0; // Drink id of the selected one
 const max_machine = 12; // Maximum capacity of the vending machine
 let selected_drinks = 0; // Actual amount of drinks in the vending machine
 /***+++++++++++++++++++++** STATS ***+++++++++++++++++++++**/
-const period_of_time = 365; // Time frame that we consider
-const cost_per_refill = 35; // The cost for refilling the machine
-const penalty_for_day_refill = 2; // Penalty apply when the vending machine has to be refilled every day
-const json_path = "../json/data.json"; // Path to the JSON file
-const drink_order = ["SODA", "COLA", "TROPICS", "CHERRY", "COLA CAN"]; // Order of the drinks inside the data array
+let period_of_time; // Time frame that we consider
+let cost_per_refill; // The cost for refilling the machine
+let penalty_for_day_refill; // Penalty apply when the vending machine has to be refilled every day
+let drink_order; // Order of the drinks inside the data array
 const drink_attr = ["PRICE", "CAPACITY", "UNITS PER DAY", "UNITS STOCKED", "DAYS TILL SOLDOUT"]; // Order of the attributes inside the data array
 let drink_data = [[], [], [], [], []]; // Data stored in a JSON
 let valid = [];
@@ -423,8 +424,6 @@ function addListener(id, action, f_name, origin) {
 }
 
 (function () {
-    // Create the timer
-    createTimer();
     // Set the profit
     setActualProfit();
     // Setting the listeners
@@ -464,9 +463,24 @@ $(document).ready(function () {
         element_arr = $.map(json, function (el) {
             return el
         });
-
+        //Number of options in the configuration file
         config_options = Number(element_arr[0]);
+        // Amount of drinks
         max_drinks = element_arr[1];
+        // Number of seconds of the countdown
+        countdown = parseInt(element_arr[3]);
+        // Period of time in days that the game used to play
+        period_of_time = parseInt(element_arr[4]);
+        // Cost per refilling the vending machine
+        cost_per_refill = parseInt(element_arr[5]);
+        // Extra penalty if you have to refill each day
+        penalty_for_day_refill = parseInt(element_arr[6]);
+        // The name and order of the drinks
+        drink_order = $.map(element_arr[7], function(el) { return el });
+        // The name of the images of the drinks
+        drinks_name = $.map(element_arr[8], function(el) { return el });
+        // Create the timer
+        createTimer();
         // Copy all the data from the JSON to the global variable
         for (let i = config_options; i < element_arr.length; i++) {
             if (areValid([element_arr[i].price, element_arr[i].capacity, element_arr[i].upd]) === -1) {

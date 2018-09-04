@@ -1,7 +1,25 @@
 {
-  "config_options": "3",
+  "config_options": "9",
   "drink_amount": "4",
   "opt": "6,2,2,1,1",
+  "countdown": "93",
+  "period_of_time": "365",
+  "refill_cost": "100",
+  "penalty_day_refill": "2",
+  "drink_name": {
+    "drink0": "SODA",
+    "drink1": "COLA",
+    "drink2": "TROPICS",
+    "drink3": "CHERRY",
+    "drink4": "COLA CAN"
+  },
+  "drink_img": {
+    "img0": "markSoda.png",
+    "img1": "markCola.png",
+    "img2": "markTropics.png",
+    "img3": "cherry_can.png",
+    "img4": "cola_can.png"
+  },
   "soda": {
     "price": "3.5",
     "capacity": "5",
