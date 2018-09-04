@@ -253,6 +253,22 @@ Picture of the star and the skull in the guide text
 }
 
 /**
+Star image
+ */
+.star {
+    width: 114px; height: 118px;
+    background: url('../img/guide_icons.png') -10px -10px;
+}
+
+/**
+Skull image
+ */
+.skull {
+    width: 105px; height: 126px;
+    background: url('../img/guide_icons.png') -10px -148px;
+}
+
+/**
 Lower part of the guide panel
  */
 .lower_part_guide {
