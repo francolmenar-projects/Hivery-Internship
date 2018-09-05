@@ -256,7 +256,8 @@ Picture of the star and the skull in the guide text
 Star image
  */
 .star {
-    width: 114px; height: 118px;
+    width: 114px;
+    height: 118px;
     background: url('../img/guide_icons.png') -10px -10px;
 }
 
@@ -264,7 +265,8 @@ Star image
 Skull image
  */
 .skull {
-    width: 105px; height: 126px;
+    width: 105px;
+    height: 126px;
     background: url('../img/guide_icons.png') -10px -148px;
 }
 
@@ -561,10 +563,9 @@ Table with no bore
     border: none;
 }
 
-.two_less_table{
+.two_less_table {
     line-height: 80%;
 }
-
 
 /**
 Table with no bore
@@ -623,7 +624,7 @@ Panel with the total calculations of the current choice
     font-size: 30px;
 }
 
-.two_less_total{
+.two_less_total {
     position: relative;
     top: -50%;
 }
@@ -747,16 +748,17 @@ Button REPLAY of the Replay Text Box
     height: 12%;
     left: 59%;
     transform: scale(1.5);
-    text-align: left;
+    text-align: center;
 }
 
 /**
 REPLAY text inside the replay button
 */
-.button_replay p {
-    position: relative;
+.img_divSize .button_replay p {
+    text-align: center;
+    position: absolute;
     left: 13%;
-    margin-top: -50%;
+    margin-top: -8vh;
     font-size: 43%;
 }
 
