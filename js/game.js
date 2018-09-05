@@ -28,6 +28,10 @@ let drink_order; // Order of the drinks inside the data array
 const drink_attr = ["PRICE", "CAPACITY", "UNITS PER DAY", "UNITS STOCKED", "DAYS TILL SOLDOUT"]; // Order of the attributes inside the data array
 let drink_data = [[], [], [], [], []]; // Data stored in a JSON
 let valid = [];
+/***+++++++++++++++++++++** BOOLEANS TO SHOW DATA ***+++++++++++++++++++++**/
+const show_sold_out = false; // Determines if the days until sold out are showed or not
+const show_stock = false; // Determines if the units stocked are showed or not
+
 
 /************************************** USER INTERFACE  **************************************/
 
@@ -475,9 +479,13 @@ $(document).ready(function () {
         // Extra penalty if you have to refill each day
         penalty_for_day_refill = parseInt(element_arr[6]);
         // The name and order of the drinks
-        drink_order = $.map(element_arr[7], function(el) { return el });
+        drink_order = $.map(element_arr[7], function (el) {
+            return el
+        });
         // The name of the images of the drinks
-        drinks_name = $.map(element_arr[8], function(el) { return el });
+        drinks_name = $.map(element_arr[8], function (el) {
+            return el
+        });
         // Create the timer
         createTimer();
         // Copy all the data from the JSON to the global variable
@@ -546,6 +554,8 @@ function change_text_of_elem(name, data, f_name) {
  * Load the stats to the HTML
  */
 function loadStats() {
+    // Set the height between lines depending of the number of rows we are showing
+    setHeight();
     // Load the drinks' name
     for (let i = 0; i < drink_order.length; i++) {
         if (valid[i] === 0) {
@@ -554,7 +564,20 @@ function loadStats() {
     }
     // Load the categories' name
     for (let i = 0; i < drink_attr.length; i++) {
-        change_text_of_elem("category" + i, drink_attr[i], "loadStats");
+        // Check what rows are we showing or not
+        if (i === 3) {
+            if (show_stock) {
+                change_text_of_elem("category" + i, drink_attr[i], "loadStats");
+            }
+        }
+        else if (i === 4) {
+            if (show_sold_out) {
+                change_text_of_elem("category" + i, drink_attr[i], "loadStats");
+            }
+        }
+        else {
+            change_text_of_elem("category" + i, drink_attr[i], "loadStats");
+        }
     }
     // Load the stats of each drink
     for (let i = 0; i < drink_data.length; i++) {
@@ -563,9 +586,13 @@ function loadStats() {
             change_text_of_elem("capacity" + i, drink_data[i][1], "loadStats");
             change_text_of_elem("upd" + i, drink_data[i][2], "loadStats");
             drink_data[i][3] = 0;
-            change_text_of_elem("unit_stocked" + i, drink_data[i][3], "loadStats");
+            if (show_stock) {
+                change_text_of_elem("unit_stocked" + i, drink_data[i][3], "loadStats");
+            }
             drink_data[i][4] = "-";
-            change_text_of_elem("days_souldout" + i, drink_data[i][4], "loadStats");
+            if (show_sold_out) {
+                change_text_of_elem("days_souldout" + i, drink_data[i][4], "loadStats");
+            }
         }
     }
     nextValidDrink();
@@ -744,7 +771,10 @@ function updateStock(clicked_img, actual_img, replacement_case) {
     if (remove_id !== -1) {
         drink_data[remove_id][3] = (Number)(drink_data[remove_id][3]) - (Number)(units_to_remove);
     }
-    setActualCapacity();
+    // Check if we show the stocked
+    if (show_stock) {
+        setActualCapacity();
+    }
 }
 
 /**
@@ -768,7 +798,10 @@ function updateSoldout(clicked_img, actual_img, replacement_case) {
         console.log("ERROR: Wrong replacement_case (updateSoldout)");
         return;
     }
-    setActualSold();
+    // Check if we show the sold out
+    if (show_sold_out) {
+        setActualSold();
+    }
 }
 
 /**
@@ -878,4 +911,14 @@ function setFont() {
     // Size of the headers of Total div
     let totalH_font = stats_font / 5;
     $(".total_header").css("font-size", totalH_font + "em");
+}
+
+/**
+ * Sets the height of the table according to the number of elements we want to show
+ */
+function setHeight() {
+    if (!show_sold_out && !show_stock) {
+        $("#table_stats").addClass("two_less_table");
+        $(".total_panel_stats").addClass("two_less_total");
+    }
 }

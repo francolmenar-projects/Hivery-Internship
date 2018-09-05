@@ -18,9 +18,10 @@ function setActualProfit() {
 
     let difference = Number(opt_revenue) - Number(opt_cost);
     difference = difference - revenue;
+    let revenue_aux = parseInt(revenue).toFixed(3);
     // You loose
     if (difference !== 0) {
-        document.getElementById("replay_text").innerHTML = lost[0] + revenue + lost[1] + difference + lost[2];
+        document.getElementById("replay_text").innerHTML = lost[0] + revenue_aux + lost[1] + parseInt(difference).toFixed(3) + lost[2];
     }
     // You win
     else {

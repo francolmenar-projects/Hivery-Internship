@@ -561,6 +561,11 @@ Table with no bore
     border: none;
 }
 
+.two_less_table{
+    line-height: 80%;
+}
+
+
 /**
 Table with no bore
  */
@@ -616,6 +621,11 @@ Panel with the total calculations of the current choice
     width: 90%;
     position: relative;
     font-size: 30px;
+}
+
+.two_less_total{
+    position: relative;
+    top: -50%;
 }
 
 /**
