@@ -1,5 +1,7 @@
-let lost = ["You made $", " which is just $", " less than me. But I’m still the best!!!"];
-let win = "That's amazing!!! Yoy made the same money as me, you have been lucky.";
+const json_path = "../json/msg.json"; // Path to the JSON file
+
+let lost = []; // Lost messages
+let win; // Winning messages
 
 /**
  * Go to the Game page when the button play is clicked
@@ -41,12 +43,26 @@ function goToOptimal() {
     // Setting the listeners
     document.getElementById("replay_button").addEventListener("click", goToGameWindow);
     document.getElementById("best_machine").addEventListener("click", goToOptimal);
-    // Set the profit
-    setActualProfit();
 }());
 
 $(document).ready(function () {
     setFont();
+    $.getJSON(json_path, function (json) {
+        let element_arr;
+        // Convert the JSON into an array
+        element_arr = $.map(json, function (el) {
+            return el
+        });
+        // Lost messages
+        lost = $.map(element_arr[0], function (el) {
+            return el
+        });
+        // Winning messages
+        max_drinks = element_arr[1];
+        // Set the profit
+        setActualProfit();
+    });
+
 });
 
 // Set the font size of the texts

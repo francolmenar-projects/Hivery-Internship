@@ -466,7 +466,7 @@ $(document).ready(function () {
         element_arr = $.map(json, function (el) {
             return el
         });
-        //Number of options in the configuration file
+        // Number of options in the configuration file
         config_options = Number(element_arr[0]);
         // Amount of drinks
         max_drinks = element_arr[1];

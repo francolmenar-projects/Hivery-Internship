@@ -1,4 +1,4 @@
-                                     Information about JSON file:
+                                     Information about data.JOSN file:
     config_options:
         It is the number of options, including config_options are before the data from the drinks. 
         If any option is added remind to update this value.
@@ -37,10 +37,29 @@
         The order is very important as they are assigned by order.
             
     <drink_name>: 
-        price: The price of the drink. It is recomendable to use one decimal even when it is 0 ( e.g: 3.0)
-        capacity: Capacity of the drink in one row. It has to be an integer value and non negative.
-        upd: The Units Per Day consumed of this drink. It is recomendable to use only one decimal. 
-             It has to be a positive value.       
+            price: The price of the drink. It is recomendable to use one decimal even when it is 0 ( e.g: 3.0)
+            
+            capacity: Capacity of the drink in one row. It has to be an integer value and non negative.
+            
+            upd: The Units Per Day consumed of this drink. It is recomendable to use only one decimal. 
+                 It has to be a positive value.     
+                 
+            It is not recommendable to use capacities lower than the UDP even the calculations should be correct.
+             
+             
+                                Information about data.JOSN file:
+                                
+    lost:
+           Lost messages showed to the user. It is an array with three Strings which are:
+           
+           lost0: It is the part of the message showed to the user before the money that he made.
+           
+           lost1: Part of the message between the money that the user made and the difference with the Game.
+           
+           lost2: The last part of the message. From the difference of money to the end.
+           
+    win:
+        Message showed when the user wins the game. It is just one String.       
                   
                                      Rules inside JSON file:
      
