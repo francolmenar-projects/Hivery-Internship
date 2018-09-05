@@ -47,7 +47,7 @@
             It is not recommendable to use capacities lower than the UDP even the calculations should be correct.
              
              
-                                Information about data.JOSN file:
+                                Information about msg.JOSN file:
                                 
     lost:
            Lost messages showed to the user. It is an array with three Strings which are:
@@ -59,7 +59,17 @@
            lost2: The last part of the message. From the difference of money to the end.
            
     win:
-        Message showed when the user wins the game. It is just one String.       
+        Message showed when the user wins the game. It is just one String.   
+        
+    initial: 
+        Initial message showed in the upper part of the game when 1.30 sec are remaining.
+        
+    oneMin: 
+        Message showed when there is one minute left.
+        
+    hurryUp: 
+        Message showed when there is 30 seconds left.
+        
                   
                                      Rules inside JSON file:
      
@@ -68,12 +78,6 @@
         2. capacity
         3. upd
         4. drink_amount
-        
-    Can change left side values with no change, but it is not recomendable:
-        1. config_options
-        2. drink_amount
-        3. opt
-        4. Name of the drinks before the data
         
     Do NOT change the order of the options
 

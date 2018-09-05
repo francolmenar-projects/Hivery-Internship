@@ -1,13 +1,14 @@
-const json_path = "../json/data.json"; // Path to the JSON file
+const json_path = "../json/data.json"; // Path to the JSON file with the Data
+const msg_path = "../json/msg.json"; // Path to the JSON file with the messages
 
 /**************************** UPPER COUNTERS ****************************/
 let countdown; // Time countdown in seconds
 let actual_profit_user = 0.000; // Profit counter
 let actual_cost_user = 0.000; // Profit counter
 /**************************** MESSAGES ****************************/
-const hurryUp = "Hurry up!! You only have 30 seconds left.";
-const oneMin = "One minute left. Do you really think that you can bet me?.";
-const initialMsg = "I'm Haoui. Are you trying to bet me? Good luck!!";
+let initialMsg = "I'm Haoui. Are you trying to bet me? Good luck!!";
+let oneMin = "One minute left. Do you really think that you can bet me?.";
+let hurryUp = "Hurry up!! You only have 30 seconds left.";
 /**************************** IMAGES ****************************/
 let config_options; // The number of configuration options in the JSON
 const img_prefix = "../img/products/"; // Offset to the image folder
@@ -460,6 +461,7 @@ function addListener(id, action, f_name, origin) {
 $(document).ready(function () {
     // Set the font according to the screen
     setFont();
+    // Get the data.JSON
     $.getJSON(json_path, function (json) {
         let element_arr;
         // Convert the JSON into an array
@@ -511,6 +513,17 @@ $(document).ready(function () {
         nextDrink();
         setOptimum(element_arr[2]);
     });
+    // Get the messages for the advice
+     $.getJSON(msg_path, function (json) {
+         let element_arr;
+        // Convert the JSON into an array
+        element_arr = $.map(json, function (el) {
+            return el
+        });
+        initialMsg = element_arr[2];
+        oneMin = element_arr[3];
+        hurryUp = element_arr[4];
+     });
 });
 
 /**

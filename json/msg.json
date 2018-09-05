@@ -4,5 +4,8 @@
     "lost1": " which is just $",
     "lost2": " less than me. But I’m still the best!!!"
   },
-  "win": "That's amazing!!! Yoy made the same money as me, you have been lucky."
+  "win": "That's amazing!!! Yoy made the same money as me, you have been lucky.",
+  "initial": "I'm Haoui. Are you trying to bet me? Good luck!!",
+  "oneMin" : "One minute left. Do you really think that you can bet me?.",
+  "hurryUp": "Hurry up!! You only have 30 seconds left."
 }
