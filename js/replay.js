@@ -58,7 +58,7 @@ $(document).ready(function () {
             return el
         });
         // Winning messages
-        max_drinks = element_arr[1];
+        win = element_arr[1];
         // Set the profit
         setActualProfit();
     });
