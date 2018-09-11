@@ -35,7 +35,7 @@ $(document).ready(function () {
  */
 function setScale() {
     let width = $(window).width();
-    if(width > 1440){
+    if (width > 1440) {
         let aux = width - 1440;
         aux = 1 + (aux / 5000);
         $('html, body').css("zoom", aux);
