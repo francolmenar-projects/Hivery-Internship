@@ -26,30 +26,20 @@ function goToGuide() {
  * Sets the font size and the text
  */
 $(document).ready(function () {
-    setFont();
+    setScale();
     setText();
 });
 
 /**
- * Set the font of the text dynamically
+ * Set the scale of the elements dynamically
  */
-function setFont() {
-    // Introduction Text
+function setScale() {
     let width = $(window).width();
-    width = width / 480;
-    let font_size = width * 1.5;
-    $("#initial_text_box").css("font-size", font_size + "em");
-    // Resizing the window
-    $(window).resize(function () {
-        // Introduction Text
-        let width = $(window).width();
-        let aux_width = width / 480;
-        let font_size = aux_width * 1.5;
-        $("#initial_text_box").css("font-size", font_size + "em");
-        // Introduction Button
-        let button_size = width / 960;
-        $("#introduction_play_button").css("transform", "escale(" + button_size + ")");
-    });
+    if(width > 1440){
+        let aux = width - 1440;
+        aux = 1 + (aux / 5000);
+        $('html, body').css("zoom", aux);
+    }
 }
 
 /**

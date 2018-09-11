@@ -43,12 +43,10 @@ Generic Background
 Common header showed in the panel image
  */
 .panel_header {
-    position: relative;
-    height: 22%;
-    width: 42%;
-    left: 50%;
-    top: -105%;
-    font-size: 100%;
+    position: absolute;
+    left: 360px;
+    top: -20px;
+    font-size: 70px;
     font-family: ConcertOne, serif;
     text-align: left;
     color: #3d1f0e;
@@ -146,45 +144,73 @@ Background INDEX
 Div of the Text box of the introduction
  */
 .initial_text_box {
+    position: absolute;
     width: 50%;
     height: 50%;
-    font-size: 4.5em;
 }
 
 /**
 Button PLAY of the introduction Text Box
  */
 .button_play_intro {
-    position: inherit;
-    width: 18%;
-    top: 72%;
-    height: 12%;
-    left: 69%;
+    position: absolute;
+    top: 300px;
+    left: 500px;
+}
+
+.button_play_intro img{
+    position: absolute;
+    resize: none;
     transform: scale(1.3);
-    text-align: left;
 }
 
 /**
 Play text inside the play button
 */
 .button_play_intro p {
-    position: relative;
-    left: 22%;
-    margin-top: -52%;
+    position: absolute;
+    left: 15px;
+    margin-top: -10px;
+    font-size: 50px;
 }
 
 /**
 The text of the lower part of the guide
  */
 .initial_text_box .describe_text {
-    top: -118%;
-    width: 42%;
-    left: 50%;
-    position: relative;
-    font-size: 23%;
+    position: absolute;
+    top: 130px;
+    width: 300px;
+    left: 360px;
+    font-size: 18px;
     font-family: AndaleMono, serif;
-    text-align: left;
     color: #000000;
+}
+
+/**
+The board image in the introduction
+ */
+.board {
+    height: 413px;
+    width: 720px;
+    resize: none;
+}
+
+/*
+Play button image in the introduction
+ */
+.play_but {
+    height: 50px;
+    width: 130px;
+    resize: none;
+}
+
+/**
+The text inside the play button
+ */
+.play_text {
+    font-size: 20px;
+    resize: none;
 }
 
 /****************************** GUIDE ******************************/
