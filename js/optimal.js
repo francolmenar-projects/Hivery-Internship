@@ -1,5 +1,5 @@
 /**************************** MESSAGES ****************************/
-const replay_msg = "Well tried. Do you dare to try it again?";
+var replay_msg;
 /**************************** IMAGES ****************************/
 let config_options; // The number of configuration options in the JSON
 const img_prefix = "../img/products/"; // Offset to the image folder
@@ -11,6 +11,7 @@ let max_drinks; // We start to count from 0
 let actual_drink = 0; // Drink id of the selected one
 /***+++++++++++++++++++++** STATS ***+++++++++++++++++++++**/
 const json_path = "../json/data.json"; // Path to the JSON file
+const msg_path = "../json/msg.json"; // Path to the JSON file with msg
 const drink_order = ["SODA", "COLA", "TROPICS", "CHERRY", "COLA CAN"]; // Order of the drinks inside the data array
 const drink_attr = ["PRICE", "CAPACITY", "UNITS PER DAY", "UNITS STOCKED", "DAYS TILL SOLDOUT"]; // Order of the attributes inside the data array
 let drink_data = [[], [], [], [], []]; // Data stored in a JSON
@@ -145,7 +146,18 @@ function goToGameWindow() {
  * Read the data from the JSON file and store it
  */
 $(document).ready(function () {
+    // Set the font according to the screen
     setFont();
+    // Get the data.JSON
+    setData();
+    // Get the messages
+    setText();
+});
+
+/**
+ * Set the Data from the JSON
+ */
+function setData() {
     $.getJSON(json_path, function (json) {
         let element_arr;
         // Convert the JSON into an array
@@ -178,7 +190,64 @@ $(document).ready(function () {
         loadEmpty();
         displayOptimum(element_arr[2]);
     });
-});
+}
+
+/**
+ * Reads the text from the JSON file and loads it to the Screen
+ */
+function setText() {
+    let element_arr;
+    // Check if we have already read the JSON
+    if (localStorage.getItem("json_msg") !== null) {
+        element_arr = JSON.parse(localStorage.getItem("json_msg"));
+        setTextAux(element_arr)
+    }
+    // Read from the file
+    else {
+        $.getJSON(msg_path, function (json) {
+            // Convert the JSON into an array
+            element_arr = $.map(json, function (el) {
+                return el
+            });
+            setTextAux(element_arr);
+        });
+    }
+}
+
+/**
+ * Sets the msg from the JSON to the elements
+ * @param element_arr
+ */
+function setTextAux(element_arr) {
+    // Header of the selected drink
+    document.getElementById("selected_h").innerHTML = element_arr[10];
+    // Replay button
+    document.getElementById("replay_but").innerHTML = element_arr[18];
+    // Stats header
+    document.getElementById("stats_h").innerHTML = element_arr[12];
+    // Revenue header
+    document.getElementById("revenue_h").innerHTML = element_arr[13];
+    // Revenue initial value
+    document.getElementById("revenue_stats").innerHTML = element_arr[14];
+    // Cost header
+    document.getElementById("cost_h").innerHTML = element_arr[15];
+    // Cost initial value
+    document.getElementById("cost_stats").innerHTML = element_arr[16];
+    // Pop up message
+    replay_msg = element_arr[23];
+    // Replay button
+    document.getElementById("replay_but").innerHTML = element_arr[18];
+    // Link to optimal
+    document.getElementById("best_machine").innerHTML = element_arr[19];
+    // Lost messages
+    lost = $.map(element_arr[20], function (el) {
+        return el
+    });
+    // Winning messages
+    win = element_arr[21];
+    // Winning header
+    win_h = element_arr[22];
+}
 
 /**
  * Check if the given array of drink data is valid

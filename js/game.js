@@ -155,13 +155,13 @@ function setActualProfit() {
     let profit = document.getElementById("actual_profit");
     let revenue = document.getElementById("revenue_stats");
     if (profit) {
-        profit.innerHTML = actual_profit_user.toFixed(3).toString();
+        profit.innerHTML = actual_profit_user.toFixed(0).toString();
     }
     else {
         console.log("[Error]: element 'actual_profit' does not exist in setActualProfit()");
     }
     if (revenue) {
-        revenue.innerHTML = "$" + actual_profit_user.toFixed(3).toString();
+        revenue.innerHTML = "$" + actual_profit_user.toFixed(0).toString();
     }
     else {
         console.log("[Error]: element 'revenue_stats' does not exist in setActualProfit()");
@@ -204,7 +204,7 @@ function setActualSold() {
 function setActualCost() {
     let actual_cost = document.getElementById("cost_stats");
     if (actual_cost) {
-        actual_cost.innerHTML = actual_cost_user.toFixed(3).toString();
+        actual_cost.innerHTML = "$" + actual_cost_user.toFixed(0).toString();
     }
     else {
         console.log("[Error]: element 'cost_stats' does not exist in setActualCost()");
@@ -456,12 +456,22 @@ function addListener(id, action, f_name, origin) {
 /************************************** STAT DATA  **************************************/
 
 /**
- * Read the data from the JSON file and store it
+ * Set the font of the text
+ * Read the data and messages from the JSON files and store it
  */
 $(document).ready(function () {
     // Set the font according to the screen
     setFont();
     // Get the data.JSON
+    setData();
+    // Get the messages
+    setText();
+});
+
+/**
+ * Set the Data from the JSON
+ */
+function setData() {
     $.getJSON(json_path, function (json) {
         let element_arr;
         // Convert the JSON into an array
@@ -513,18 +523,56 @@ $(document).ready(function () {
         nextDrink();
         setOptimum(element_arr[2]);
     });
-    // Get the messages for the advice
-     $.getJSON(msg_path, function (json) {
-         let element_arr;
-        // Convert the JSON into an array
-        element_arr = $.map(json, function (el) {
-            return el
+}
+
+/**
+ * Reads the text from the JSON file and loads it to the Screen
+ */
+function setText() {
+    let element_arr;
+    // Check if we have already read the JSON
+    if (localStorage.getItem("json_msg") !== null) {
+        element_arr = JSON.parse(localStorage.getItem("json_msg"));
+        setTextAux(element_arr)
+    }
+    // Read from the file
+    else {
+        $.getJSON(json_path, function (json) {
+            // Convert the JSON into an array
+            element_arr = $.map(json, function (el) {
+                return el
+            });
+            setTextAux(element_arr);
         });
-        initialMsg = element_arr[2];
-        oneMin = element_arr[3];
-        hurryUp = element_arr[4];
-     });
-});
+    }
+}
+
+/**
+ * Sets the msg from the JSON to the elements
+ * @param element_arr
+ */
+function setTextAux(element_arr) {
+    // Initial pop up message
+    initialMsg = element_arr[7];
+    // Second pop up message
+    oneMin = element_arr[8];
+    // Third pop up message
+    hurryUp = element_arr[9];
+    // Header of the selected drink
+    document.getElementById("selected_h").innerHTML = element_arr[10];
+    // Submit button
+    document.getElementById("submit_but").innerHTML = element_arr[11];
+    // Stats header
+    document.getElementById("stats_h").innerHTML = element_arr[12];
+    // Revenue header
+    document.getElementById("revenue_h").innerHTML = element_arr[13];
+    // Revenue initial value
+    document.getElementById("revenue_stats").innerHTML = element_arr[14];
+    // Cost header
+    document.getElementById("cost_h").innerHTML = element_arr[15];
+    // Cost initial value
+    document.getElementById("cost_stats").innerHTML = element_arr[16];
+}
 
 /**
  * Check if the given array of drink data is valid
