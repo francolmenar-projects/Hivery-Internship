@@ -91,8 +91,10 @@ function createTimer() {
     // Set the default countdown time
     let time_left = countdown;
     let min, second, new_time;
+    let aux = 0;
     // This code is executed each second
     setInterval(function () {
+        aux++;
         new_time = "";
         second = time_left % 60;
         min = parseInt(time_left / 60);
@@ -123,15 +125,16 @@ function createTimer() {
         document.getElementById("timer").innerHTML = new_time;
         // Update the timer value for the next iteration
         time_left--;
+        // Initial
+        if (aux === 5) {
+            showAdvice(initialMsg);
+        }
+        else if (aux === 13) {
+            hideAdvice();
+        }
         // If there is no time left the time is over
         if (time_left < 0) {
             goToGameOver();
-        }
-        else if (time_left === 85) {
-            showAdvice(initialMsg);
-        }
-        else if (time_left === 78) {
-            hideAdvice();
         }
         else if (time_left === 60) {
             showAdvice(oneMin);
