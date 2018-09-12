@@ -24,6 +24,34 @@ Krungthep Font
     src: url("font/Krungthep.ttf");
 }
 
+/**
+Background Resize
+*/
+@media screen and (max-width: 1024px) {
+    .background_default {
+        width: 1024px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .background_default {
+        width: 100%;
+    }
+}
+
+@media screen and (max-height: 768px) {
+    .background_default {
+        height: 768px;
+    }
+
+}
+
+@media screen and (min-height: 768px) {
+    .background_default {
+        height: 100%;
+    }
+}
+
 /****************************** COMMON ******************************/
 
 body {
@@ -41,6 +69,7 @@ Generic Background
     -moz-background-size: cover; /* Mozilla*/
     -o-background-size: cover; /* Opera*/
     background-size: cover; /* Generic*/
+
 }
 
 /**
