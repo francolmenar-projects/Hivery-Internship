@@ -41,7 +41,6 @@ Generic Background
     -moz-background-size: cover; /* Mozilla*/
     -o-background-size: cover; /* Opera*/
     background-size: cover; /* Generic*/
-    min-height: 100%
 }
 
 /**
