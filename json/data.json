@@ -2,7 +2,7 @@
   "config_options": "9",
   "drink_amount": "4",
   "opt": "3,4,2,2,1",
-  "countdown": "120",
+  "countdown": "1200",
   "period_of_time": "365",
   "refill_cost": "40",
   "penalty_day_refill": "2",
@@ -22,27 +22,27 @@
   },
   "soda": {
     "price": "3.50",
-    "capacity": "8.00",
-    "upd": "4.00"
+    "capacity": "11.00",
+    "upd": "5.60"
   },
   "cola": {
     "price": "3.50",
-    "capacity": "8.00",
-    "upd": "5.30"
+    "capacity": "11.00",
+    "upd": "5.40"
   },
   "tropics": {
     "price": "3.50",
-    "capacity": "8.00",
-    "upd": "2.60"
+    "capacity": "11.00",
+    "upd": "3.60"
   },
   "cherry": {
-    "price": "2.50",
-    "capacity": "10.00",
-    "upd": "3.30"
+    "price": "3.00",
+    "capacity": "9.00",
+    "upd": "1.50"
   },
   "cola can": {
-    "price": "4.00",
-    "capacity": "10.00",
+    "price": "3.00",
+    "capacity": "9.00",
     "upd": "1.60"
   }
 }
