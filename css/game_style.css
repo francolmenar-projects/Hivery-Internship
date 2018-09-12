@@ -757,19 +757,22 @@ DIV containing the GAME OVER text
     position: absolute;
     width: 75%;
     height: 25%;
-    font-size: 350px;
 }
 
 /**
 GAME OVER text
  */
-.game_over_div .game_over_text {
-    width: 100%;
+.game_over_div p {
+    position: absolute;
+    width: 200%;
     height: 100%;
+    top: -60px;
+    left: -20px;
     font-family: Krungthep, serif;
     line-height: normal;
-    text-align: center;
+    text-align: left;
     color: #ffffff;
+    font-size: 200px;
 }
 
 /****************************** REPLAY ******************************/
