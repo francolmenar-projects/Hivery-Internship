@@ -101,15 +101,6 @@ Sets a div to the center of the screen
 }
 
 /**
-The common Top and Height variables to the elements in the middle (Drinks)
- */
-.commonHeightDrinks {
-    top: 10%;
-    height: 80%;
-    position: absolute;
-}
-
-/**
 Making a div not able of selecting the text or elements
  */
 .noSelect {
@@ -331,41 +322,50 @@ Text inside the button
 
 /****************************** GAME ******************************/
 
-/********** MONEYCOUNTER & TIMECOUNTER**********/
+/********** MONEYCOUNTER & TIMECOUNTER **********/
 
 /**
 The Counter of the Money and Time at the Game Window
  */
 .counter {
     position: absolute;
-    height: 10%;
-    font-size: 2em;
+    height: 84px;
 }
 
 /**
 Counter icon
  */
-.counter img {
-    position: relative;
-    left: 5%;
-    height: 90%;
-    width: 90%;
-    margin-top: 2%;
+.counter_img {
+    position: absolute;
+    left: 27px;
+    height: 76px;
+    width: 303px;
+    margin-top: 7px;
+    resize: none;
 }
 
 /**
 Counter amount
  */
-.counter p {
-    position: relative;
-    left: 36%;
-    margin-top: -7vh;
-    width: 55%;
-    height: 60%;
+.counter_p {
+    position: absolute;
+    left: 135px;
+    margin-top: 29px;
+    width: 180px;
+    height: 30px;
     font-family: ConcertOne, serif;
-    font-size: 100%;
+    font-size: 30px;
     text-align: right;
     color: #fcfcfc;
+}
+
+/**
+Position of the time counter
+ */
+.time_counter {
+    position: absolute;
+    height: 84px;
+    left: 1080px;
 }
 
 /********** ADVICE **********/
@@ -375,49 +375,62 @@ Banner with an advice
  */
 .advice_banner {
     position: absolute;
-    height: 12%;
-    font-size: 1.1em;
+    left: 390px;
+    height: 65px;
+    font-size: 17px;
 }
 
 /**
 The advice inside the banner
  */
 .advice {
-    top: 10%;
-    left: 10%;
-    height: 110%;
-    width: 80%;
-    position: relative;
+    position: absolute;
+    top: 10px;
+    left: 55px;
+    height: 110px;
+    width: 80px;
     display: none;
+}
+
+.advice img {
+    position: absolute;
+    width: 558px;
+    height: 120px;
 }
 
 /**
 The text of the advice
  */
 .advice p {
-    position: relative;
-    left: 25%;
-    margin-top: -15%;
-    width: 70%;
-    height: 60%;
+    position: absolute;
+    left: 135px;
+    margin-top: 22px;
+    width: 380px;
+    height: 75px;
     font-family: AndaleMono, serif;
-    font-size: 100%;
-    line-height: 2.5vh;
+    line-height: 25px;
     text-align: left;
     color: #333333;
 }
 
 /********** DRINK MACHINE **********/
 
+.drink_mach_div {
+    position: absolute;
+    top: 84px;
+    width: 458px;
+    height: 672px;
+}
+
 /**
 Where the drinks are stored
  */
 .drinks_machine {
+    position: absolute;
     top: 21%;
     left: 10%;
     height: 65%;
     width: 85%;
-    position: relative;
 }
 
 /**
@@ -457,6 +470,17 @@ Each row of the drink machine
 /********** ACTUAL DRINK **********/
 
 /**
+Middle div panel
+ */
+.select_div {
+    position: absolute;
+    top: 84px;
+    left: 480px;
+    width: 338px;
+    height: 672px;
+}
+
+/**
 Div containing the selected drink
  */
 .actual_drink_inside {
@@ -465,7 +489,7 @@ Div containing the selected drink
     left: 5%;
     height: 70%;
     width: 85%;
-    font-size: 3.4em;
+    font-size: 50px;
 }
 
 /**
@@ -486,7 +510,7 @@ Data of the selected drink
     position: inherit;
     width: 40%;
     top: 75%;
-    margin-top: -5vh;
+    margin-top: -40px;
     font-family: ConcertOne, serif;
     font-size: 55%;
 }
@@ -509,11 +533,11 @@ unites per day of the selected drink
 Left arrow in the drink selector
  */
 .arrow_left {
-    position: relative;
-    top: -44.3vh;
-    left: 3.8vw;
-    width: 4.8vw;
-    height: 11vh;
+    position: absolute;
+    top: 375px;
+    left: 50px;
+    width: 69px;
+    height: 92px;
     border-radius: 40%;
     cursor: pointer;
 }
@@ -522,11 +546,11 @@ Left arrow in the drink selector
 Right arrow in the drink selector
  */
 .arrow_right {
-    position: relative;
-    top: -55.2vh;
-    left: 12.7vw;
-    width: 4.8vw;
-    height: 11vh;
+    position: absolute;
+    top: 375px;
+    left: 170px;
+    width: 69px;
+    height: 92px;
     border-radius: 40%;
     cursor: pointer;
 }
@@ -548,22 +572,33 @@ Store label
 
 /********** DOWN BUTTON **********/
 .down_button {
-    position: relative;
-    top: -50vh;
-    left: 2.7vw;
-    height: 12vh;
-    width: 16vw;
+    position: absolute;
+    top: 508px;
+    left: 30px;
+    width: 230px;
+    height: 101px;
     display: none;
 }
 
 .down_button p {
     position: relative;
     left: 12%;
-    margin-top: -9.7vh;
-    font-size: 1.1em;
+    margin-top: -82px;
+    font-size: 55px;
 }
 
 /********** STATS **********/
+
+/**
+Div
+ */
+.stats_div {
+    position: absolute;
+    top: 84px;
+    left: 840px;
+    width: 578px;
+    height: 672px;
+}
 
 /**
  The place where the stats of the drinks is going to be placed
@@ -574,7 +609,7 @@ Store label
     height: 65%;
     width: 95%;
     font-family: ConcertOne, serif;
-    font-size: 3.2em;
+    font-size: 50px;
     line-height: 20%;
 }
 
@@ -665,7 +700,7 @@ Font size of the header of the total values
 Font size of the total values
  */
 .total_values {
-    font-size: 3.2em;
+    font-size: 50px;
 }
 
 /**
@@ -719,9 +754,10 @@ Right panel with the calculations of the actual choice
 DIV containing the GAME OVER text
  */
 .game_over_div {
+    position: absolute;
     width: 75%;
     height: 25%;
-    font-size: 1em;
+    font-size: 350px;
 }
 
 /**
@@ -731,7 +767,6 @@ GAME OVER text
     width: 100%;
     height: 100%;
     font-family: Krungthep, serif;
-    font-size: 1100%;
     line-height: normal;
     text-align: center;
     color: #ffffff;
@@ -743,15 +778,28 @@ GAME OVER text
 Div of the Text box of the Replay page
  */
 .replay_text_box {
+    position: absolute;
     width: 50%;
     height: 50%;
-    font-size: 4.5em;
+}
+
+/**
+The board image in the Replay
+ */
+.replay_board {
+    height: 413px;
+    width: 720px;
+    resize: none;
 }
 
 .not_bad {
-    position: relative;
-    width: 100%;
-    top: -111%;
+    position: absolute;
+    left: 380px;
+    top: -40px;
+    font-size: 70px;
+    font-family: ConcertOne, serif;
+    text-align: left;
+    color: #3d1f0e;
 }
 
 /**
@@ -764,51 +812,57 @@ Common font for the replay text
 }
 
 /**
+Text inside the replay box
+ */
+.replay_text {
+    position: absolute;
+    top: 110px;
+    width: 340px;
+    left: 360px;
+    font-size: 18px;
+    font-family: AndaleMono, serif;
+    color: #000000;
+}
+
+/**
 Button REPLAY of the Replay Text Box
  */
 .button_replay {
-    position: inherit;
-    width: 18%;
-    top: 55%;
-    height: 12%;
-    left: 59%;
-    transform: scale(1.5);
-    text-align: center;
+    position: absolute;
+    top: 260px;
+    left: 440px;
+}
+
+.button_replay img{
+    height: 50px;
+    width: 130px;
+    position: absolute;
+    resize: none;
+    transform: scale(1.3);
 }
 
 /**
 REPLAY text inside the replay button
 */
-.img_divSize .button_replay p {
-    text-align: center;
+.button_replay p {
     position: absolute;
-    left: 13%;
-    margin-top: -8vh;
-    font-size: 43%;
-}
-
-/**
-Text inside the replay box
- */
-.replay_text_box .replay_text {
-    position: relative;
-    top: -128%;
-    width: 42%;
-    left: 50%;
-    font-size: 25%;
+    left: -4px;
+    margin-top: -6px;
+    font-size: 44px;
+    resize: none;
 }
 
 /**
 Link to the best machine inside the replay box
  */
 .best_machine_text {
-    position: relative;
-    top: -50vh;
-    width: 42%;
-    left: 50%;
+    position: absolute;
+    top: 320px;
+    width: 300px;
+    left: 390px;
     text-decoration: underline;
     cursor: pointer;
-    font-size: 25%;
+    font-size: 18px;
 }
 
 /****************************** OPTIMAL ******************************/

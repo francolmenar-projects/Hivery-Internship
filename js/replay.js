@@ -53,8 +53,8 @@ function goToOptimal() {
 }());
 
 $(document).ready(function () {
-    // Set the font according to the screen
-    setFont();
+    // Set the size of the elements according to the screen size
+    setScale();
     // Get the messages
     setText();
 });
@@ -105,14 +105,13 @@ function setTextAux(element_arr) {
 }
 
 /**
- * Set the font size of the text
+ * Set the scale of the elements dynamically
  */
-function setFont() {
+function setScale() {
     let width = $(window).width();
-    // Size of the Replay text
-    let replay_font = width / 320;
-    if (width < 1500) {
-        replay_font = width / 320;
+    if (width > 1440) {
+        let aux = width - 1440;
+        aux = 1 + (aux / 5000);
+        $('html, body').css("zoom", aux);
     }
-    $(".replay_text_box").css("font-size", replay_font + "em");
 }

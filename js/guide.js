@@ -23,7 +23,7 @@ function goToGameWindow() {
 }());
 
 /**
- * Sets the font size and the text
+ * Sets the size and the text
  */
 $(document).ready(function () {
     setScale();

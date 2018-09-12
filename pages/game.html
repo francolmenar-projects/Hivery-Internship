@@ -4,35 +4,34 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, height=device-height"/>
     <title>Hivery Game</title>
-
     <!-- CSS  -->
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../css/game_style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body class="background_default noSelect">
-<div class="row generic_text img_divSize">
+<div class="generic_text">
     <!-- Money Counter at the Top Left Corner -->
-    <div id="moneyCounterDiv" class="col s3 counter">
-        <img src="../img/barRevenue.png">
-        <p id="actual_profit"></p>
+    <div id="moneyCounterDiv" class="counter">
+        <img class="counter_img" src="../img/barRevenue.png">
+        <p class="counter_p" id="actual_profit"></p>
     </div>
     <!-- Advice banner -->
-    <div id="advice_banner" class="col s6 offset-s3 advice_banner">
-        <div id="adviceDiv" class="advice img_divSize">
+    <div id="advice_banner" class="advice_banner">
+        <div id="adviceDiv" class="advice">
             <img src="../img/popoverBoy.png">
             <p id="adviceText"></p>
         </div>
     </div>
     <!-- Time Counter at the Top Right Corner -->
-    <div id="timer_counter" class="col s3 offset-s9 counter">
-        <img src="../img/barTime.png">
-        <p id="timer"></p>
+    <div id="timer_counter" class="time_counter">
+        <img class="counter_img" src="../img/barTime.png">
+        <p class="counter_p" id="timer"></p>
     </div>
 </div>
 <div class="row">
     <!-- Drinks Selected -->
-    <div class="col s4 commonHeightDrinks">
+    <div class="drink_mach_div">
         <div id="drinks_machine" class="drinks_machine">
             <div class="drink_row column_machine_drinks">
                 <div class="col s3">
@@ -79,7 +78,7 @@
         </div>
     </div>
     <!-- Information of the selected drink -->
-    <div class="col s3 offset-s4 commonHeightDrinks">
+    <div class="select_div">
         <div id="actual_drink_inside" class="actual_drink_inside generic_text img_divSize">
             <img src="../img/storeBoard.png">
             <div class="STORE"><p id="selected_h"></p></div>
@@ -97,7 +96,7 @@
         </div>
     </div>
     <!-- Drinks Stats -->
-    <div class="col s5 offset-s7 commonHeightDrinks generic_text">
+    <div class="stats_div generic_text">
         <div id="drinks_stats_inside" class="drinks_stats_inside img_divSize">
             <img src="../img/statsBoard.png">
             <div class="STATS">
