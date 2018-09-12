@@ -146,8 +146,8 @@ function goToGameWindow() {
  * Read the data from the JSON file and store it
  */
 $(document).ready(function () {
-    // Set the font according to the screen
-    setFont();
+    // Set the size of the elements according to the screen size
+    setScale();
     // Get the data.JSON
     setData();
     // Get the messages
@@ -327,33 +327,14 @@ function change_text_of_elem(name, data, f_name) {
     }
 }
 
-function setFont() {
+/**
+ * Set the scale of the elements dynamically
+ */
+function setScale() {
     let width = $(window).width();
-    // Size of the advice
-    let font_size = width / 87.27;
-    $("#advice_banner").css("font-size", font_size + "px");
-    // Size of selected drink
-    let drink_font = width / 423.529;
-    $(".actual_drink_inside").css("font-size", drink_font + "em");
-    // Size of submit button
-    let submit_font = width / 1800;
-    if (width < 1500) {
-        submit_font = width / 1309;
+    if (width > 1440) {
+        let aux = width - 1440;
+        aux = 1 + (aux / 5000);
+        $('html, body').css("zoom", aux);
     }
-    $("#submit_but").css("font-size", submit_font + "em");
-    // Size of Stats div
-    let stats_font = width / 450;
-    let stats = $(".drinks_stats_inside");
-    stats.css("font-size", stats_font + "em");
-    let stats_lin = 28;
-    if (width < 1500) {
-        stats_lin = 20;
-    }
-    stats.css("line-height", stats_lin + "%");
-    // Size of the values of Total div
-    let total_font = stats_font / 2.7;
-    $(".total_values").css("font-size", total_font + "em");
-    // Size of the headers of Total div
-    let totalH_font = stats_font / 5;
-    $(".total_header").css("font-size", totalH_font + "em");
 }
