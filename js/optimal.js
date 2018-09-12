@@ -337,4 +337,9 @@ function setScale() {
         aux = 1 + (aux / 5000);
         $('html, body').css("zoom", aux);
     }
+    else if (width < 1440) {
+        let aux = 1440 - width;
+        aux = 1 - (aux / 5000);
+        $('html, body').css("zoom", aux);
+    }
 }
