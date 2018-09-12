@@ -30,8 +30,8 @@ const drink_attr = ["PRICE", "CAPACITY", "UNITS PER DAY", "UNITS STOCKED", "DAYS
 let drink_data = [[], [], [], [], []]; // Data stored in a JSON
 let valid = [];
 /***+++++++++++++++++++++** BOOLEANS TO SHOW DATA ***+++++++++++++++++++++**/
-const show_sold_out = true; // Determines if the days until sold out are showed or not
-const show_stock = true; // Determines if the units stocked are showed or not
+const show_sold_out = false; // Determines if the days until sold out are showed or not
+const show_stock = false; // Determines if the units stocked are showed or not
 
 
 /************************************** USER INTERFACE  **************************************/
