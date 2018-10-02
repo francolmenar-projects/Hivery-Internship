@@ -237,8 +237,6 @@ function setTextAux(element_arr) {
     replay_msg = element_arr[23];
     // Replay button
     document.getElementById("replay_but").innerHTML = element_arr[18];
-    // Link to optimal
-    document.getElementById("best_machine").innerHTML = element_arr[19];
     // Lost messages
     lost = $.map(element_arr[20], function (el) {
         return el

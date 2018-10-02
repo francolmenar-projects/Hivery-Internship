@@ -1,4 +1,6 @@
 const json_path = "../json/msg.json"; // Path to the JSON file
+const js_prefix = "../js/"; // Path to the JS folder
+const js_file = "optimal.js"; // replay JS
 
 let lost_h; // Lost header
 let lost = []; // Lost messages
@@ -120,3 +122,17 @@ function setScale() {
         $('html, body').css("zoom", aux);
     }
 }
+
+/**
+ * Cache files
+ */
+$(window).on('load', function () {
+    // Get JS of Optimal
+    $.ajax({
+        cache:true,
+        type: "GET",
+        dataType: "text",
+        url: js_prefix + js_file,
+        async: true,
+    });
+});

@@ -12,8 +12,13 @@ let hurryUp = "Hurry up!! You only have 30 seconds left.";
 /**************************** IMAGES ****************************/
 let config_options; // The number of configuration options in the JSON
 const img_prefix = "../img/products/"; // Offset to the image folder
+const font_prefix = "../css/font/"; // Path to the Font folder
+const font = "Krungthep.ttf"; // Fonts
+const js_prefix = "../js/"; // Path to the JS folder
+const js_file = "game_over.js"; // Game Over JS
 const empty_path = "../img/products/coke-bottle.png"; // Global path to the empty drink
 const empty_drink = "coke-bottle.png"; // Name of the empty drink
+const adviceImg = "popoverBoy.png"; // Name of the advice image
 let drinks_name; // Name of the images of the drinks
 /**************************** VENDING MACHINE ****************************/
 // const max_drinks = 4; // We start to count from 0
@@ -67,6 +72,29 @@ function goToReplay() {
     let revenue = Number(actual_profit_user) - Number(actual_cost_user);
     window.localStorage.setItem("revenue", revenue);
     return open_window("replay.html", "goToReplay()");
+}
+
+/**
+ * Check if the player has won or not
+ * It he has lost, the Game Over page will be loaded
+ * If he wins, the Replay page will be showed
+ */
+function checkWinner() {
+    // Calculate the actual revenue
+    let revenue = Number(actual_profit_user) - Number(actual_cost_user);
+    let opt_revenue = window.localStorage.getItem("opt_revenue");
+    let opt_cost = window.localStorage.getItem("opt_cost");
+
+    let difference = Number(opt_revenue) - Number(opt_cost);
+    difference = difference - revenue;
+    // You loose
+    if (difference !== 0) {
+        goToGameOver();
+    }
+    // You win
+    else {
+        goToReplay();
+    }
 }
 
 /**
@@ -134,7 +162,7 @@ function createTimer() {
         }
         // If there is no time left the time is over
         if (time_left < 0) {
-            goToGameOver();
+            checkWinner();
         }
         else if (time_left === 60) {
             showAdvice(oneMin);
@@ -435,7 +463,7 @@ function addListener(id, action, f_name, origin) {
     // Set the profit
     setActualProfit();
     // Setting the listeners
-    addListener("down_button", "click", goToReplay, "function");
+    addListener("down_button", "click", checkWinner, "function");
     addListener("arrow_left", "click", previousDrink, "function");
     addListener("arrow_right", "click", nextDrink, "function");
 
@@ -525,6 +553,8 @@ function setData() {
         actual_drink = -1;
         nextDrink();
         setOptimum(element_arr[2]);
+        // Fetch the next images and the next files
+        fetchFiles();
     });
 }
 
@@ -532,6 +562,7 @@ function setData() {
  * Reads the text from the JSON file and loads it to the Screen
  */
 function setText() {
+
     let element_arr;
     // Check if we have already read the JSON
     if (localStorage.getItem("json_msg") !== null) {
@@ -881,7 +912,7 @@ function updateSoldout(clicked_img, actual_img, replacement_case) {
 function soldOutOp(drinkId) {
     let days_till_sold = -1;
     if (drink_data[drinkId][3] > drink_data[drinkId][2]) {
-        days_till_sold = Math.ceil(Number(drink_data[drinkId][3]) / Number(drink_data[drinkId][2]));
+        days_till_sold = Math.floor(Number(drink_data[drinkId][3]) / Number(drink_data[drinkId][2]));
     }
     // Not enough drinks to be one day without refilling
     else if (drink_data[drinkId][3] > 0) {
@@ -962,4 +993,41 @@ function setHeight() {
         $("#table_stats").addClass("two_less_table");
         $(".total_panel_stats").addClass("two_less_total");
     }
+}
+
+/**
+ * Fetch the files which are going to be used
+ */
+function fetchFiles() {
+    // Get Images of the other drinks
+    for (let i = 0; i < drinks_name.length; i++) {
+        $.ajax({
+            cache: true,
+            async: true,
+            type: "GET",
+            url: img_prefix + drinks_name[i]
+        });
+    }
+    // Get Image of the advice
+    $.ajax({
+        cache: true,
+        async: true,
+        type: "GET",
+        url: "../img/" + adviceImg
+    });
+    // Get the Font of Game Over
+    $.ajax({
+        cache: true,
+        async: true,
+        type: "GET",
+        url: font_prefix + font
+    });
+    // Get JS of Game Over
+    $.ajax({
+        cache:true,
+        type: "GET",
+        dataType: "text",
+        url: js_prefix + js_file,
+        async: true,
+    });
 }

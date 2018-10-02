@@ -2,9 +2,11 @@ const json_path = "../json/msg.json"; // Path to the JSON file
 /******* Prefixes *******/
 const img_prefix = "../img/"; // Path to the Image folder
 const js_prefix = "../js/"; // Path to the JS folder
+const html_prefix = "../pages/"; // Path to the HTML folder
 /******* Files *******/
-const sprite_file = "guide_sprite.png"; // Sprite with the images of Guide
-const js_file = "guide.js"; // Guide JS
+const guide_sprite = "guide_sprite.png"; // Sprite with the images of Guide
+const guide_js = "guide.js"; // Guide JS
+const guide_html = "guide.html"; // HTML of Guide
 
 /**
  * Go to the Guide page when the button play is clicked
@@ -94,17 +96,19 @@ function setTextAux(element_arr) {
 $(window).on('load', function () {
     // Get images of guide
     $.ajax({
-        cache:true,
         type: "GET",
-        url: img_prefix + sprite_file,
-        async: true,
+        url: img_prefix + guide_sprite
     });
     // Get JS of Guide
     $.ajax({
-        cache:true,
         type: "GET",
         dataType: "text",
-        url: js_prefix + js_file,
-        async: true,
+        url: js_prefix + guide_js
+    });
+    // Get HTML of Guide
+    $.ajax({
+        type: "GET",
+        dataType: "html",
+        url: html_prefix + guide_html
     });
 });

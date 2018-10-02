@@ -1,4 +1,15 @@
 const json_path = "../json/msg.json"; // Path to the JSON file
+/******* Prefixes *******/
+const img_prefix = "../img/"; // Path to the Image folder
+const js_prefix = "../js/"; // Path to the JS folder
+const css_prefix = "../css/"; // Path to the JS folder
+/******* Files *******/
+const sprite_file = "game_sprite.png"; // Sprite with the images of Game
+const default_drink = "products/markSoda.png";
+const empty_drink = "products/coke-bottle.png"; // Name of the empty drink
+const js_file = "game.js"; // Game JS
+const css_file1 = "materialize.css"; // Materialize CSS
+const css_file2 = "style.css"; // Style CSS
 
 /**
  * Go to the Game page when the button play is clicked
@@ -83,3 +94,51 @@ function setTextAux(element_arr) {
     // Guide button
     document.getElementById("ready_button").innerHTML = element_arr[6];
 }
+
+/**
+ * Cache files
+ */
+$(window).on('load', function () {
+    // Get Images of Game
+    $.ajax({
+        cache:true,
+        async: true,
+        type: "GET",
+        url: img_prefix + sprite_file,
+    });
+    $.ajax({
+        cache:true,
+        async: true,
+        type: "GET",
+        url: img_prefix + empty_drink,
+    });
+    $.ajax({
+        cache:true,
+        async: true,
+        type: "GET",
+        url: img_prefix + default_drink,
+    });
+    // Get JS of Game
+    $.ajax({
+        cache:true,
+        async: true,
+        type: "GET",
+        dataType: "text",
+        url: js_prefix + js_file
+    });
+    // Get CSS of Game
+    $.ajax({
+        cache:true,
+        async: true,
+        type: "GET",
+        dataType: "text",
+        url: css_prefix + css_file1
+    });
+    $.ajax({
+        cache:true,
+        async: true,
+        type: "GET",
+        dataType: "text",
+        url: css_prefix + css_file2
+    });
+});

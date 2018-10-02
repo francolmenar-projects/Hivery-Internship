@@ -111,6 +111,13 @@ Making a div not able of selecting the text or elements
     user-select: none;
 }
 
+/**
+Common height for the panels of Game
+ */
+.game_height{
+    height: 692px;
+}
+
 /****************************** INDEX ******************************/
 
 /**
@@ -199,6 +206,7 @@ Div of the Guide box
     position: absolute;
     width: 63%;
     height: 63%;
+    top: -30px;
 }
 
 /**
@@ -208,6 +216,11 @@ Board Guide image
     height: 543px;
     width: 907px;
     resize: none;
+}
+
+.guide_board {
+    width: 909px; height: 534px;
+    background: url('../img/guide_sprite.png') -10px -10px;
 }
 
 /**
@@ -228,9 +241,9 @@ Upper part of the guide panel
  */
 .upper_part_guide {
     position: absolute;
-    height: 150px;
+    height: 110px;
     width: 800px;
-    top: 150px;
+    top: 130px;
     left: 50px;
 }
 
@@ -240,7 +253,6 @@ Picture of the star and the skull in the guide text
 .icon_img {
     position: absolute;
     left: 30px;
-    top: 10px;
 }
 
 /**
@@ -249,7 +261,7 @@ Star image
 .star {
     width: 114px;
     height: 118px;
-    background: url('../img/guide_icons.png') -10px -10px;
+    background: url('../img/guide_sprite.png') -10px -564px;
 }
 
 /**
@@ -257,7 +269,7 @@ Text of the skull and of the star
  */
 .guide_p {
     position: absolute;
-    top: 10px;
+    top: 0;
     left: 175px;
     width: 600px;
     font-family: AndaleMono, serif;
@@ -271,9 +283,9 @@ Lower part of the guide panel
  */
 .lower_part_guide {
     position: absolute;
-    height: 150px;
+    height: 110px;
     width: 800px;
-    top: 325px;
+    top: 280px;
     left: 50px;
 }
 
@@ -283,7 +295,7 @@ Skull image
 .skull {
     width: 105px;
     height: 126px;
-    background: url('../img/guide_icons.png') -10px -148px;
+    background: url('../img/guide_sprite.png') -10px -702px;
 }
 
 /**
@@ -294,9 +306,9 @@ Button READY of the Guide Box
     height: 60px;
     width: 150px;
     resize: none;
-    top: 575px;
-    left: 720px;
-    transform: scale(1.5);
+    top: 425px;
+    left: 650px;
+    transform: scale(1.4);
 }
 
 /*
@@ -337,10 +349,10 @@ Counter icon
  */
 .counter_img {
     position: absolute;
-    left: 27px;
+    left: 32px;
     height: 76px;
     width: 303px;
-    margin-top: 7px;
+    margin-top: 1px;
     resize: none;
 }
 
@@ -350,7 +362,7 @@ Counter amount
 .counter_p {
     position: absolute;
     left: 135px;
-    margin-top: 29px;
+    margin-top: 30px;
     width: 180px;
     height: 30px;
     font-family: ConcertOne, serif;
@@ -366,6 +378,26 @@ Position of the time counter
     position: absolute;
     height: 84px;
     left: 1080px;
+}
+
+/**
+Revenue Counter image
+ */
+.revenue_img {
+    width: 322px; height: 103px;
+    background: url('../img/game_sprite.png')-594px -10px;
+    zoom: 0.9;
+    transform: scaleY(0.9) scaleX(1.1);
+}
+
+/**
+Time Counter image
+ */
+.time_img {
+    width: 322px; height: 109px;
+    background: url('../img/game_sprite.png')-594px -133px;
+    zoom: 0.9;
+    transform: scaleY(0.9) scaleX(1.1);
 }
 
 /********** ADVICE **********/
@@ -419,7 +451,6 @@ The text of the advice
     position: absolute;
     top: 84px;
     width: 458px;
-    height: 672px;
 }
 
 /**
@@ -427,7 +458,7 @@ Where the drinks are stored
  */
 .drinks_machine {
     position: absolute;
-    top: 21%;
+    top: 17%;
     left: 10%;
     height: 65%;
     width: 85%;
@@ -477,7 +508,18 @@ Middle div panel
     top: 84px;
     left: 480px;
     width: 338px;
-    height: 672px;
+}
+
+/**
+Image of the panel of the actual drink
+ */
+.select_img{
+    position: relative;
+    top: -4px;
+    left: -38px;
+    width: 358px; height: 501px;
+    background: url('../img/game_sprite.png') -10px -494px;
+    transform: scaleX(0.81);
 }
 
 /**
@@ -485,7 +527,7 @@ Div containing the selected drink
  */
 .actual_drink_inside {
     position: absolute;
-    top: 15%;
+    top: 11%;
     left: 5%;
     height: 70%;
     width: 85%;
@@ -534,8 +576,8 @@ Left arrow in the drink selector
  */
 .arrow_left {
     position: absolute;
-    top: 375px;
-    left: 50px;
+    top: 400px;
+    left: 48px;
     width: 69px;
     height: 92px;
     border-radius: 40%;
@@ -547,7 +589,7 @@ Right arrow in the drink selector
  */
 .arrow_right {
     position: absolute;
-    top: 375px;
+    top: 400px;
     left: 170px;
     width: 69px;
     height: 92px;
@@ -563,7 +605,7 @@ Store label
     width: 45%;
     height: 10%;
     top: -108%;
-    left: 28%;
+    left: 27%;
     font-family: ConcertOne, serif;
     font-size: 100%;
     text-align: left;
@@ -597,7 +639,14 @@ Div
     top: 84px;
     left: 840px;
     width: 578px;
-    height: 672px;
+}
+
+/**
+Panel with the stats' panel
+ */
+.stats_img{
+    width: 564px; height: 464px;
+    background: url('../img/game_sprite.png') -10px -10px;
 }
 
 /**
@@ -605,7 +654,7 @@ Div
   */
 .drinks_stats_inside {
     position: relative;
-    top: 15%;
+    top: 11%;
     height: 65%;
     width: 95%;
     font-family: ConcertOne, serif;
@@ -662,10 +711,10 @@ STATS label Div
  */
 .drinks_stats_inside .STATS {
     position: relative;
-    width: 45%;
+    width: 24%;
     height: 10%;
-    top: -105%;
-    left: 40%;
+    top: -107%;
+    left: 41.8%;
     font-size: 100%;
     text-align: left;
     color: #3d1f0e;
@@ -820,7 +869,7 @@ Text inside the replay box
 .replay_text {
     position: absolute;
     top: 110px;
-    width: 340px;
+    width: 320px;
     left: 360px;
     font-size: 18px;
     font-family: AndaleMono, serif;

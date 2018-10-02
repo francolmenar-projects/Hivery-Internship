@@ -1,3 +1,6 @@
+const js_prefix = "../js/"; // Path to the JS folder
+const js_file = "replay.js"; // replay JS
+
 /**
  * Go to introduction page when the screen is clicked
  */
@@ -36,3 +39,17 @@ function setScale() {
         $('html, body').css("zoom", aux);
     }
 }
+
+/**
+ * Cache files
+ */
+$(window).on('load', function () {
+    // Get JS of Replay
+    $.ajax({
+        cache:true,
+        type: "GET",
+        dataType: "text",
+        url: js_prefix + js_file,
+        async: true,
+    });
+});
