@@ -12,10 +12,8 @@ let hurryUp = "Hurry up!! You only have 30 seconds left.";
 /**************************** IMAGES ****************************/
 let config_options; // The number of configuration options in the JSON
 const img_prefix = "../img/products/"; // Offset to the image folder
-const font_prefix = "../css/font/"; // Path to the Font folder
-const font = "Krungthep.ttf"; // Fonts
 const js_prefix = "../js/"; // Path to the JS folder
-const js_file = "game_over.js"; // Game Over JS
+const js_file = "replay.js"; // Replay JS
 const empty_path = "../img/products/coke-bottle.png"; // Global path to the empty drink
 const empty_drink = "coke-bottle.png"; // Name of the empty drink
 const adviceImg = "popoverBoy.png"; // Name of the advice image
@@ -57,44 +55,12 @@ function open_window(target, origin) {
 }
 
 /**
- * Go to the Guide page when the button play is clicked
- */
-function goToGameOver() {
-    let revenue = Number(actual_profit_user) - Number(actual_cost_user);
-    window.localStorage.setItem("revenue", revenue);
-    return open_window("gameOver.html", "goToGameOver()");
-}
-
-/**
  * Go to the Replay page when the button SUBMIT is clicked
  */
 function goToReplay() {
     let revenue = Number(actual_profit_user) - Number(actual_cost_user);
     window.localStorage.setItem("revenue", revenue);
     return open_window("replay.html", "goToReplay()");
-}
-
-/**
- * Check if the player has won or not
- * It he has lost, the Game Over page will be loaded
- * If he wins, the Replay page will be showed
- */
-function checkWinner() {
-    // Calculate the actual revenue
-    let revenue = Number(actual_profit_user) - Number(actual_cost_user);
-    let opt_revenue = window.localStorage.getItem("opt_revenue");
-    let opt_cost = window.localStorage.getItem("opt_cost");
-
-    let difference = Number(opt_revenue) - Number(opt_cost);
-    difference = difference - revenue;
-    // You loose
-    if (difference !== 0) {
-        goToGameOver();
-    }
-    // You win
-    else {
-        goToReplay();
-    }
 }
 
 /**
@@ -162,7 +128,7 @@ function createTimer() {
         }
         // If there is no time left the time is over
         if (time_left < 0) {
-            checkWinner();
+            goToReplay();
         }
         else if (time_left === 60) {
             showAdvice(oneMin);
@@ -463,7 +429,7 @@ function addListener(id, action, f_name, origin) {
     // Set the profit
     setActualProfit();
     // Setting the listeners
-    addListener("down_button", "click", checkWinner, "function");
+    addListener("down_button", "click", goToReplay, "function");
     addListener("arrow_left", "click", previousDrink, "function");
     addListener("arrow_right", "click", nextDrink, "function");
 
@@ -1015,14 +981,7 @@ function fetchFiles() {
         type: "GET",
         url: "../img/" + adviceImg
     });
-    // Get the Font of Game Over
-    $.ajax({
-        cache: true,
-        async: true,
-        type: "GET",
-        url: font_prefix + font
-    });
-    // Get JS of Game Over
+    // Get JS of Replay
     $.ajax({
         cache:true,
         type: "GET",

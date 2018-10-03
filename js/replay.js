@@ -23,14 +23,14 @@ function setActualProfit() {
     let opt_cost = window.localStorage.getItem("opt_cost");
 
     let difference = Number(opt_revenue) - Number(opt_cost);
-    difference = difference - revenue;
+    let difference_aux = difference - revenue;
     let revenue_aux = parseInt(revenue).toFixed(0);
     // You loose
-    if (difference !== 0) {
+    if (difference_aux !== 0) {
         document.getElementById("replay_h").innerHTML = lost_h;
         document.getElementById("replay_text").innerHTML = lost[0] + revenue_aux + lost[1] + "<br/>" +
-            lost[2] + parseInt(opt_revenue).toFixed(0) + lost[3] + "<br/>" +
-            lost[4] + parseInt(difference).toFixed(0) + lost[5] + "<br/><br/>" +
+            lost[2] + parseInt(difference).toFixed(0) + lost[3] + "<br/>" +
+            lost[4] + parseInt(difference_aux).toFixed(0) + lost[5] + "<br/><br/>" +
             lost[6];
     }
     // You win

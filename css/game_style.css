@@ -16,14 +16,6 @@ ConcertOne Font
     src: url("font/ConcertOne-Regular.ttf");
 }
 
-/**
-Krungthep Font
- */
-@font-face {
-    font-family: Krungthep;
-    src: url("font/Krungthep.ttf");
-}
-
 /****************************** COMMON ******************************/
 
 /**
@@ -795,33 +787,6 @@ Right panel with the calculations of the actual choice
     position: relative;
     top: -50%;
     font-size: 110%;
-}
-
-/****************************** GAME OVER ******************************/
-
-/**
-DIV containing the GAME OVER text
- */
-.game_over_div {
-    position: absolute;
-    width: 75%;
-    height: 25%;
-}
-
-/**
-GAME OVER text
- */
-.game_over_div p {
-    position: absolute;
-    width: 200%;
-    height: 100%;
-    top: -100px;
-    left: -20px;
-    font-family: Krungthep, serif;
-    line-height: normal;
-    text-align: left;
-    color: #ffffff;
-    font-size: 200px;
 }
 
 /****************************** REPLAY ******************************/
