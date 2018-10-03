@@ -1,6 +1,6 @@
-const sum = require('../js/initial_window');
-window.$ = require('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+window.jQuery = window.$ = require('jquery');
+const initial = require('../js/initial_window');
 
-test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3);
+test('clicks the screen and goes to Introduction Page', () => {
+    expect(initial.goToIntroduction()).not.toBe(null);
 });
