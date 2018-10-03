@@ -25,6 +25,7 @@ function goToGuide() {
     }
     else {
         console.log("[Error]: 'introduction_play_button' does not exist");
+        return null;
     }
 }());
 
@@ -108,3 +109,11 @@ $(window).on('load', function () {
         async: true,
     });
 });
+
+try {
+    module.exports.goToGuide =  goToGuide;
+    module.exports.setText =  setText;
+} catch (e) {
+    if (e instanceof ReferenceError) {
+    }
+}
