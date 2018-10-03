@@ -11,6 +11,7 @@ const js_file = "introduction_page.js"; // Introduction JS
 const font1 = "Andale Mono.ttf"; // Fonts
 const font2 = "ConcertOne-Regular.ttf";
 
+
 /**
  * Go to introduction page when the screen is clicked
  */
@@ -90,4 +91,10 @@ $(window).on('load', function () {
     });
 });
 
-module.exports.goToIntroduction =  goToIntroduction;
+try {
+    module.exports.goToIntroduction =  goToIntroduction;
+} catch (e) {
+    if (e instanceof ReferenceError) {
+        console.log("Dios");
+    }
+}
