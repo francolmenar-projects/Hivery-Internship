@@ -113,6 +113,7 @@ $(window).on('load', function () {
 try {
     module.exports.goToGuide =  goToGuide;
     module.exports.setText =  setText;
+    module.exports.setTextAux =  setTextAux;
 } catch (e) {
     if (e instanceof ReferenceError) {
     }
