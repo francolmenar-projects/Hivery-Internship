@@ -6,7 +6,9 @@
     "babel-preset-env": "*",
     "jest": "*"
   },
+  "setupFiles": "test-env.js",
   "scripts": {
+    "build": "babel src -d lib",
     "test": "jest"
   }
 }
