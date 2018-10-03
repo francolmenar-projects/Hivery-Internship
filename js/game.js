@@ -528,7 +528,6 @@ function setData() {
  * Reads the text from the JSON file and loads it to the Screen
  */
 function setText() {
-
     let element_arr;
     // Check if we have already read the JSON
     if (localStorage.getItem("json_msg") !== null) {
@@ -537,7 +536,7 @@ function setText() {
     }
     // Read from the file
     else {
-        $.getJSON(json_path, function (json) {
+        $.getJSON(msg_path, function (json) {
             // Convert the JSON into an array
             element_arr = $.map(json, function (el) {
                 return el
