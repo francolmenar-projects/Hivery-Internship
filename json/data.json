@@ -2,7 +2,7 @@
   "config_options": "9",
   "drink_amount": "4",
   "opt": "4,3,2,1,2",
-  "countdown": "120",
+  "countdown": "180",
   "period_of_time": "365",
   "refill_cost": "40",
   "penalty_day_refill": "2",
