@@ -72,8 +72,7 @@ function checkSubmit() {
     let down_button = document.getElementById("down_button");
     if ((selected_drinks === max_machine) && ($(down_button).css('display') === 'none')) {
         $(down_button).fadeIn("slow");
-    }
-    else if ((selected_drinks === (max_machine - 1)) && ($(down_button).css('display') !== 'none')) {
+    } else if ((selected_drinks === (max_machine - 1)) && ($(down_button).css('display') !== 'none')) {
         $(down_button).fadeOut("slow");
     }
 }
@@ -122,24 +121,19 @@ function createTimer() {
         // Initial
         if (aux === 5) {
             showAdvice(initialMsg);
-        }
-        else if (aux === 13) {
+        } else if (aux === 13) {
             hideAdvice();
         }
         // If there is no time left the time is over
         if (time_left < 0) {
             goToReplay();
-        }
-        else if (time_left === 60) {
+        } else if (time_left === 60) {
             showAdvice(oneMin);
-        }
-        else if (time_left === 53) {
+        } else if (time_left === 53) {
             hideAdvice();
-        }
-        else if (time_left === 30) {
+        } else if (time_left === 30) {
             showAdvice(hurryUp);
-        }
-        else if (time_left === 23) {
+        } else if (time_left === 23) {
             hideAdvice();
         }
     }, 1000)
@@ -153,14 +147,12 @@ function setActualProfit() {
     let revenue = document.getElementById("revenue_stats");
     if (profit) {
         profit.innerHTML = actual_profit_user.toFixed(0).toString();
-    }
-    else {
+    } else {
         console.log("[Error]: element 'actual_profit' does not exist in setActualProfit()");
     }
     if (revenue) {
         revenue.innerHTML = "$" + actual_profit_user.toFixed(0).toString();
-    }
-    else {
+    } else {
         console.log("[Error]: element 'revenue_stats' does not exist in setActualProfit()");
     }
 }
@@ -173,8 +165,7 @@ function setActualCapacity() {
         let capacity = document.getElementById("unit_stocked" + i);
         if (capacity) {
             capacity.innerHTML = drink_data[i][3];
-        }
-        else {
+        } else {
             console.log("[Error]: element 'unit_stocked" + i + "' does not exist in setActualCapacity()");
         }
     }
@@ -188,8 +179,7 @@ function setActualSold() {
         let soldout = document.getElementById("days_souldout" + i);
         if (soldout) {
             soldout.innerHTML = drink_data[i][4];
-        }
-        else {
+        } else {
             console.log("[Error]: element 'days_souldout" + i + "' does not exist in setActualSold()");
         }
     }
@@ -202,8 +192,7 @@ function setActualCost() {
     let actual_cost = document.getElementById("cost_stats");
     if (actual_cost) {
         actual_cost.innerHTML = "$" + actual_cost_user.toFixed(0).toString();
-    }
-    else {
+    } else {
         console.log("[Error]: element 'cost_stats' does not exist in setActualCost()");
     }
 }
@@ -243,8 +232,7 @@ function setOptimum(input) {
                 if (aux < opt_soldout) {
                     opt_soldout = aux
                 }
-            }
-            else {
+            } else {
                 opt_soldout = 0;
             }
         }
@@ -252,8 +240,7 @@ function setOptimum(input) {
     // Calculate the cost
     if (opt_soldout > 0) {
         opt_cost = cost_per_refill * Math.ceil(period_of_time / opt_soldout);
-    }
-    else {
+    } else {
         opt_cost = penalty_for_day_refill * cost_per_refill * Number(period_of_time);
     }
     // Save the values
@@ -269,8 +256,7 @@ function changeDrink() {
     let selected_drink = document.getElementById("selected_drink");
     if (selected_drink) {
         selected_drink.src = img_prefix + drinks_name[actual_drink];
-    }
-    else {
+    } else {
         console.log("[Error]: element 'selected_drink' does not exist in changeDrink()");
     }
 }
@@ -299,8 +285,7 @@ function selectDrink() {
             replacement_case = 1;
             selected_drinks++;
         }
-    }
-    else {
+    } else {
         // Set the empty drink
         replacement_case = 2;
         img_selected.src = empty_path;
@@ -377,14 +362,12 @@ function showAdvice(str) {
             let adviceText = document.getElementById("adviceText");
             if (adviceText) {
                 adviceText.innerText = str;
-            }
-            else {
+            } else {
                 console.log("[Error]: element 'adviceText' does not exist in showAdvice()");
             }
         }
         $(advice).fadeIn("slow");
-    }
-    else {
+    } else {
         console.log("[Error]: element 'adviceDiv' does not exist in showAdvice()");
     }
 }
@@ -396,8 +379,7 @@ function hideAdvice() {
     let advice = document.getElementById("adviceDiv");
     if (advice) {
         $(advice).fadeOut("slow");
-    }
-    else {
+    } else {
         console.log("[Error]: element 'adviceDiv' does not exist in hideAdvice()");
     }
 }
@@ -416,8 +398,7 @@ function addListener(id, action, f_name, origin) {
     if (moneyCounterDiv) {
         moneyCounterDiv.addEventListener(action, f_name);
         return 0;
-    }
-    else {
+    } else {
         if (id && origin) {
             console.log("[Error]: element '" + id + "' does not exist in " + origin + "()");
             return -1;
@@ -439,13 +420,11 @@ function addListener(id, action, f_name, origin) {
         for (let i = 0; i < allImages.length; i++) {
             if (allImages[i]) {
                 allImages[i].addEventListener("click", selectDrink);
-            }
-            else {
+            } else {
                 console.log("[Error]: element 'drinks_machine[" + i + " ' does not exist in function()");
             }
         }
-    }
-    else {
+    } else {
         console.log("[Error]: element 'drinks_machine' does not exist in function()");
     }
 }());
@@ -506,8 +485,7 @@ function setData() {
                 drink_data[aux][0] = "-";
                 drink_data[aux][1] = "-";
                 drink_data[aux][2] = "-";
-            }
-            else {
+            } else {
                 let aux = i - config_options;
                 valid[aux] = 0;
                 drink_data[aux][0] = element_arr[i].price;
@@ -582,8 +560,7 @@ function areValid(arr) {
     for (let i = 0; i < arr.length; i++) {
         if (isNaN(arr[i])) {
             return -1;
-        }
-        else if (Number(arr[i] <= 0)) {
+        } else if (Number(arr[i] <= 0)) {
             return -1;
         }
     }
@@ -603,8 +580,7 @@ function change_text_of_elem(name, data, f_name) {
     if (elem) {
         elem.innerText = data;
         return 0;
-    }
-    else {
+    } else {
         console.log("[Error]: element '" + name + "' does not exist in " + f_name + "() ");
         return -1;
     }
@@ -629,13 +605,11 @@ function loadStats() {
             if (show_stock) {
                 change_text_of_elem("category" + i, drink_attr[i], "loadStats");
             }
-        }
-        else if (i === 4) {
+        } else if (i === 4) {
             if (show_sold_out) {
                 change_text_of_elem("category" + i, drink_attr[i], "loadStats");
             }
-        }
-        else {
+        } else {
             change_text_of_elem("category" + i, drink_attr[i], "loadStats");
         }
     }
@@ -778,8 +752,7 @@ function calculateMoneyToSubtract(oldDrink) {
         // It is the first time that we are down the UDP
         if ((Number(oldStock) + Number(oldCapacity)) >= Number(oldUPD)) {
             old_value = oldPrice * (oldUPD % oldCapacity) * period_of_time;
-        }
-        else {
+        } else {
             old_value = oldPrice * (oldUPD / oldCapacity) * period_of_time;
         }
     }
@@ -942,8 +915,7 @@ function setScale() {
         let aux = width - 1440;
         aux = 1 + (aux / 5000);
         $('html, body').css("zoom", aux);
-    }
-    else if (width < 1440) {
+    } else if (width < 1440) {
         let aux = 1440 - width;
         aux = 1 - (aux / 5000);
         $('html, body').css("zoom", aux);
@@ -982,7 +954,7 @@ function fetchFiles() {
     });
     // Get JS of Replay
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         dataType: "text",
         url: js_prefix + js_file,

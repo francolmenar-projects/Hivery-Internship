@@ -106,7 +106,7 @@ Making a div not able of selecting the text or elements
 /**
 Common height for the panels of Game
  */
-.game_height{
+.game_height {
     height: 692px;
 }
 
@@ -211,7 +211,8 @@ Board Guide image
 }
 
 .guide_board {
-    width: 909px; height: 534px;
+    width: 909px;
+    height: 534px;
     background: url('../img/guide_sprite.png') -10px -10px;
 }
 
@@ -376,8 +377,9 @@ Position of the time counter
 Revenue Counter image
  */
 .revenue_img {
-    width: 322px; height: 103px;
-    background: url('../img/game_sprite.png')-594px -10px;
+    width: 322px;
+    height: 103px;
+    background: url('../img/game_sprite.png') -594px -10px;
     zoom: 0.9;
     transform: scaleY(0.9) scaleX(1.1);
 }
@@ -386,8 +388,9 @@ Revenue Counter image
 Time Counter image
  */
 .time_img {
-    width: 322px; height: 109px;
-    background: url('../img/game_sprite.png')-594px -133px;
+    width: 322px;
+    height: 109px;
+    background: url('../img/game_sprite.png') -594px -133px;
     zoom: 0.9;
     transform: scaleY(0.9) scaleX(1.1);
 }
@@ -505,11 +508,12 @@ Middle div panel
 /**
 Image of the panel of the actual drink
  */
-.select_img{
+.select_img {
     position: relative;
     top: -4px;
     left: -38px;
-    width: 358px; height: 501px;
+    width: 358px;
+    height: 501px;
     background: url('../img/game_sprite.png') -10px -494px;
     transform: scaleX(0.81);
 }
@@ -636,8 +640,9 @@ Div
 /**
 Panel with the stats' panel
  */
-.stats_img{
-    width: 564px; height: 464px;
+.stats_img {
+    width: 564px;
+    height: 464px;
     background: url('../img/game_sprite.png') -10px -10px;
 }
 
@@ -850,7 +855,7 @@ Button REPLAY of the Replay Text Box
     left: 440px;
 }
 
-.button_replay img{
+.button_replay img {
     height: 50px;
     width: 130px;
     position: absolute;

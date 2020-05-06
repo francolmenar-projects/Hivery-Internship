@@ -22,8 +22,7 @@ function goToGuide() {
     let intro_but = document.getElementById("introduction_play_button");
     if (intro_but !== null) {
         intro_but.addEventListener("click", goToGuide);
-    }
-    else {
+    } else {
         console.log("[Error]: 'introduction_play_button' does not exist");
         return null;
     }
@@ -46,8 +45,7 @@ function setScale() {
         let aux = width - 1440;
         aux = 1 + (aux / 5000);
         $('html, body').css("zoom", aux);
-    }
-    else if (width < 1440) {
+    } else if (width < 1440) {
         let aux = 1440 - width;
         aux = 1 - (aux / 5000);
         $('html, body').css("zoom", aux);
@@ -95,14 +93,14 @@ function setTextAux(element_arr) {
 $(window).on('load', function () {
     // Get images of guide
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         url: img_prefix + sprite_file,
         async: true,
     });
     // Get JS of Guide
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         dataType: "text",
         url: js_prefix + js_file,
@@ -111,9 +109,9 @@ $(window).on('load', function () {
 });
 
 try {
-    module.exports.goToGuide =  goToGuide;
-    module.exports.setText =  setText;
-    module.exports.setTextAux =  setTextAux;
+    module.exports.goToGuide = goToGuide;
+    module.exports.setText = setText;
+    module.exports.setTextAux = setTextAux;
 } catch (e) {
     if (e instanceof ReferenceError) {
     }

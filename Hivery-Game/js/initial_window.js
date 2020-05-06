@@ -48,26 +48,26 @@ $(document).ready(function () {
 $(window).on('load', function () {
     // Get images of guide
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         url: img_prefix + board,
         async: true,
     });
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         url: img_prefix + background,
         async: true,
     });
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         url: img_prefix + button,
         async: true,
     });
     // Get JS of Guide
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         dataType: "text",
         url: js_prefix + js_file,
@@ -75,14 +75,14 @@ $(window).on('load', function () {
     });
     // Get the fonts
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         dataType: "text",
         url: font_prefix + font1,
         async: true,
     });
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         dataType: "text",
         url: font_prefix + font2,
@@ -90,4 +90,4 @@ $(window).on('load', function () {
     });
 });
 
-module.exports.goToIntroduction =  goToIntroduction;
+module.exports.goToIntroduction = goToIntroduction;

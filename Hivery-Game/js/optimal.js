@@ -27,8 +27,7 @@ function setOptCost() {
     let actual_cost = document.getElementById("cost_stats");
     if (actual_cost) {
         actual_cost.innerHTML = "$" + opt_cost;
-    }
-    else {
+    } else {
         console.log("[Error]: element 'cost_stats' does not exist in setActualCost()");
     }
 }
@@ -41,8 +40,7 @@ function setOptRevenue() {
     let revenue = document.getElementById("revenue_stats");
     if (revenue) {
         revenue.innerHTML = "$" + opt_revenue;
-    }
-    else {
+    } else {
         console.log("[Error]: element 'revenue_stats' does not exist in setActualProfit()");
     }
 }
@@ -79,8 +77,7 @@ function createInternalTimer() {
         // If there is no time left the time is over
         if (time === 18) {
             showAdvice(replay_msg);
-        }
-        else if (time === 6) {
+        } else if (time === 6) {
             hideAdvice();
         }
         time--;
@@ -98,14 +95,12 @@ function showAdvice(str) {
             let adviceText = document.getElementById("adviceText");
             if (adviceText) {
                 adviceText.innerText = str;
-            }
-            else {
+            } else {
                 console.log("[Error]: element 'adviceText' does not exist in showAdvice()");
             }
         }
         $(advice).fadeIn("slow");
-    }
-    else {
+    } else {
         console.log("[Error]: element 'adviceDiv' does not exist in showAdvice()");
     }
 }
@@ -117,8 +112,7 @@ function hideAdvice() {
     let advice = document.getElementById("adviceDiv");
     if (advice) {
         $(advice).fadeOut("slow");
-    }
-    else {
+    } else {
         console.log("[Error]: element 'adviceDiv' does not exist in hideAdvice()");
     }
 }
@@ -176,8 +170,7 @@ function setData() {
                 drink_data[aux][0] = "-";
                 drink_data[aux][1] = "-";
                 drink_data[aux][2] = "-";
-            }
-            else {
+            } else {
                 let aux = i - config_options;
                 valid[aux] = 0;
                 drink_data[aux][0] = element_arr[i].price;
@@ -256,8 +249,7 @@ function areValid(arr) {
     for (let i = 0; i < arr.length; i++) {
         if (isNaN(arr[i])) {
             return -1;
-        }
-        else if (Number(arr[i] <= 0)) {
+        } else if (Number(arr[i] <= 0)) {
             return -1;
         }
     }
@@ -299,8 +291,7 @@ function loadEmpty() {
     let selected_drink = document.getElementById("selected_drink");
     if (selected_drink) {
         selected_drink.src = img_prefix + empty_drink;
-    }
-    else {
+    } else {
         console.log("[Error]: element 'selected_drink' does not exist in changeDrink()");
     }
 }
@@ -318,8 +309,7 @@ function change_text_of_elem(name, data, f_name) {
     if (elem) {
         elem.innerText = data;
         return 0;
-    }
-    else {
+    } else {
         console.log("[Error]: element '" + name + "' does not exist in " + f_name + "() ");
         return -1;
     }
@@ -334,8 +324,7 @@ function setScale() {
         let aux = width - 1440;
         aux = 1 + (aux / 5000);
         $('html, body').css("zoom", aux);
-    }
-    else if (width < 1440) {
+    } else if (width < 1440) {
         let aux = 1440 - width;
         aux = 1 - (aux / 5000);
         $('html, body').css("zoom", aux);

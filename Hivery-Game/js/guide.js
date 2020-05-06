@@ -27,8 +27,7 @@ function goToGameWindow() {
     let ready = document.getElementById("guide_ready_button");
     if (ready) {
         ready.addEventListener("click", goToGameWindow);
-    }
-    else {
+    } else {
         console.log("[Error]: 'guide_ready_button' does not exist");
     }
 }());
@@ -50,8 +49,7 @@ function setScale() {
         let aux = width - 1440;
         aux = 1 + (aux / 5000);
         $('html, body').css("zoom", aux);
-    }
-    else if (width < 1440) {
+    } else if (width < 1440) {
         let aux = 1440 - width;
         aux = 1 - (aux / 5000);
         $('html, body').css("zoom", aux);
@@ -101,26 +99,26 @@ function setTextAux(element_arr) {
 $(window).on('load', function () {
     // Get Images of Game
     $.ajax({
-        cache:true,
+        cache: true,
         async: true,
         type: "GET",
         url: img_prefix + sprite_file,
     });
     $.ajax({
-        cache:true,
+        cache: true,
         async: true,
         type: "GET",
         url: img_prefix + empty_drink,
     });
     $.ajax({
-        cache:true,
+        cache: true,
         async: true,
         type: "GET",
         url: img_prefix + default_drink,
     });
     // Get JS of Game
     $.ajax({
-        cache:true,
+        cache: true,
         async: true,
         type: "GET",
         dataType: "text",
@@ -128,14 +126,14 @@ $(window).on('load', function () {
     });
     // Get CSS of Game
     $.ajax({
-        cache:true,
+        cache: true,
         async: true,
         type: "GET",
         dataType: "text",
         url: css_prefix + css_file1
     });
     $.ajax({
-        cache:true,
+        cache: true,
         async: true,
         type: "GET",
         dataType: "text",

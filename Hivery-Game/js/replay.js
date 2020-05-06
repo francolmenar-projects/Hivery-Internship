@@ -115,8 +115,7 @@ function setScale() {
         let aux = width - 1440;
         aux = 1 + (aux / 5000);
         $('html, body').css("zoom", aux);
-    }
-    else if (width < 1440) {
+    } else if (width < 1440) {
         let aux = 1440 - width;
         aux = 1 - (aux / 5000);
         $('html, body').css("zoom", aux);
@@ -129,7 +128,7 @@ function setScale() {
 $(window).on('load', function () {
     // Get JS of Optimal
     $.ajax({
-        cache:true,
+        cache: true,
         type: "GET",
         dataType: "text",
         url: js_prefix + js_file,
