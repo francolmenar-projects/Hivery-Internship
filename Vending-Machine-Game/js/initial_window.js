@@ -90,4 +90,4 @@ $(window).on('load', function () {
     });
 });
 
-module.exports.goToIntroduction = goToIntroduction;
+// module.exports.goToIntroduction = goToIntroduction;
