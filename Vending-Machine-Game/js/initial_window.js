@@ -1,8 +1,8 @@
-const json_path = "json/msg.json"; // Path to the JSON file
+const json_path = "Vending-Machine-Game/json/msg.json"; // Path to the JSON file
 /******* Prefixes *******/
-const img_prefix = "./img/"; // Path to the Image folder
-const js_prefix = "./js/"; // Path to the JS folder
-const font_prefix = "./css/font/"; // Path to the Font folder
+const img_prefix = "Vending-Machine-Game//img/"; // Path to the Image folder
+const js_prefix = "Vending-Machine-Game//js/"; // Path to the JS folder
+const font_prefix = "Vending-Machine-Game//css/font/"; // Path to the Font folder
 /******* Files *******/
 const board = "welcomeBoard.png"; // Board of the Introduction Window
 const background = "generic_background.png"; // Background of Introduction Window
@@ -15,7 +15,7 @@ const font2 = "ConcertOne-Regular.ttf";
  * Go to introduction page when the screen is clicked
  */
 function goToIntroduction() {
-    let err = window.open("pages/introduction.html", "_self");
+    let err = window.open("Vending-Machine-Game/pages/introduction.html", "_self");
     if (err === null) {
         console.log("[Error]: window.open() in goToIntroduction()");
     }
