@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, height=device-height"/>
+    <title>Hivery Game</title>
+    <!-- Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../favicon/site.webmanifest">
+    <link rel="mask-icon" href="../favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- CSS  -->
+    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../css/game_style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body class="background_default noSelect">
+<div class="generic_text">
+    <!-- Advice banner -->
+    <div id="advice_banner" class="advice_banner">
+        <div id="adviceDiv" class="advice">
+            <img src="../img/popoverBoy.png" alt="pop up">
+            <p id="adviceText"></p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!-- Drinks Selected -->
+    <div class="drink_mach_div game_height">
+        <div id="drinks_machine" class="drinks_machine no_zoom">
+            <div class="drink_row column_machine_drinks">
+                <div class="col s3">
+                    <img id="drink_0_2" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+                <div class="col s3 offset-c3 ">
+                    <img id="drink_1_2" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+                <div class="col s3 offset-c6 ">
+                    <img id="drink_2_2" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+                <div class="col s3 offset-c9">
+                    <img id="drink_3_2" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+            </div>
+            <div class="drink_row column_machine_drinks">
+                <div class="col s3 ">
+                    <img id="drink_0_1" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+                <div class="col s3 offset-c3">
+                    <img id="drink_1_1" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+                <div class="col s3 offset-c6">
+                    <img id="drink_2_1" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+                <div class="col s3 offset-c9">
+                    <img id="drink_3_1" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+            </div>
+            <div class="drink_row column_machine_drinks">
+                <div class="col s3">
+                    <img id="drink_0_0" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+                <div class="col s3 offset-c3">
+                    <img id="drink_1_0" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+                <div class="col s3 offset-c6">
+                    <img id="drink_2_0" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+                <div class="col s3 offset-c9">
+                    <img id="drink_3_0" src="../img/products/coke-bottle.png" alt="drink">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Information of the selected drink -->
+    <div class="select_div game_height">
+        <div class="actual_drink_inside generic_text img_divSize">
+            <div class="select_img"></div>
+            <div class="STORE"><p id="selected_h"></p></div>
+            <div class="drink_selected">
+                <img id="selected_drink" src="" alt="selected drink">
+            </div>
+            <p id="price_selected" class="drink_select_stat price_selected"></p>
+            <p id="units_selected" class="drink_select_stat units_selected"></p>
+            <div id="arrow_left" class="arrow_left disabled"></div>
+            <div id="arrow_right" class="arrow_right disabled"></div>
+            <div id="replay_button" class="button_game button_text down_button replay">
+                <img src="../img/gameButton.png" alt="replay">
+                <p id="replay_but"></p>
+            </div>
+        </div>
+    </div>
+    <!-- Drinks Stats -->
+    <div class="stats_div generic_text game_height">
+        <div class="drinks_stats_inside img_divSize">
+            <div class="stats_img"></div>
+            <div class="STATS">
+                <p id="stats_h"></p>
+            </div>
+            <table>
+                <tr class="drinks_name">
+                    <th></th>
+                    <th id="name0"></th>
+                    <th id="name1"></th>
+                    <th id="name2"></th>
+                    <th id="name3"></th>
+                    <th id="name4"></th>
+                </tr>
+                <tr>
+                    <th id="category0" class="category"></th>
+                    <td id="price0"></td>
+                    <td id="price1"></td>
+                    <td id="price2"></td>
+                    <td id="price3"></td>
+                    <td id="price4"></td>
+                </tr>
+                <tr>
+                    <th id="category1" class="category"></th>
+                    <td id="capacity0"></td>
+                    <td id="capacity1"></td>
+                    <td id="capacity2"></td>
+                    <td id="capacity3"></td>
+                    <td id="capacity4"></td>
+                </tr>
+                <tr>
+                    <th id="category2" class="category"></th>
+                    <td id="upd0"></td>
+                    <td id="upd1"></td>
+                    <td id="upd2"></td>
+                    <td id="upd3"></td>
+                    <td id="upd4"></td>
+                </tr>
+                <tr>
+                    <th id="category3" class="category"></th>
+                    <td id="unit_stocked0"></td>
+                    <td id="unit_stocked1"></td>
+                    <td id="unit_stocked2"></td>
+                    <td id="unit_stocked3"></td>
+                    <td id="unit_stocked4"></td>
+                </tr>
+                <tr>
+                    <th id="category4" class="category"></th>
+                    <td id="days_souldout0"></td>
+                    <td id="days_souldout1"></td>
+                    <td id="days_souldout2"></td>
+                    <td id="days_souldout3"></td>
+                    <td id="days_souldout4"></td>
+                </tr>
+            </table>
+            <div class="total_panel_stats">
+                <div class="left_total_panel">
+                    <p id="revenue_h" class="totalLeft_down_header total_header"></p>
+                    <p id="revenue_stats" class="revenue_per_year total_values"></p>
+                </div>
+                <div class="right_total_panel">
+                    <p id="cost_h" class="totalRight_down_header total_header"></p>
+                    <p id="cost_stats" class="cost_per_year total_values"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  Scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../js/optimal.js"></script>
+</body>
+</html>

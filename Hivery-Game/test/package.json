@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "version": "0.0.0",
+  "name": "example-getting-started",
+  "devDependencies": {
+    "babel-preset-env": "*",
+    "jest": "*"
+  },
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "jest"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
